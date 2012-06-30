@@ -59,7 +59,7 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
         return _player;
     }
     // (re-)initialize player
-    self.player = [[STLPlayer alloc] init];
+    self.player = [[[STLPlayer alloc] init] autorelease];
     // position player node in the center of the screen
     [_player setNode:[CCSprite spriteWithFile:@"player.png"]];
     CGSize size = [[CCDirector sharedDirector] winSize];

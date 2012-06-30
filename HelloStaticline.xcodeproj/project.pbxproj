@@ -136,7 +136,31 @@
 		35884676159F13D1004B750D /* STLPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35884675159F13D1004B750D /* STLPlayer.m */; };
 		35884678159F2FA7004B750D /* marker_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 35884677159F2FA7004B750D /* marker_cross.png */; };
 		35C65438159F505900F3DAB2 /* STLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C65437159F505900F3DAB2 /* STLMarker.m */; };
+		35C65446159F8D3A00F3DAB2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C65445159F8D3A00F3DAB2 /* SenTestingKit.framework */; };
+		35C65447159F8D3A00F3DAB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543666B159B6C1A004D5ED1 /* UIKit.framework */; };
+		35C65448159F8D3A00F3DAB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543666D159B6C1A004D5ED1 /* Foundation.framework */; };
+		35C6544E159F8D3A00F3DAB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 35C6544C159F8D3A00F3DAB2 /* InfoPlist.strings */; };
+		35C654D7159F9BF400F3DAB2 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436671159B6C1A004D5ED1 /* GameKit.framework */; };
+		35C654D8159F9BFE00F3DAB2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436661159B6C1A004D5ED1 /* QuartzCore.framework */; };
+		35C654D9159F9C0600F3DAB2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436663159B6C1A004D5ED1 /* OpenGLES.framework */; };
+		35C654DA159F9C0F00F3DAB2 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436665159B6C1A004D5ED1 /* OpenAL.framework */; };
+		35C654DB159F9C1D00F3DAB2 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436667159B6C1A004D5ED1 /* AudioToolbox.framework */; };
+		35C654DC159F9C2100F3DAB2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436669159B6C1A004D5ED1 /* AVFoundation.framework */; };
+		35C654DD159F9C3600F3DAB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543666F159B6C1A004D5ED1 /* CoreGraphics.framework */; };
+		35C654E1159F9DB800F3DAB2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C654E0159F9DB800F3DAB2 /* libz.dylib */; };
+		35C654E4159F9EA400F3DAB2 /* STLGameLayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C654E3159F9EA400F3DAB2 /* STLGameLayerTests.m */; };
+		35C654E7159FA26000F3DAB2 /* STLGameObjectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C654E6159FA26000F3DAB2 /* STLGameObjectsTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		35C654E8159FA3BC00F3DAB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35436654159B6C1A004D5ED1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3543665C159B6C1A004D5ED1;
+			remoteInfo = HelloStaticline;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3543665D159B6C1A004D5ED1 /* HelloStaticline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloStaticline.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -407,6 +431,16 @@
 		35C65436159F505800F3DAB2 /* STLMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLMarker.h; sourceTree = "<group>"; };
 		35C65437159F505900F3DAB2 /* STLMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLMarker.m; sourceTree = "<group>"; };
 		35C6543E159F70A100F3DAB2 /* STLActorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLActorProtocol.h; sourceTree = "<group>"; };
+		35C65444159F8D3A00F3DAB2 /* HelloStaticlineTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloStaticlineTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		35C65445159F8D3A00F3DAB2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		35C6544B159F8D3A00F3DAB2 /* HelloStaticlineTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloStaticlineTests-Info.plist"; sourceTree = "<group>"; };
+		35C6544D159F8D3A00F3DAB2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		35C65452159F8D3A00F3DAB2 /* HelloStaticlineTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloStaticlineTests-Prefix.pch"; sourceTree = "<group>"; };
+		35C654E0159F9DB800F3DAB2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		35C654E2159F9EA400F3DAB2 /* STLGameLayerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameLayerTests.h; sourceTree = "<group>"; };
+		35C654E3159F9EA400F3DAB2 /* STLGameLayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameLayerTests.m; sourceTree = "<group>"; };
+		35C654E5159FA26000F3DAB2 /* STLGameObjectsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameObjectsTests.h; sourceTree = "<group>"; };
+		35C654E6159FA26000F3DAB2 /* STLGameObjectsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameObjectsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -426,6 +460,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35C65440159F8D3A00F3DAB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35C654E1159F9DB800F3DAB2 /* libz.dylib in Frameworks */,
+				35C654DD159F9C3600F3DAB2 /* CoreGraphics.framework in Frameworks */,
+				35C654DC159F9C2100F3DAB2 /* AVFoundation.framework in Frameworks */,
+				35C654DB159F9C1D00F3DAB2 /* AudioToolbox.framework in Frameworks */,
+				35C654DA159F9C0F00F3DAB2 /* OpenAL.framework in Frameworks */,
+				35C654D9159F9C0600F3DAB2 /* OpenGLES.framework in Frameworks */,
+				35C654D8159F9BFE00F3DAB2 /* QuartzCore.framework in Frameworks */,
+				35C654D7159F9BF400F3DAB2 /* GameKit.framework in Frameworks */,
+				35C65446159F8D3A00F3DAB2 /* SenTestingKit.framework in Frameworks */,
+				35C65447159F8D3A00F3DAB2 /* UIKit.framework in Frameworks */,
+				35C65448159F8D3A00F3DAB2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -433,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				35436673159B6C1A004D5ED1 /* HelloStaticline */,
+				35C65449159F8D3A00F3DAB2 /* HelloStaticlineTests */,
 				35436660159B6C1A004D5ED1 /* Frameworks */,
 				3543665E159B6C1A004D5ED1 /* Products */,
 			);
@@ -442,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				3543665D159B6C1A004D5ED1 /* HelloStaticline.app */,
+				35C65444159F8D3A00F3DAB2 /* HelloStaticlineTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -449,6 +503,7 @@
 		35436660159B6C1A004D5ED1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				35C654E0159F9DB800F3DAB2 /* libz.dylib */,
 				35436661159B6C1A004D5ED1 /* QuartzCore.framework */,
 				35436663159B6C1A004D5ED1 /* OpenGLES.framework */,
 				35436665159B6C1A004D5ED1 /* OpenAL.framework */,
@@ -458,6 +513,7 @@
 				3543666D159B6C1A004D5ED1 /* Foundation.framework */,
 				3543666F159B6C1A004D5ED1 /* CoreGraphics.framework */,
 				35436671159B6C1A004D5ED1 /* GameKit.framework */,
+				35C65445159F8D3A00F3DAB2 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -863,6 +919,28 @@
 			name = Actors;
 			sourceTree = "<group>";
 		};
+		35C65449159F8D3A00F3DAB2 /* HelloStaticlineTests */ = {
+			isa = PBXGroup;
+			children = (
+				35C6544A159F8D3A00F3DAB2 /* Supporting Files */,
+				35C654E2159F9EA400F3DAB2 /* STLGameLayerTests.h */,
+				35C654E3159F9EA400F3DAB2 /* STLGameLayerTests.m */,
+				35C654E5159FA26000F3DAB2 /* STLGameObjectsTests.h */,
+				35C654E6159FA26000F3DAB2 /* STLGameObjectsTests.m */,
+			);
+			path = HelloStaticlineTests;
+			sourceTree = "<group>";
+		};
+		35C6544A159F8D3A00F3DAB2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				35C6544B159F8D3A00F3DAB2 /* HelloStaticlineTests-Info.plist */,
+				35C6544C159F8D3A00F3DAB2 /* InfoPlist.strings */,
+				35C65452159F8D3A00F3DAB2 /* HelloStaticlineTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -882,6 +960,25 @@
 			productName = HelloStaticline;
 			productReference = 3543665D159B6C1A004D5ED1 /* HelloStaticline.app */;
 			productType = "com.apple.product-type.application";
+		};
+		35C65443159F8D3A00F3DAB2 /* HelloStaticlineTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35C65453159F8D3A00F3DAB2 /* Build configuration list for PBXNativeTarget "HelloStaticlineTests" */;
+			buildPhases = (
+				35C6543F159F8D3A00F3DAB2 /* Sources */,
+				35C65440159F8D3A00F3DAB2 /* Frameworks */,
+				35C65441159F8D3A00F3DAB2 /* Resources */,
+				35C65442159F8D3A00F3DAB2 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35C654E9159FA3BC00F3DAB2 /* PBXTargetDependency */,
+			);
+			name = HelloStaticlineTests;
+			productName = HelloStaticlineTests;
+			productReference = 35C65444159F8D3A00F3DAB2 /* HelloStaticlineTests.octest */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -906,6 +1003,7 @@
 			projectRoot = "";
 			targets = (
 				3543665C159B6C1A004D5ED1 /* HelloStaticline */,
+				35C65443159F8D3A00F3DAB2 /* HelloStaticlineTests */,
 			);
 		};
 /* End PBXProject section */
@@ -932,7 +1030,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35C65441159F8D3A00F3DAB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35C6544E159F8D3A00F3DAB2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35C65442159F8D3A00F3DAB2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		35436659159B6C1A004D5ED1 /* Sources */ = {
@@ -1048,13 +1170,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35C6543F159F8D3A00F3DAB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35C654E4159F9EA400F3DAB2 /* STLGameLayerTests.m in Sources */,
+				35C654E7159FA26000F3DAB2 /* STLGameObjectsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		35C654E9159FA3BC00F3DAB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3543665C159B6C1A004D5ED1 /* HelloStaticline */;
+			targetProxy = 35C654E8159FA3BC00F3DAB2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		35C6544C159F8D3A00F3DAB2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35C6544D159F8D3A00F3DAB2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		354367EF159B6C1D004D5ED1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
@@ -1068,11 +1219,13 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "B926145E-CBF0-4DA6-A54C-F94EE5A17B2C";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3C87358-C9A2-4CB4-BFCB-E4DCC7396889";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
+				USER_HEADER_SEARCH_PATHS = "\"HelloStaticline/libs/kazmath/include\"";
 			};
 			name = Debug;
 		};
@@ -1080,6 +1233,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "";
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
@@ -1091,11 +1245,13 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "B926145E-CBF0-4DA6-A54C-F94EE5A17B2C";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3C87358-C9A2-4CB4-BFCB-E4DCC7396889";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "";
+				USER_HEADER_SEARCH_PATHS = "\"HelloStaticline/libs/kazmath/include\"";
 			};
 			name = Release;
 		};
@@ -1139,6 +1295,54 @@
 			};
 			name = Release;
 		};
+		35C65454159F8D3A00F3DAB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloStaticline.app/HelloStaticline";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloStaticlineTests/HelloStaticlineTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "HelloStaticlineTests/HelloStaticlineTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		35C65455159F8D3A00F3DAB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/HelloStaticline.app/HelloStaticline";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "HelloStaticlineTests/HelloStaticlineTests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "HelloStaticlineTests/HelloStaticlineTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1159,6 +1363,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		35C65453159F8D3A00F3DAB2 /* Build configuration list for PBXNativeTarget "HelloStaticlineTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35C65454159F8D3A00F3DAB2 /* Debug */,
+				35C65455159F8D3A00F3DAB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
