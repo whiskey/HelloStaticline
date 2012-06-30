@@ -131,8 +131,11 @@
 		354367E8159B6C1D004D5ED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367E7159B6C1D004D5ED1 /* main.m */; };
 		354367EB159B6C1D004D5ED1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367EA159B6C1D004D5ED1 /* AppDelegate.m */; };
 		354367EE159B6C1D004D5ED1 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367ED159B6C1D004D5ED1 /* HelloWorldLayer.m */; };
-		35436854159B8B64004D5ED1 /* SLGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35436853159B8B64004D5ED1 /* SLGameLayer.m */; };
+		35436854159B8B64004D5ED1 /* STLGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35436853159B8B64004D5ED1 /* STLGameLayer.m */; };
 		35436856159B9C8E004D5ED1 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 35436855159B9C8E004D5ED1 /* player.png */; };
+		35884676159F13D1004B750D /* STLPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35884675159F13D1004B750D /* STLPlayer.m */; };
+		35884678159F2FA7004B750D /* marker_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 35884677159F2FA7004B750D /* marker_cross.png */; };
+		35C65438159F505900F3DAB2 /* STLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C65437159F505900F3DAB2 /* STLMarker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -395,9 +398,15 @@
 		354367EA159B6C1D004D5ED1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		354367EC159B6C1D004D5ED1 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
 		354367ED159B6C1D004D5ED1 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
-		35436852159B8B64004D5ED1 /* SLGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGameLayer.h; sourceTree = "<group>"; };
-		35436853159B8B64004D5ED1 /* SLGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGameLayer.m; sourceTree = "<group>"; };
+		35436852159B8B64004D5ED1 /* STLGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameLayer.h; sourceTree = "<group>"; };
+		35436853159B8B64004D5ED1 /* STLGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameLayer.m; sourceTree = "<group>"; };
 		35436855159B9C8E004D5ED1 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
+		35884674159F13D1004B750D /* STLPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLPlayer.h; sourceTree = "<group>"; };
+		35884675159F13D1004B750D /* STLPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLPlayer.m; sourceTree = "<group>"; };
+		35884677159F2FA7004B750D /* marker_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = marker_cross.png; path = Resources/marker_cross.png; sourceTree = "<group>"; };
+		35C65436159F505800F3DAB2 /* STLMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLMarker.h; sourceTree = "<group>"; };
+		35C65437159F505900F3DAB2 /* STLMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLMarker.m; sourceTree = "<group>"; };
+		35C6543E159F70A100F3DAB2 /* STLActorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLActorProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -458,10 +467,8 @@
 			children = (
 				354367E9159B6C1D004D5ED1 /* AppDelegate.h */,
 				354367EA159B6C1D004D5ED1 /* AppDelegate.m */,
-				354367EC159B6C1D004D5ED1 /* HelloWorldLayer.h */,
-				354367ED159B6C1D004D5ED1 /* HelloWorldLayer.m */,
-				35436852159B8B64004D5ED1 /* SLGameLayer.h */,
-				35436853159B8B64004D5ED1 /* SLGameLayer.m */,
+				35884673159F1385004B750D /* Actors */,
+				35884672159F10FD004B750D /* Layers */,
 				35436674159B6C1A004D5ED1 /* Resources */,
 				3543668C159B6C1B004D5ED1 /* libs */,
 				354367E5159B6C1D004D5ED1 /* Supporting Files */,
@@ -472,6 +479,7 @@
 		35436674159B6C1A004D5ED1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				35884677159F2FA7004B750D /* marker_cross.png */,
 				35436855159B9C8E004D5ED1 /* player.png */,
 				35436675159B6C1A004D5ED1 /* Default.png */,
 				35436677159B6C1A004D5ED1 /* fps_images.png */,
@@ -832,6 +840,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		35884672159F10FD004B750D /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				354367EC159B6C1D004D5ED1 /* HelloWorldLayer.h */,
+				354367ED159B6C1D004D5ED1 /* HelloWorldLayer.m */,
+				35436852159B8B64004D5ED1 /* STLGameLayer.h */,
+				35436853159B8B64004D5ED1 /* STLGameLayer.m */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		35884673159F1385004B750D /* Actors */ = {
+			isa = PBXGroup;
+			children = (
+				35C6543E159F70A100F3DAB2 /* STLActorProtocol.h */,
+				35884674159F13D1004B750D /* STLPlayer.h */,
+				35884675159F13D1004B750D /* STLPlayer.m */,
+				35C65436159F505800F3DAB2 /* STLMarker.h */,
+				35C65437159F505900F3DAB2 /* STLMarker.m */,
+			);
+			name = Actors;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -858,7 +889,7 @@
 		35436654159B6C1A004D5ED1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = SL;
+				CLASSPREFIX = STL;
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = staticline;
 			};
@@ -897,6 +928,7 @@
 				3543668B159B6C1B004D5ED1 /* iTunesArtwork in Resources */,
 				354367C9159B6C1D004D5ED1 /* ChangeLog in Resources */,
 				35436856159B9C8E004D5ED1 /* player.png in Resources */,
+				35884678159F2FA7004B750D /* marker_cross.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1010,7 +1042,9 @@
 				354367E8159B6C1D004D5ED1 /* main.m in Sources */,
 				354367EB159B6C1D004D5ED1 /* AppDelegate.m in Sources */,
 				354367EE159B6C1D004D5ED1 /* HelloWorldLayer.m in Sources */,
-				35436854159B8B64004D5ED1 /* SLGameLayer.m in Sources */,
+				35436854159B8B64004D5ED1 /* STLGameLayer.m in Sources */,
+				35884676159F13D1004B750D /* STLPlayer.m in Sources */,
+				35C65438159F505900F3DAB2 /* STLMarker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,7 +1055,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1033,6 +1069,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "E3C87358-C9A2-4CB4-BFCB-E4DCC7396889";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3C87358-C9A2-4CB4-BFCB-E4DCC7396889";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1042,7 +1080,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -1052,6 +1092,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PROVISIONING_PROFILE = "E3C87358-C9A2-4CB4-BFCB-E4DCC7396889";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3C87358-C9A2-4CB4-BFCB-E4DCC7396889";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

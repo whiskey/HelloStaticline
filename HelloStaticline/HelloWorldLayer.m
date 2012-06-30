@@ -10,7 +10,7 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 #import "AppDelegate.h"
-#import "SLGameLayer.h"
+#import "STLGameLayer.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -91,7 +91,7 @@
 									   ];
         CCMenuItem *gameStart = [CCMenuItemFont itemWithString:@"start game" block:^(id sender) {
             [[CCDirector sharedDirector] replaceScene:
-                    [CCTransitionFlipAngular transitionWithDuration:0.8f scene:[SLGameLayer scene]]];
+                    [CCTransitionFlipAngular transitionWithDuration:0.8f scene:[STLGameLayer scene]]];
         }];
 		
 		CCMenu *menu = [CCMenu menuWithItems:gameStart, itemAchievement, itemLeaderboard, nil];
