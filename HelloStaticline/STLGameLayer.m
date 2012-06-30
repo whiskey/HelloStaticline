@@ -16,7 +16,7 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
 
 @interface STLGameLayer()
 @property (nonatomic,retain) CCTouchDispatcher *touchDispatcher;
-@property (nonatomic,retain) NSMutableArray *markers;
+@property (nonatomic,retain) NSMutableArray *activeTargets;
 
 - (void) nextFrame:(ccTime)dt;
 
@@ -26,7 +26,7 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
 
 
 @implementation STLGameLayer
-@synthesize markers = _markers;
+@synthesize activeTargets = _activeTargets;
 @synthesize player = _player;
 @synthesize touchDispatcher = _touchDispatcher;
 
@@ -44,7 +44,7 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
     if (self) {
         // settings
         self.isTouchEnabled = YES;
-        self.markers = [NSMutableArray arrayWithCapacity:1];
+        self.activeTargets = [NSMutableArray arrayWithCapacity:1];
         // add player
         [self addChild:self.player.node];
         // schedule and go
@@ -85,9 +85,9 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
 - (void)nextFrame:(ccTime)dt
 {
     // hit test: player location vs. marker
-    for (STLMarker *marker in self.markers) {
-        if (CGRectIntersectsRect(marker.node.boundingBox, _player.node.boundingBox)) {
-            [self destroyTarget:marker withActionType:kSTLMarkerExplode];
+    for (id<STLTargetProtocol> target in _activeTargets) {
+        if (CGRectIntersectsRect(target.node.boundingBox, _player.node.boundingBox)) {
+            [self destroyTarget:target withActionType:kSTLMarkerExplode];
         }
     }
 }
@@ -97,10 +97,8 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     // remove all existing markers
-    for (CCNode *child in self.children) {
-        if (child != _player.node) {
-            [self removeChild:child cleanup:YES];
-        }
+    for (id<STLTargetProtocol> target in _activeTargets) {
+        [self destroyTarget:target];
     }
     return YES;
 }
@@ -123,7 +121,7 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
     marker.node = [CCSprite spriteWithFile:@"marker_cross.png"];
     marker.node.position = location;
     [self addChild:marker.node];
-    [self.markers addObject:marker];
+    [self.activeTargets addObject:marker];
     [marker release];
 }
 
@@ -140,15 +138,26 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
         case kSTLMarkerDisappear:
         {
             // simply remove
-            [self removeChild:target cleanup:YES];
+            [self removeChild:target.node cleanup:YES];
             break;
         }
         case kSTLMarkerExplode:
         {
             // explosion, well... kinda...
-            NSLog(@"BOOOM!");
-            NSLog(@"point value %d",target.pointValue);
-            [self removeChild:target cleanup:YES];
+            id action1 = [CCScaleTo actionWithDuration:0.8f scale:0.3f];
+            id scale = [CCEaseBackInOut actionWithAction:action1];
+            
+            id action2 = [CCFadeOut actionWithDuration:1.0f];
+            id fadeOut = [CCEaseOut actionWithAction:action2];
+            
+            id remove = [CCCallBlock actionWithBlock:^{
+                [self removeChild:target.node cleanup:YES];
+            }];
+            
+            id spawn = [CCSpawn actions:scale,fadeOut, nil];
+            id sequence = [CCSequence actions:spawn, remove, nil];
+            
+            [target.node runAction:sequence];
             break;
         }
         default:
@@ -157,10 +166,9 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
             [NSException exceptionWithName:kSTLMarkerActionTypeUnsupportedException 
                                     reason:NSLocalizedString(msg, kSTLMarkerActionTypeUnsupportedException) 
                                   userInfo:nil];
-            break;
         }
     }
-    [_markers removeObject:target];
+    [_activeTargets removeObject:target];
 }
 
 @end
