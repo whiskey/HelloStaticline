@@ -3,7 +3,7 @@
 //  HelloStaticline
 //
 //  Created by Carsten Witzke on 27.06.12.
-//  Copyright documediaS 2012. All rights reserved.
+//  Copyright staticline 2012. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

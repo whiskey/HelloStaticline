@@ -3,15 +3,14 @@
 //  HelloStaticline
 //
 //  Created by Carsten Witzke on 27.06.12.
-//  Copyright documediaS 2012. All rights reserved.
+//  Copyright staticline 2012. All rights reserved.
 //
 
 
 // Import the interfaces
 #import "HelloWorldLayer.h"
-
-// Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
+#import "SLGameLayer.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -87,19 +86,21 @@
 			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 			
 			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
-			
 			[leaderboardViewController release];
 		}
 									   ];
+        CCMenuItem *gameStart = [CCMenuItemFont itemWithString:@"start game" block:^(id sender) {
+            [[CCDirector sharedDirector] replaceScene:
+                    [CCTransitionFlipAngular transitionWithDuration:0.8f scene:[SLGameLayer scene]]];
+        }];
 		
-		CCMenu *menu = [CCMenu menuWithItems:itemAchievement, itemLeaderboard, nil];
+		CCMenu *menu = [CCMenu menuWithItems:gameStart, itemAchievement, itemLeaderboard, nil];
 		
 		[menu alignItemsHorizontallyWithPadding:20];
 		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];
 		
 		// Add the menu to the layer
 		[self addChild:menu];
-
 	}
 	return self;
 }
