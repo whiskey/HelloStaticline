@@ -130,7 +130,7 @@
 		354367E3159B6C1D004D5ED1 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 354367E2159B6C1D004D5ED1 /* vec4.c */; };
 		354367E8159B6C1D004D5ED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367E7159B6C1D004D5ED1 /* main.m */; };
 		354367EB159B6C1D004D5ED1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367EA159B6C1D004D5ED1 /* AppDelegate.m */; };
-		354367EE159B6C1D004D5ED1 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367ED159B6C1D004D5ED1 /* HelloWorldLayer.m */; };
+		354367EE159B6C1D004D5ED1 /* STLMainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */; };
 		35436854159B8B64004D5ED1 /* STLGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35436853159B8B64004D5ED1 /* STLGameLayer.m */; };
 		35436856159B9C8E004D5ED1 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 35436855159B9C8E004D5ED1 /* player.png */; };
 		35884676159F13D1004B750D /* STLPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35884675159F13D1004B750D /* STLPlayer.m */; };
@@ -163,7 +163,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3543665D159B6C1A004D5ED1 /* HelloStaticline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloStaticline.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3543665D159B6C1A004D5ED1 /* hellostaticline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hellostaticline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35436661159B6C1A004D5ED1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		35436663159B6C1A004D5ED1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		35436665159B6C1A004D5ED1 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -420,8 +420,8 @@
 		354367E7159B6C1D004D5ED1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		354367E9159B6C1D004D5ED1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		354367EA159B6C1D004D5ED1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		354367EC159B6C1D004D5ED1 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		354367ED159B6C1D004D5ED1 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		354367EC159B6C1D004D5ED1 /* STLMainMenuLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLMainMenuLayer.h; sourceTree = "<group>"; };
+		354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLMainMenuLayer.m; sourceTree = "<group>"; };
 		35436852159B8B64004D5ED1 /* STLGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameLayer.h; sourceTree = "<group>"; };
 		35436853159B8B64004D5ED1 /* STLGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameLayer.m; sourceTree = "<group>"; };
 		35436855159B9C8E004D5ED1 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
@@ -494,7 +494,7 @@
 		3543665E159B6C1A004D5ED1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3543665D159B6C1A004D5ED1 /* HelloStaticline.app */,
+				3543665D159B6C1A004D5ED1 /* hellostaticline.app */,
 				35C65444159F8D3A00F3DAB2 /* HelloStaticlineTests.octest */,
 			);
 			name = Products;
@@ -899,8 +899,8 @@
 		35884672159F10FD004B750D /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				354367EC159B6C1D004D5ED1 /* HelloWorldLayer.h */,
-				354367ED159B6C1D004D5ED1 /* HelloWorldLayer.m */,
+				354367EC159B6C1D004D5ED1 /* STLMainMenuLayer.h */,
+				354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */,
 				35436852159B8B64004D5ED1 /* STLGameLayer.h */,
 				35436853159B8B64004D5ED1 /* STLGameLayer.m */,
 			);
@@ -958,7 +958,7 @@
 			);
 			name = HelloStaticline;
 			productName = HelloStaticline;
-			productReference = 3543665D159B6C1A004D5ED1 /* HelloStaticline.app */;
+			productReference = 3543665D159B6C1A004D5ED1 /* hellostaticline.app */;
 			productType = "com.apple.product-type.application";
 		};
 		35C65443159F8D3A00F3DAB2 /* HelloStaticlineTests */ = {
@@ -1163,7 +1163,7 @@
 				354367E3159B6C1D004D5ED1 /* vec4.c in Sources */,
 				354367E8159B6C1D004D5ED1 /* main.m in Sources */,
 				354367EB159B6C1D004D5ED1 /* AppDelegate.m in Sources */,
-				354367EE159B6C1D004D5ED1 /* HelloWorldLayer.m in Sources */,
+				354367EE159B6C1D004D5ED1 /* STLMainMenuLayer.m in Sources */,
 				35436854159B8B64004D5ED1 /* STLGameLayer.m in Sources */,
 				35884676159F13D1004B750D /* STLPlayer.m in Sources */,
 				35C65438159F505900F3DAB2 /* STLMarker.m in Sources */,
@@ -1220,8 +1220,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "B926145E-CBF0-4DA6-A54C-F94EE5A17B2C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3C87358-C9A2-4CB4-BFCB-E4DCC7396889";
+				PRODUCT_NAME = hellostaticline;
+				PROVISIONING_PROFILE = "BD9D52B7-66CA-4968-AC62-D07B6236744C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BD9D52B7-66CA-4968-AC62-D07B6236744C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
@@ -1246,8 +1247,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "B926145E-CBF0-4DA6-A54C-F94EE5A17B2C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E3C87358-C9A2-4CB4-BFCB-E4DCC7396889";
+				PRODUCT_NAME = hellostaticline;
+				PROVISIONING_PROFILE = "BD9D52B7-66CA-4968-AC62-D07B6236744C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BD9D52B7-66CA-4968-AC62-D07B6236744C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
@@ -1270,7 +1272,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = hellostaticline;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1289,7 +1291,7 @@
 					"-lz",
 					"-ObjC",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = hellostaticline;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1371,6 +1373,7 @@
 				35C65455159F8D3A00F3DAB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

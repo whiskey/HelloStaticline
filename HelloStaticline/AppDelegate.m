@@ -9,7 +9,7 @@
 #import "cocos2d.h"
 
 #import "AppDelegate.h"
-#import "HelloWorldLayer.h"
+#import "STLMainMenuLayer.h"
 
 @implementation AppController
 
@@ -84,7 +84,12 @@
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
 
 	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [HelloWorldLayer scene]]; 
+	[director_ pushScene: [STLMainMenuLayer scene]];
+    
+    // check game center availablility and launch
+    if ([self isGameCenterAPIAvailable]) {
+        [self authenticateLocalPlayer];
+    }
 
 	return YES;
 }
@@ -147,4 +152,37 @@
 
 	[super dealloc];
 }
+
+#pragma mark - Game Center
+- (BOOL)isGameCenterAPIAvailable
+{
+    // Check for presence of GKLocalPlayer class.
+    BOOL localPlayerClassAvailable = (NSClassFromString(@"GKLocalPlayer")) != nil;
+    
+    // The device must be running iOS 4.1 or later.
+    NSString *reqSysVer = @"4.1";
+    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
+    BOOL osVersionSupported = ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending);
+    
+    return (localPlayerClassAvailable && osVersionSupported); 
+}
+
+-(void)authenticateLocalPlayer
+{
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+        if (localPlayer.isAuthenticated)
+        {
+            // Perform additional tasks for the authenticated player.
+        }
+#if DEBUG
+        // display errors, if present
+        if (error) {
+            NSLog(@"%@",error);
+        }
+#endif
+    }];
+}
+
+
 @end

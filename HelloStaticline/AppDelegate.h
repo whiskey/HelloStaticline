@@ -21,4 +21,8 @@
 @property (readonly) UINavigationController *navController;
 @property (readonly) CCDirectorIOS *director;
 
+// GameCenter
+- (BOOL)isGameCenterAPIAvailable;
+- (void)authenticateLocalPlayer;
+
 @end
