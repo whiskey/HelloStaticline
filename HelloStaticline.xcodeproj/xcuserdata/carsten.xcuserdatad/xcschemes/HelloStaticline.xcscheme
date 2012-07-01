@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3543665C159B6C1A004D5ED1"
-               BuildableName = "HelloStaticline.app"
+               BuildableName = "hellostaticline.app"
                BlueprintName = "HelloStaticline"
                ReferencedContainer = "container:HelloStaticline.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3543665C159B6C1A004D5ED1"
-            BuildableName = "HelloStaticline.app"
+            BuildableName = "hellostaticline.app"
             BlueprintName = "HelloStaticline"
             ReferencedContainer = "container:HelloStaticline.xcodeproj">
          </BuildableReference>
@@ -67,7 +67,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3543665C159B6C1A004D5ED1"
-            BuildableName = "HelloStaticline.app"
+            BuildableName = "hellostaticline.app"
             BlueprintName = "HelloStaticline"
             ReferencedContainer = "container:HelloStaticline.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3543665C159B6C1A004D5ED1"
-            BuildableName = "HelloStaticline.app"
+            BuildableName = "hellostaticline.app"
             BlueprintName = "HelloStaticline"
             ReferencedContainer = "container:HelloStaticline.xcodeproj">
          </BuildableReference>
