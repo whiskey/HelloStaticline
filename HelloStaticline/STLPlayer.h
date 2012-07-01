@@ -15,8 +15,7 @@
 @property (nonatomic,readonly) NSUInteger level;
 @property (nonatomic,readonly) NSUInteger lifetimeCatchedMarkers;
 
-// methods...
-// - reset
-// - update some stats
+// hit, blased, whatever...
+- (void) killedTarget:(id<STLTargetProtocol>)target;
 
 @end

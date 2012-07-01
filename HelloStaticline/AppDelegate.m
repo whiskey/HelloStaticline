@@ -7,15 +7,17 @@
 //
 
 #import "cocos2d.h"
-
 #import "AppDelegate.h"
+#import "STLGKGameCenterManager.h"
 #import "STLMainMenuLayer.h"
 
 @implementation AppController
 
-@synthesize window=window_, navController=navController_, director=director_;
+@synthesize window = window_;
+@synthesize navController = navController_;
+@synthesize director = director_;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	// Create the main window
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -87,15 +89,16 @@
 	[director_ pushScene: [STLMainMenuLayer scene]];
     
     // check game center availablility and launch
-    if ([self isGameCenterAPIAvailable]) {
-        [self authenticateLocalPlayer];
+    STLGKGameCenterManager *gcm = [STLGKGameCenterManager sharedInstance];
+    if ([gcm isGameCenterAPIAvailable]) {
+        [gcm authenticateLocalPlayer];
     }
 
 	return YES;
 }
 
 // Supported orientations: Landscape. Customize it for your own needs
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
@@ -128,13 +131,13 @@
 }
 
 // application will be killed
-- (void)applicationWillTerminate:(UIApplication *)application
+- (void) applicationWillTerminate:(UIApplication *)application
 {
 	CC_DIRECTOR_END();
 }
 
 // purge memory
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application
+- (void) applicationDidReceiveMemoryWarning:(UIApplication *)application
 {
 	[[CCDirector sharedDirector] purgeCachedData];
 }
@@ -151,37 +154,6 @@
 	[navController_ release];
 
 	[super dealloc];
-}
-
-#pragma mark - Game Center
-- (BOOL)isGameCenterAPIAvailable
-{
-    // Check for presence of GKLocalPlayer class.
-    BOOL localPlayerClassAvailable = (NSClassFromString(@"GKLocalPlayer")) != nil;
-    
-    // The device must be running iOS 4.1 or later.
-    NSString *reqSysVer = @"4.1";
-    NSString *currSysVer = [[UIDevice currentDevice] systemVersion];
-    BOOL osVersionSupported = ([currSysVer compare:reqSysVer options:NSNumericSearch] != NSOrderedAscending);
-    
-    return (localPlayerClassAvailable && osVersionSupported); 
-}
-
--(void)authenticateLocalPlayer
-{
-    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
-        if (localPlayer.isAuthenticated)
-        {
-            // Perform additional tasks for the authenticated player.
-        }
-#if DEBUG
-        // display errors, if present
-        if (error) {
-            NSLog(@"%@",error);
-        }
-#endif
-    }];
 }
 
 

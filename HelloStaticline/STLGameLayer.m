@@ -168,6 +168,7 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
                                   userInfo:nil];
         }
     }
+    [_player killedTarget:target];
     [_activeTargets removeObject:target];
 }
 

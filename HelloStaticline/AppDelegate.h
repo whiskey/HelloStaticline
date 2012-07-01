@@ -13,16 +13,11 @@
 {
 	UIWindow *window_;
 	UINavigationController *navController_;
-
 	CCDirectorIOS	*director_;							// weak ref
 }
 
 @property (nonatomic, retain) UIWindow *window;
 @property (readonly) UINavigationController *navController;
 @property (readonly) CCDirectorIOS *director;
-
-// GameCenter
-- (BOOL)isGameCenterAPIAvailable;
-- (void)authenticateLocalPlayer;
 
 @end
