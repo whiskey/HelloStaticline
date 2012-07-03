@@ -42,6 +42,6 @@ extern NSString * const kSTLAchievementKill20;
 /*
  singleton game center helper
  */
-@interface STLGKGameCenterManager : NSObject<STLGameCenterManagerProtocol>
-+ (STLGKGameCenterManager *)sharedInstance;
+@interface STLGameCenterManager : NSObject<STLGameCenterManagerProtocol>
++ (STLGameCenterManager *)sharedInstance;
 @end

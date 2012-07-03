@@ -6,19 +6,19 @@
 //  Copyright (c) 2012 staticline. All rights reserved.
 //
 
-#import "STLGKGameCenterManager.h"
+#import "STLGameCenterManager.h"
 
 NSString *const kSTLAchievementKill1    = @"1_kill1";
 NSString *const kSTLAchievementKill20   = @"2_kill20";
 
-static STLGKGameCenterManager *sharedInstance;
+static STLGameCenterManager *sharedInstance;
 
-@implementation STLGKGameCenterManager
+@implementation STLGameCenterManager
 @synthesize achievementsDictionary = _achievementsDictionary;
 
 #pragma mark - singleton
 
-+ (STLGKGameCenterManager *)sharedInstance
++ (STLGameCenterManager *)sharedInstance
 {
     if (sharedInstance == nil) {
         sharedInstance = [[super allocWithZone:NULL] init];

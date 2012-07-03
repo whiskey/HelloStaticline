@@ -8,7 +8,7 @@
 
 #import "cocos2d.h"
 #import "AppDelegate.h"
-#import "STLGKGameCenterManager.h"
+#import "STLGameCenterManager.h"
 #import "STLMainMenuLayer.h"
 
 @implementation AppController
@@ -89,7 +89,7 @@
 	[director_ pushScene: [STLMainMenuLayer scene]];
     
     // check game center availablility and launch
-    STLGKGameCenterManager *gcm = [STLGKGameCenterManager sharedInstance];
+    STLGameCenterManager *gcm = [STLGameCenterManager sharedInstance];
     if ([gcm isGameCenterAPIAvailable]) {
         [gcm authenticateLocalPlayer];
     }

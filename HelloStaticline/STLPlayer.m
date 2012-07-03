@@ -7,7 +7,7 @@
 //
 
 #import "STLPlayer.h"
-#import "STLGKGameCenterManager.h"
+#import "STLGameCenterManager.h"
 
 
 
@@ -18,7 +18,7 @@
 @property (nonatomic,assign) NSUInteger score;
 @property (nonatomic,assign) NSUInteger level;
 @property (nonatomic,assign) NSUInteger lifetimeCatchedMarkers;
-@property (nonatomic,assign) STLGKGameCenterManager *gcm;
+@property (nonatomic,assign) STLGameCenterManager *gcm;
 - (void)checkAchievementProgress;
 @end
 
@@ -43,7 +43,7 @@
         self.lifetimeCatchedMarkers = 0;
         
         // get the achievement manager
-        _gcm = [STLGKGameCenterManager sharedInstance];
+        _gcm = [STLGameCenterManager sharedInstance];
     }
     return self;
 }
