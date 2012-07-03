@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "STLHUDLayer.h"
 #import "STLPlayer.h"
 
 /*
@@ -28,7 +29,8 @@ typedef enum {
 
 
 @interface STLGameLayer : CCLayer<CCTargetedTouchDelegate>
-@property (nonatomic, retain) STLPlayer *player;
+@property (nonatomic,retain) STLHUDLayer *hud;
+@property (nonatomic,retain) STLPlayer *player;
 
 +(CCScene *) scene;
 

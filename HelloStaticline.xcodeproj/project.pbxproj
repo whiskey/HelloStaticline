@@ -136,6 +136,7 @@
 		35625B3F15A08345008F3151 /* STLGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 35625B3E15A08345008F3151 /* STLGameCenterManager.m */; };
 		35884676159F13D1004B750D /* STLPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35884675159F13D1004B750D /* STLPlayer.m */; };
 		35884678159F2FA7004B750D /* marker_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 35884677159F2FA7004B750D /* marker_cross.png */; };
+		359AAE6F15A35AAB00BBA976 /* STLHUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */; };
 		35C65438159F505900F3DAB2 /* STLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C65437159F505900F3DAB2 /* STLMarker.m */; };
 		35C65446159F8D3A00F3DAB2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C65445159F8D3A00F3DAB2 /* SenTestingKit.framework */; };
 		35C65447159F8D3A00F3DAB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543666B159B6C1A004D5ED1 /* UIKit.framework */; };
@@ -426,11 +427,13 @@
 		35436852159B8B64004D5ED1 /* STLGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameLayer.h; sourceTree = "<group>"; };
 		35436853159B8B64004D5ED1 /* STLGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameLayer.m; sourceTree = "<group>"; };
 		35436855159B9C8E004D5ED1 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
-		35625B3D15A08345008F3151 /* STLGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; path = STLGameCenterManager.h; sourceTree = "<group>"; };
+		35625B3D15A08345008F3151 /* STLGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameCenterManager.h; sourceTree = "<group>"; };
 		35625B3E15A08345008F3151 /* STLGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameCenterManager.m; sourceTree = "<group>"; };
 		35884674159F13D1004B750D /* STLPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLPlayer.h; sourceTree = "<group>"; };
 		35884675159F13D1004B750D /* STLPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLPlayer.m; sourceTree = "<group>"; };
 		35884677159F2FA7004B750D /* marker_cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = marker_cross.png; path = Resources/marker_cross.png; sourceTree = "<group>"; };
+		359AAE6D15A35AAB00BBA976 /* STLHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLHUDLayer.h; sourceTree = "<group>"; };
+		359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLHUDLayer.m; sourceTree = "<group>"; };
 		35C65436159F505800F3DAB2 /* STLMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLMarker.h; sourceTree = "<group>"; };
 		35C65437159F505900F3DAB2 /* STLMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLMarker.m; sourceTree = "<group>"; };
 		35C6543E159F70A100F3DAB2 /* STLActorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLActorProtocol.h; sourceTree = "<group>"; };
@@ -908,6 +911,8 @@
 				354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */,
 				35436852159B8B64004D5ED1 /* STLGameLayer.h */,
 				35436853159B8B64004D5ED1 /* STLGameLayer.m */,
+				359AAE6D15A35AAB00BBA976 /* STLHUDLayer.h */,
+				359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */,
 			);
 			name = Layers;
 			sourceTree = "<group>";
@@ -1173,6 +1178,7 @@
 				35884676159F13D1004B750D /* STLPlayer.m in Sources */,
 				35C65438159F505900F3DAB2 /* STLMarker.m in Sources */,
 				35625B3F15A08345008F3151 /* STLGameCenterManager.m in Sources */,
+				359AAE6F15A35AAB00BBA976 /* STLHUDLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,6 +26,7 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
 
 
 @implementation STLGameLayer
+@synthesize hud = _hud;
 @synthesize activeTargets = _activeTargets;
 @synthesize player = _player;
 @synthesize touchDispatcher = _touchDispatcher;
@@ -33,8 +34,15 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
 +(CCScene *) scene
 {
 	CCScene *scene = [CCScene node];
+    // the hud
+    STLHUDLayer *hudLayer = [STLHUDLayer node];
+    [scene addChild:hudLayer z:1];
+    
+    // the game
     STLGameLayer *gameLayer = [STLGameLayer node];
+    gameLayer.hud = hudLayer;
     [scene addChild:gameLayer];
+    
 	return scene;
 }
 
@@ -168,8 +176,12 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
                                   userInfo:nil];
         }
     }
+    // player logic (score,achievements,...)
     [_player killedTarget:target];
+    // cleanup, remove from array
     [_activeTargets removeObject:target];
+    // update hud
+    [_hud.scoreLabel setString:[NSString stringWithFormat:@"%d",_player.score]];
 }
 
 @end
