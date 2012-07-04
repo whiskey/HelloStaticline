@@ -68,10 +68,21 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
     }
     // (re-)initialize player
     self.player = [[[STLPlayer alloc] init] autorelease];
+    // load sprite
+    CCSprite *playerSprite = nil;
+#pragma message "TODO: retina/non-retina sprite"
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
+        ([UIScreen mainScreen].scale == 2.0)) {
+        playerSprite = [CCSprite spriteWithFile:@"player.png"];
+    } else {
+        playerSprite = [CCSprite spriteWithFile:@"player.png"];
+    }
+    [_player setNode:playerSprite];
+    
     // position player node in the center of the screen
-    [_player setNode:[CCSprite spriteWithFile:@"player.png"]];
     CGSize size = [[CCDirector sharedDirector] winSize];
     _player.node.position =  ccp( size.width /2 , size.height/2 );
+    
     return _player;
 }
 
