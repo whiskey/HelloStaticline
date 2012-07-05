@@ -10,6 +10,7 @@
 #import "CCTouchDispatcher.h"
 #import "STLMarker.h"
 
+
 // maybe I'll find a shorter day later...
 NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTypeUnsupportedException";
 
@@ -29,6 +30,7 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
 @synthesize hud = _hud;
 @synthesize activeTargets = _activeTargets;
 @synthesize player = _player;
+@synthesize bear = _bear;
 @synthesize touchDispatcher = _touchDispatcher;
 
 +(CCScene *) scene
@@ -53,8 +55,12 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
         // settings
         self.isTouchEnabled = YES;
         self.activeTargets = [NSMutableArray arrayWithCapacity:1];
+        
         // add player
         [self addChild:self.player.node];
+        // bear - some kind of oppenent
+        [self addChild:self.bear.node];
+        
         // schedule and go
         [self schedule:@selector(nextFrame:)];
     }
@@ -84,6 +90,17 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
     _player.node.position =  ccp( size.width /2 , size.height/2 );
     
     return _player;
+}
+
+- (STLBear *)bear
+{
+    if (_bear) {
+        return _bear;
+    }
+    self.bear = [[[STLBear alloc] init] autorelease];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    _bear.node.position =  ccp( size.width /2 , size.height/2 );
+    return _bear;
 }
 
 - (CCTouchDispatcher *)touchDispatcher

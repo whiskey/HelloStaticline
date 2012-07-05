@@ -10,6 +10,8 @@
 #import "cocos2d.h"
 #import "STLHUDLayer.h"
 #import "STLPlayer.h"
+#import "STLBear.h"
+
 
 /*
  Action types for the player
@@ -31,6 +33,7 @@ typedef enum {
 @interface STLGameLayer : CCLayer<CCTargetedTouchDelegate>
 @property (nonatomic,retain) STLHUDLayer *hud;
 @property (nonatomic,retain) STLPlayer *player;
+@property (nonatomic,retain) STLBear *bear;
 
 +(CCScene *) scene;
 
