@@ -99,7 +99,10 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
     }
     self.bear = [[[STLBear alloc] init] autorelease];
     CGSize size = [[CCDirector sharedDirector] winSize];
-    _bear.node.position =  ccp( size.width /2 , size.height/2 );
+    // set him to the lower right corner
+    _bear.node.position =  ccp( size.width * 0.7 , size.height * 0.3 );
+    // walking around (atm, just animation)
+    [_bear startWalkAnimation];
     return _bear;
 }
 
@@ -125,6 +128,13 @@ NSString * const kSTLMarkerActionTypeUnsupportedException = @"STLMarkerActionTyp
         if (CGRectIntersectsRect(target.node.boundingBox, _player.node.boundingBox)) {
             [self destroyTarget:target withActionType:kSTLMarkerExplode];
         }
+    }
+    // quick 'n dirty hit test with the bear
+    if (CGRectIntersectsRect(_bear.node.boundingBox, _player.node.boundingBox)) {
+        [_bear onPlayerCollision];
+    } else if (!_bear.isMoving) {
+        // restart bear movement
+        [_bear startWalkAnimation];
     }
 }
 

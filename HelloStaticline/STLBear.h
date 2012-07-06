@@ -15,12 +15,26 @@
 #import "cocos2d.h"
 #import "STLActorProtocol.h"
 
-@interface STLBear : NSObject<STLActorProtocol> {
-    BOOL _moving;
-}
+/*
+ Action types for the bear
+ */
+typedef enum {
+    kSTLBearActionMovement,
+    kSTLBearActionHide,
+} STLBearAction;
+
+
+@interface STLBear : NSObject<STLActorProtocol>
 
 @property (nonatomic, retain) CCSprite *sprite;
 @property (nonatomic, retain) CCAction *walkAction;
 @property (nonatomic, retain) CCAction *moveAction;
+@property (assign,getter = isMoving) BOOL moving;
+
+- (void)onPlayerCollision;
+
+// might become private later
+- (void)startWalkAnimation;
+- (void)stopWalkAnimation;
 
 @end
