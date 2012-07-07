@@ -9,8 +9,6 @@
 #import "STLPlayer.h"
 #import "STLGameCenterManager.h"
 
-
-
 /*
  Player extension. Make readonly properties accessible for private use.
  */
@@ -25,6 +23,7 @@
 
 @implementation STLPlayer
 @synthesize node = _node;
+@synthesize sprite = _sprite;
 @synthesize score = _score;
 @synthesize level = _level;
 @synthesize lifetimeCatchedMarkers = _lifetimeCatchedMarkers;
@@ -48,16 +47,151 @@
     return self;
 }
 
+- (CCNode *)node
+{
+    if (_node) {
+        return _node;
+    }
+    // init with spritesheet
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"player_sprite_default.plist"];
+    CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"player_sprite_default.png"];
+    _node = [CCNode node];
+    [_node addChild:spriteSheet];
+    // standing still
+    _sprite = [CCSprite spriteWithSpriteFrameName:@"player_d_1.png"];
+    // scaling - better: use hd sprites
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
+        ([UIScreen mainScreen].scale == 2.0)) {
+        [_sprite setScale:1.0f];
+    } else {
+        [_sprite setScale:0.5f];
+    }
+    [spriteSheet addChild:_sprite];
+    _node.contentSize = _sprite.contentSize;
+    return _node;
+}
+
+#pragma mark - gameplay
+
 - (void) killedTarget:(id<STLTargetProtocol>) target
 {
     // very simple stats-update
     self.score += target.pointValue;
     self.lifetimeCatchedMarkers++;
-#if DEBUG
-    NSLog(@"score: %d  catches total: %d",_score,_lifetimeCatchedMarkers);
-#endif
     // check for new achievements
     [self checkAchievementProgress];
+}
+
+#pragma mark - ui actions
+
+- (void)movePlayerToDestination:(CGPoint)destination
+{
+    // existing movement action running? stop.
+    [_node stopAllActions];
+    
+//    // easy way for 4 sprites: use quadrants
+//    NSLog(@"cppForAngle %@",NSStringFromCGPoint(ccpForAngle(moveAngle)));
+    
+    // some static values
+    // 8 movement directions, 2 arcs left and right of each
+    static float step = M_PI*2 / PLAYER_NUMBER_MOVEMENT_DIRECTIONS;
+    static float arc = M_PI / PLAYER_NUMBER_MOVEMENT_DIRECTIONS;
+    // init array - condition looks weird to me but works for now
+    static float bounds[PLAYER_NUMBER_MOVEMENT_DIRECTIONS][2];
+    if (bounds[0][0] == bounds[0][1]) {
+        // compute upper and lower bounds for each movement direction
+        for (int i=0; i<PLAYER_NUMBER_MOVEMENT_DIRECTIONS; i++) {
+            // left border
+            float left = step * i - arc;
+            bounds[i][0] = (left < 0) ? M_PI*2+left : left;
+            // right border
+            float right = step * i + arc;
+            bounds[i][1] = (right > M_PI*2) ? right-(M_PI*2) : right;
+//            NSLog(@"%d: %f -- %f",i,bounds[i][0],bounds[i][1]);
+        }
+    }
+    
+    // current movement direction
+    CGPoint destWorld = [[CCDirector sharedDirector] convertToGL:destination];
+    CGPoint nodeWorld = [[CCDirector sharedDirector] convertToGL:_node.position];
+    float moveAngle = ccpToAngle(ccpSub(destWorld,nodeWorld));
+    if (moveAngle < 0) {
+        moveAngle = M_PI*2 + moveAngle;
+    } else if (moveAngle > M_PI*2) {
+        moveAngle = moveAngle - M_PI*2;
+    }
+    //NSLog(@"%frad",moveAngle);
+    
+    // compare current movement angle to the 8 stored directions
+    NSString *movementDir = nil;
+    for (int i=1; i<PLAYER_NUMBER_MOVEMENT_DIRECTIONS; i++) {
+        // between bounds?
+        if (moveAngle>bounds[i-1][1] && moveAngle<=bounds[i][1]) {
+            switch (i) {
+                case 1:
+                    //NSLog(@"down right");
+                    movementDir = @"dr";
+                    break;
+                case 2:
+                    //NSLog(@"down");
+                    movementDir = @"d";
+                    break;
+                case 3:
+                    //NSLog(@"down left");
+                    movementDir = @"dl";
+                    break;    
+                case 4:
+                    //NSLog(@"left");
+                    movementDir = @"l";
+                    break;
+                case 5:
+                    //NSLog(@"up left");
+                    movementDir = @"ul";
+                    break;
+                case 6:
+                    //NSLog(@"up");
+                    movementDir = @"u";
+                    break;
+                case 7:
+                    //NSLog(@"up right");
+                    movementDir = @"ur";
+                    break;
+                default:
+                    NSLog(@"some weird stuff which should never happen");
+                    break;
+            }
+            break;
+        } else if (i == 7) {
+            //NSLog(@"right");
+            movementDir = @"r";
+            break;
+        }
+    }
+    // create sprite animation acording to movement direction
+    NSMutableArray *walkAnimFrames = [NSMutableArray array];
+    for(int frame=1; frame<=3; frame++) {
+        NSString *frameSprite = [NSString stringWithFormat:@"player_%@_%d.png",movementDir,frame];
+        [walkAnimFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: frameSprite]];
+    }
+    // animation
+    CCAnimation *walkAnim = [CCAnimation animationWithSpriteFrames:walkAnimFrames delay:0.2f];    
+    CCAction *walkAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:walkAnim]];
+    walkAction.tag = kSTLPlayerWalkAction;
+    [_sprite runAction:walkAction];
+    
+    
+    // create movement with ease in/out
+    id movement = [CCMoveTo actionWithDuration:2.0f position:destination];
+    [movement setTag:kSTLPlayerMovement];
+    id ease = [CCEaseInOut actionWithAction:movement rate:2.0f];
+    id stopAnimation = [CCCallBlock actionWithBlock:^{
+        [_sprite stopAllActions];
+        [_sprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: @"player_d_1.png"]];
+        // do some waiting animation...
+    }];
+    id sequence = [CCSequence actions:ease, stopAnimation, nil];
+    [_node runAction:sequence];
 }
 
 #pragma mark - achievement handling

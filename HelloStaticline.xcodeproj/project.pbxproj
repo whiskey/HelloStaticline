@@ -133,6 +133,8 @@
 		354367EE159B6C1D004D5ED1 /* STLMainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */; };
 		35436854159B8B64004D5ED1 /* STLGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35436853159B8B64004D5ED1 /* STLGameLayer.m */; };
 		35436856159B9C8E004D5ED1 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = 35436855159B9C8E004D5ED1 /* player.png */; };
+		354555F415A8379000439E22 /* player_sprite_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 354555F215A8379000439E22 /* player_sprite_default.plist */; };
+		354555F515A8379000439E22 /* player_sprite_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 354555F315A8379000439E22 /* player_sprite_default.png */; };
 		35625B3F15A08345008F3151 /* STLGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 35625B3E15A08345008F3151 /* STLGameCenterManager.m */; };
 		35884676159F13D1004B750D /* STLPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35884675159F13D1004B750D /* STLPlayer.m */; };
 		35884678159F2FA7004B750D /* marker_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 35884677159F2FA7004B750D /* marker_cross.png */; };
@@ -430,6 +432,9 @@
 		35436852159B8B64004D5ED1 /* STLGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameLayer.h; sourceTree = "<group>"; };
 		35436853159B8B64004D5ED1 /* STLGameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameLayer.m; sourceTree = "<group>"; };
 		35436855159B9C8E004D5ED1 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
+		354555F215A8379000439E22 /* player_sprite_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = player_sprite_default.plist; sourceTree = "<group>"; };
+		354555F315A8379000439E22 /* player_sprite_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_sprite_default.png; sourceTree = "<group>"; };
+		354555F715A8B18A00439E22 /* STLGameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLGameConfig.h; sourceTree = "<group>"; };
 		35625B3D15A08345008F3151 /* STLGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameCenterManager.h; sourceTree = "<group>"; };
 		35625B3E15A08345008F3151 /* STLGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameCenterManager.m; sourceTree = "<group>"; };
 		35884674159F13D1004B750D /* STLPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLPlayer.h; sourceTree = "<group>"; };
@@ -536,6 +541,7 @@
 			children = (
 				354367E9159B6C1D004D5ED1 /* AppDelegate.h */,
 				354367EA159B6C1D004D5ED1 /* AppDelegate.m */,
+				354555F715A8B18A00439E22 /* STLGameConfig.h */,
 				35625B3D15A08345008F3151 /* STLGameCenterManager.h */,
 				35625B3E15A08345008F3151 /* STLGameCenterManager.m */,
 				35884673159F1385004B750D /* Actors */,
@@ -550,6 +556,8 @@
 		35436674159B6C1A004D5ED1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				354555F215A8379000439E22 /* player_sprite_default.plist */,
+				354555F315A8379000439E22 /* player_sprite_default.png */,
 				3597E07C15A5FBD7008275FB /* bear_sprite_default.plist */,
 				3597E07D15A5FBD7008275FB /* bear_sprite_default.png */,
 				35884677159F2FA7004B750D /* marker_cross.png */,
@@ -1050,6 +1058,8 @@
 				35884678159F2FA7004B750D /* marker_cross.png in Resources */,
 				3597E07E15A5FBD7008275FB /* bear_sprite_default.plist in Resources */,
 				3597E07F15A5FBD7008275FB /* bear_sprite_default.png in Resources */,
+				354555F415A8379000439E22 /* player_sprite_default.plist in Resources */,
+				354555F515A8379000439E22 /* player_sprite_default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

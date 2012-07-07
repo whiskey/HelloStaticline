@@ -9,6 +9,8 @@
 #import "STLBear.h"
 
 @interface STLBear ()
+@property (nonatomic, retain) CCAction *walkAction;
+@property (nonatomic, retain) CCAction *moveAction;
 
 @end
 
@@ -39,11 +41,19 @@
     [_node addChild:spriteSheet];
     // standing still
     _sprite = [CCSprite spriteWithSpriteFrameName:@"bear1.png"];
-    [_sprite setScale:0.5f];
-    [spriteSheet addChild:self.sprite];
-    
+    // scaling - better: use hd sprites
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
+        ([UIScreen mainScreen].scale == 2.0)) {
+        [_sprite setScale:1.0f];
+    } else {
+        [_sprite setScale:0.5f];
+    }
+    [spriteSheet addChild:_sprite];
+    _node.contentSize = _sprite.contentSize;
     return _node;
 }
+
+#pragma mark - gameplay
 
 - (void)onPlayerCollision
 {
@@ -53,7 +63,7 @@
     }
 }
 
-#pragma mark - actions
+#pragma mark - ui actions
 
 - (void)startWalkAnimation
 {

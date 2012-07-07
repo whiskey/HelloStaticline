@@ -26,9 +26,6 @@ typedef enum {
 
 @interface STLBear : NSObject<STLActorProtocol>
 
-@property (nonatomic, retain) CCSprite *sprite;
-@property (nonatomic, retain) CCAction *walkAction;
-@property (nonatomic, retain) CCAction *moveAction;
 @property (assign,getter = isMoving) BOOL moving;
 
 - (void)onPlayerCollision;

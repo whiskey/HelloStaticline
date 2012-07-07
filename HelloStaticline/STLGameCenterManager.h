@@ -9,9 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
 
-// reset achievements in debug environment?
-#define RESET_ACHIEVEMENTS 1
-
 /*
  define some achievement key constants
  */

@@ -13,23 +13,6 @@
 #import "STLBear.h"
 
 
-/*
- Action types for the player
- */
-typedef enum {
-    kSTLPlayerMovement,
-} STLActorPlayerType;
-
-
-/*
- Action types for Markers
- */
-typedef enum {
-    kSTLMarkerDisappear,
-    kSTLMarkerExplode,
-} STLMarkerActionType;
-
-
 @interface STLGameLayer : CCLayer<CCTargetedTouchDelegate>
 @property (nonatomic,retain) STLHUDLayer *hud;
 @property (nonatomic,retain) STLPlayer *player;

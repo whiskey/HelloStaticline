@@ -5,10 +5,12 @@ Currently implemented
 * simple touch movement
 * GameCenter achievements (2 atm)
 * (simple) multi-layer-handling (game + hud)
+* sprite sheets + animations
+  * player sprites taken from ThatOtherDev/ThatOtherPerson. Game: "The Unmapped Forest"
+  * bear from Ray Wenderlich's tutorial
 
 TODO
 ----
-* sprite sheets + animation
 * GameCenter leaderboard
 * game save
 * a real 'game'...
