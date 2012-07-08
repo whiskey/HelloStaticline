@@ -8,13 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "STLWorldLayer.h"
 #import "STLHUDLayer.h"
 #import "STLPlayer.h"
 #import "STLBear.h"
 
 
 @interface STLGameLayer : CCLayer<CCTargetedTouchDelegate>
+@property (nonatomic,retain) STLWorldLayer *world;
 @property (nonatomic,retain) STLHUDLayer *hud;
+
 @property (nonatomic,retain) STLPlayer *player;
 @property (nonatomic,retain) STLBear *bear;
 

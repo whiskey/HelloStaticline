@@ -13,13 +13,18 @@ TODO
 ====
 * GameCenter leaderboard
 * game save
-* a real 'game'...
+
+Known issues
+============
+* player animation broken in some cases ("dancing")
+* no collision detection for world items
 
 Credits
 =======
-* Ray Wenderlich [[1]],[[2]]
-* TODO
+* Ray Wenderlich [HUD][1],[animations][2],…
+* TheOtherDev [TheOtherDev][3]
 
 
   [1]: http://www.raywenderlich.com/4666/how-to-create-a-hud-layer-with-cocos2d "Create HUD"
   [2]: http://www.raywenderlich.com/1271/how-to-use-animations-and-sprite-sheets-in-cocos2d "using sprite sheets"
+  [3]: http://thatotherdev.com/
