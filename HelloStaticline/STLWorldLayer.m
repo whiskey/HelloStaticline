@@ -25,6 +25,13 @@
         _meta = [_tileMap layerNamed:@"Meta"];
         _meta.visible = NO;
         
+        if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
+            ([UIScreen mainScreen].scale == 2.0)) {
+            [_tileMap setScale:2.0f];
+        } else {
+            [_tileMap setScale:1.0f];
+        }
+        
         [self addChild:_tileMap z:-1];
     }
     return self;

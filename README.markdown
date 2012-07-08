@@ -17,7 +17,6 @@ TODO
 Known issues
 ============
 * player animation broken in some cases ("dancing")
-* no collision detection for world items
 
 Credits
 =======
