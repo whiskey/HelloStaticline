@@ -212,6 +212,25 @@
 {
     CGPoint touchLocation = [self convertTouchToNodeSpace:touch];
     
+    // check movement contraints (walls, etc.) on target
+    CGPoint tileCoord = [_world tileCoordForPosition:touchLocation];
+    int tileGid = [_world.meta tileGIDAt:tileCoord];
+    if (tileGid) {
+        NSDictionary *properties = [_world.tileMap propertiesForGID:tileGid];
+        if (properties) {
+            NSString *collision = [properties valueForKey:@"collidable"];
+            if (collision && [collision compare:@"True"] == NSOrderedSame) {
+                NSLog(@"no movement to this position");
+                return;
+            }
+        }
+    }
+    // check in between
+    CGPoint movementVector = ccpSub(_player.node.position, touchLocation);
+    // TODO: find intermediate collisions
+    // TODO: implement way-finding
+    
+    
     // move player to touched location
     [_player movePlayerToDestination:touchLocation];
     

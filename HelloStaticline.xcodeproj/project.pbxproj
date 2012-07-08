@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		351D3CFA15A9DB3C006C0A82 /* meta_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 351D3CF915A9DB3C006C0A82 /* meta_tiles.png */; };
 		35436662159B6C1A004D5ED1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436661159B6C1A004D5ED1 /* QuartzCore.framework */; };
 		35436664159B6C1A004D5ED1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436663159B6C1A004D5ED1 /* OpenGLES.framework */; };
 		35436666159B6C1A004D5ED1 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436665159B6C1A004D5ED1 /* OpenAL.framework */; };
@@ -173,6 +174,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		351D3CF915A9DB3C006C0A82 /* meta_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meta_tiles.png; path = Resources/meta_tiles.png; sourceTree = "<group>"; };
 		3543665D159B6C1A004D5ED1 /* hellostaticline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hellostaticline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35436661159B6C1A004D5ED1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		35436663159B6C1A004D5ED1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -444,7 +446,7 @@
 		357BBCB515A9BBF9004D84E5 /* whiskey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = whiskey.png; path = Resources/whiskey.png; sourceTree = "<group>"; };
 		357BBCB715A9BCFB004D84E5 /* TileMap.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = TileMap.tmx; path = Resources/TileMap.tmx; sourceTree = "<group>"; };
 		357BBCB815A9BCFB004D84E5 /* tmw_desert_spacing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tmw_desert_spacing.png; path = Resources/tmw_desert_spacing.png; sourceTree = "<group>"; };
-		357BBCBB15A9BF88004D84E5 /* STLWorldLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; path = STLWorldLayer.h; sourceTree = "<group>"; };
+		357BBCBB15A9BF88004D84E5 /* STLWorldLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLWorldLayer.h; sourceTree = "<group>"; };
 		357BBCBC15A9BF88004D84E5 /* STLWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLWorldLayer.m; sourceTree = "<group>"; };
 		35884674159F13D1004B750D /* STLPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLPlayer.h; sourceTree = "<group>"; };
 		35884675159F13D1004B750D /* STLPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLPlayer.m; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 		35436674159B6C1A004D5ED1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				351D3CF915A9DB3C006C0A82 /* meta_tiles.png */,
 				357BBCB715A9BCFB004D84E5 /* TileMap.tmx */,
 				357BBCB815A9BCFB004D84E5 /* tmw_desert_spacing.png */,
 				357BBCB515A9BBF9004D84E5 /* whiskey.png */,
@@ -1073,6 +1076,7 @@
 				357BBCB615A9BBF9004D84E5 /* whiskey.png in Resources */,
 				357BBCB915A9BCFB004D84E5 /* TileMap.tmx in Resources */,
 				357BBCBA15A9BCFB004D84E5 /* tmw_desert_spacing.png in Resources */,
+				351D3CFA15A9DB3C006C0A82 /* meta_tiles.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

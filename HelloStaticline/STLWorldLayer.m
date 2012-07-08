@@ -12,6 +12,7 @@
 @implementation STLWorldLayer
 @synthesize tileMap = _tileMap;
 @synthesize background = _background;
+@synthesize meta = _meta;
 
 - (id)init
 {
@@ -19,6 +20,11 @@
     if (self) {
         _tileMap = [CCTMXTiledMap tiledMapWithTMXFile:@"TileMap.tmx"];
         _background = [_tileMap layerNamed:@"Background"];
+        
+        // (invisible) meta layer
+        _meta = [_tileMap layerNamed:@"Meta"];
+        _meta.visible = NO;
+        
         [self addChild:_tileMap z:-1];
     }
     return self;
@@ -29,6 +35,16 @@
     self.tileMap = nil;
     self.background = nil;
     [super dealloc];
+}
+
+
+
+#pragma mark - world layer helpers
+
+- (CGPoint)tileCoordForPosition:(CGPoint)position {
+    int x = position.x / _tileMap.tileSize.width;
+    int y = ((_tileMap.mapSize.height * _tileMap.tileSize.height) - position.y) / _tileMap.tileSize.height;
+    return ccp(x, y);
 }
 
 - (CGPoint)playerSpawnPoint

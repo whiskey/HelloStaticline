@@ -13,6 +13,10 @@
 
 @property (nonatomic, retain) CCTMXTiledMap *tileMap;
 @property (nonatomic, retain) CCTMXLayer *background;
+@property (nonatomic, retain) CCTMXLayer *meta;
+
+// using tile coordinates
+- (CGPoint)tileCoordForPosition:(CGPoint)position;
 
 // 2 helper and one general spawnpoint getter
 - (CGPoint)playerSpawnPoint;
