@@ -171,6 +171,7 @@
     }
     [targetsToDelete release];
     
+    // center view on player
     [self setViewpointCenter:_player.node.position];
 }
 
@@ -225,12 +226,28 @@
             }
         }
     }
-    // check in between
-    CGPoint movementVector = ccpSub(_player.node.position, touchLocation);
-    // TODO: find intermediate collisions
-    // TODO: implement way-finding
     
-    
+    // check in between (naive solution)
+    CGPoint movementVector = ccpNormalize(ccpSub(touchLocation,_player.node.position));
+    int STEPS = (int)ccpDistance(touchLocation, _player.node.position);
+    CGPoint toCheck = ccpAdd(_player.node.position, movementVector);
+    for (int step=1; step<STEPS; step++) {
+        tileCoord = [_world tileCoordForPosition:toCheck];
+        tileGid = [_world.meta tileGIDAt:tileCoord];
+        if (tileGid) {
+            NSDictionary *properties = [_world.tileMap propertiesForGID:tileGid];
+            if (properties) {
+                NSString *collision = [properties valueForKey:@"collidable"];
+                if (collision && [collision compare:@"True"] == NSOrderedSame) {
+                    NSLog(@"no DIRECT movement to this position");
+                    // TODO: implement way-finding
+                    return;
+                }
+            }
+        }
+        toCheck = ccpAdd(toCheck, movementVector);
+    }
+
     // move player to touched location
     [_player movePlayerToDestination:touchLocation];
     

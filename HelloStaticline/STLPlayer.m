@@ -8,11 +8,16 @@
 
 #import "STLPlayer.h"
 #import "STLGameCenterManager.h"
+#import "SimpleAudioEngine.h"
+
+#define PLAYER_MOVEMENT_SOUND @"player_walk.caf"
 
 /*
  Player extension. Make readonly properties accessible for private use.
  */
-@interface STLPlayer()
+@interface STLPlayer() {
+    ALuint movementSoundID;
+}
 @property (nonatomic,assign) NSUInteger score;
 @property (nonatomic,assign) NSUInteger level;
 @property (nonatomic,assign) NSUInteger lifetimeCatchedMarkers;
@@ -43,6 +48,9 @@
         
         // get the achievement manager
         _gcm = [STLGameCenterManager sharedInstance];
+        
+        // preload sounds
+        [[SimpleAudioEngine sharedEngine] preloadEffect:PLAYER_MOVEMENT_SOUND];
     }
     return self;
 }
@@ -89,9 +97,6 @@
     // existing movement action running? stop.
     [_node stopAllActions];
     
-//    // easy way for 4 sprites: use quadrants
-//    NSLog(@"cppForAngle %@",NSStringFromCGPoint(ccpForAngle(moveAngle)));
-    
     // some static values
     // 8 movement directions, 2 arcs left and right of each
     static float step = M_PI*2 / PLAYER_NUMBER_MOVEMENT_DIRECTIONS;
@@ -107,7 +112,6 @@
             // right border
             float right = step * i + arc;
             bounds[i][1] = (right > M_PI*2) ? right-(M_PI*2) : right;
-//            NSLog(@"%d: %f -- %f",i,bounds[i][0],bounds[i][1]);
         }
     }
     
@@ -120,7 +124,6 @@
     } else if (moveAngle > M_PI*2) {
         moveAngle = moveAngle - M_PI*2;
     }
-    //NSLog(@"%frad",moveAngle);
     
     // compare current movement angle to the 8 stored directions
     NSString *movementDir = nil;
@@ -179,7 +182,8 @@
     CCAction *walkAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:walkAnim]];
     walkAction.tag = kSTLPlayerWalkAction;
     [_sprite runAction:walkAction];
-    
+    // sound
+    movementSoundID = [[SimpleAudioEngine sharedEngine] playEffect:PLAYER_MOVEMENT_SOUND];
     
     // create movement with ease in/out
     id movement = [CCMoveTo actionWithDuration:2.0f position:destination];
@@ -188,6 +192,10 @@
     id stopAnimation = [CCCallBlock actionWithBlock:^{
         [_sprite stopAllActions];
         [_sprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: @"player_d_1.png"]];
+        // stop sound
+        // currently not needed, but might become relevant with a sound-loop for each step
+//        [[SimpleAudioEngine sharedEngine] stopEffect:movementSound];
+//        movementSound = 0;
         // do some waiting animation...
     }];
     id sequence = [CCSequence actions:ease, stopAnimation, nil];

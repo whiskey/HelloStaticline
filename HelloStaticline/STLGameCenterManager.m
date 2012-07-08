@@ -120,11 +120,10 @@ static STLGameCenterManager *sharedInstance;
             }
 #endif
         }
-        NSLog(@"%s got %d achievements",__PRETTY_FUNCTION__,achievements.count);
         if (achievements != nil) {
             // process the array of achievements.
             for (GKAchievement *achievement in achievements) {
-                NSLog(@"%@ - %f%% complete",achievement.identifier,achievement.percentComplete);
+                //NSLog(@"%@ - %f%% complete",achievement.identifier,achievement.percentComplete);
                 [_achievementsDictionary setObject:achievement forKey:achievement.identifier];
             }
         }
