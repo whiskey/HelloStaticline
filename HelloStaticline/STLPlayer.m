@@ -96,6 +96,7 @@
 {
     // existing movement action running? stop.
     [_node stopAllActions];
+    [_sprite stopAllActions];
     
     // some static values
     // 8 movement directions, 2 arcs left and right of each
