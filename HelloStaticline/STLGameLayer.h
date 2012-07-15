@@ -13,8 +13,7 @@
 #import "STLPlayer.h"
 #import "STLBear.h"
 
-
-@interface STLGameLayer : CCLayer<CCTargetedTouchDelegate>
+@interface STLGameLayer : CCLayer<CCTargetedTouchDelegate,STLGameHUDDelegate>
 @property (nonatomic,retain) STLWorldLayer *world;
 @property (nonatomic,retain) STLHUDLayer *hud;
 

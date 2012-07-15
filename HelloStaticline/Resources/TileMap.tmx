@@ -10,6 +10,11 @@
     <property name="collidable" value="True"/>
    </properties>
   </tile>
+  <tile id="1">
+   <properties>
+    <property name="isSign" value="True"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="background" width="50" height="50">
   <data encoding="base64" compression="zlib">
@@ -22,7 +27,7 @@
  </objectgroup>
  <layer name="Meta" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt10sOgCAMRVG2xP4357xpYjH94j0JMRKRPhkIa82wi+a0ts5uyyHvtb7OLDV654j4JhU5IpCjF3L0Qo5ebssh/+NT9yXTcwAA/JycvTufzclBjgjkIEcEa31Tc2jPnY7J9FbTFlfLmApfapqYY8p6/IW2Ht7vBgAAADJk7D+tczz+Jzip
+   eJzt2dEKgCAMhWFfSd//4boNCXJD3Y7+H0QUih4k2KgUDS1gzWq4Mjstx/u5fbxTy+EdY7Hi+4nIsQI5ciFHLuTI5bQcff2hWpeo5wAAzGPpvXf15p5eMGMOD3KQYwVy6OWwjIsyuqfmmLPT355qdx+ZE8GzJ8UcKudxi6/zmCXi3xoAAADutaP+HF3jAabSOOI=
   </data>
  </layer>
 </map>

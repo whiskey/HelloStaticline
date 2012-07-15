@@ -70,7 +70,6 @@
 - (CGPoint)spawnPointForObject:(NSString *)type
 {
     NSString *spName = [NSString stringWithFormat:@"spawnpoint_%@",type];
-    NSLog(@"type: %@",spName);
     // get the spawnpoint property from the tile map
     CCTMXObjectGroup *objects = [_tileMap objectGroupNamed:@"Objects"];
     NSAssert(objects != nil, @"'Objects' object group not found");

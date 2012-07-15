@@ -10,6 +10,7 @@
 		351D3CFA15A9DB3C006C0A82 /* meta_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 351D3CF915A9DB3C006C0A82 /* meta_tiles.png */; };
 		351D3CFE15A9EE24006C0A82 /* move.caf in Resources */ = {isa = PBXBuildFile; fileRef = 351D3CFC15A9EE24006C0A82 /* move.caf */; };
 		351D3CFF15A9EE24006C0A82 /* player_walk.caf in Resources */ = {isa = PBXBuildFile; fileRef = 351D3CFD15A9EE24006C0A82 /* player_walk.caf */; };
+		3534862015AE1C6C0037EA73 /* STLConversationLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3534861F15AE1C6C0037EA73 /* STLConversationLayer.m */; };
 		35436662159B6C1A004D5ED1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436661159B6C1A004D5ED1 /* QuartzCore.framework */; };
 		35436664159B6C1A004D5ED1 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436663159B6C1A004D5ED1 /* OpenGLES.framework */; };
 		35436666159B6C1A004D5ED1 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35436665159B6C1A004D5ED1 /* OpenAL.framework */; };
@@ -148,6 +149,12 @@
 		35884678159F2FA7004B750D /* marker_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 35884677159F2FA7004B750D /* marker_cross.png */; };
 		3597E08315A5FC2D008275FB /* STLBear.m in Sources */ = {isa = PBXBuildFile; fileRef = 3597E08215A5FC2D008275FB /* STLBear.m */; };
 		359AAE6F15A35AAB00BBA976 /* STLHUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */; };
+		35A4CCFC15B2FF0A00EC76A5 /* BackgroundMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CCFB15B2FF0A00EC76A5 /* BackgroundMusic.m4a */; };
+		35A4CD0315B3005B00EC76A5 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CD0115B3005B00EC76A5 /* pause.png */; };
+		35A4CD0415B3005B00EC76A5 /* pause-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CD0215B3005B00EC76A5 /* pause-hd.png */; };
+		35A4CD0715B311C100EC76A5 /* gamemenu-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CD0515B311C100EC76A5 /* gamemenu-hd.png */; };
+		35A4CD0815B311C100EC76A5 /* gamemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CD0615B311C100EC76A5 /* gamemenu.png */; };
+		35A4CD0E15B32D1900EC76A5 /* STLGameMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35A4CD0D15B32D1900EC76A5 /* STLGameMenuLayer.m */; };
 		35C65438159F505900F3DAB2 /* STLMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C65437159F505900F3DAB2 /* STLMarker.m */; };
 		35C65446159F8D3A00F3DAB2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C65445159F8D3A00F3DAB2 /* SenTestingKit.framework */; };
 		35C65447159F8D3A00F3DAB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543666B159B6C1A004D5ED1 /* UIKit.framework */; };
@@ -179,6 +186,8 @@
 		351D3CF915A9DB3C006C0A82 /* meta_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meta_tiles.png; path = Resources/meta_tiles.png; sourceTree = "<group>"; };
 		351D3CFC15A9EE24006C0A82 /* move.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = move.caf; path = Resources/move.caf; sourceTree = "<group>"; };
 		351D3CFD15A9EE24006C0A82 /* player_walk.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = player_walk.caf; path = Resources/player_walk.caf; sourceTree = "<group>"; };
+		3534861E15AE1C6C0037EA73 /* STLConversationLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLConversationLayer.h; sourceTree = "<group>"; };
+		3534861F15AE1C6C0037EA73 /* STLConversationLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLConversationLayer.m; sourceTree = "<group>"; };
 		3543665D159B6C1A004D5ED1 /* hellostaticline.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hellostaticline.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35436661159B6C1A004D5ED1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		35436663159B6C1A004D5ED1 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -459,6 +468,13 @@
 		3597E08215A5FC2D008275FB /* STLBear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLBear.m; sourceTree = "<group>"; };
 		359AAE6D15A35AAB00BBA976 /* STLHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLHUDLayer.h; sourceTree = "<group>"; };
 		359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLHUDLayer.m; sourceTree = "<group>"; };
+		35A4CCFB15B2FF0A00EC76A5 /* BackgroundMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = BackgroundMusic.m4a; path = Resources/BackgroundMusic.m4a; sourceTree = "<group>"; };
+		35A4CD0115B3005B00EC76A5 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause.png; path = Resources/pause.png; sourceTree = "<group>"; };
+		35A4CD0215B3005B00EC76A5 /* pause-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-hd.png"; path = "Resources/pause-hd.png"; sourceTree = "<group>"; };
+		35A4CD0515B311C100EC76A5 /* gamemenu-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gamemenu-hd.png"; path = "Resources/gamemenu-hd.png"; sourceTree = "<group>"; };
+		35A4CD0615B311C100EC76A5 /* gamemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gamemenu.png; path = Resources/gamemenu.png; sourceTree = "<group>"; };
+		35A4CD0C15B32D1900EC76A5 /* STLGameMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameMenuLayer.h; sourceTree = "<group>"; };
+		35A4CD0D15B32D1900EC76A5 /* STLGameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameMenuLayer.m; sourceTree = "<group>"; };
 		35C65436159F505800F3DAB2 /* STLMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLMarker.h; sourceTree = "<group>"; };
 		35C65437159F505900F3DAB2 /* STLMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLMarker.m; sourceTree = "<group>"; };
 		35C6543E159F70A100F3DAB2 /* STLActorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLActorProtocol.h; sourceTree = "<group>"; };
@@ -569,21 +585,17 @@
 		35436674159B6C1A004D5ED1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				351D3CFC15A9EE24006C0A82 /* move.caf */,
-				351D3CFD15A9EE24006C0A82 /* player_walk.caf */,
-				351D3CF915A9DB3C006C0A82 /* meta_tiles.png */,
-				357BBCB715A9BCFB004D84E5 /* TileMap.tmx */,
-				357BBCB815A9BCFB004D84E5 /* tmw_desert_spacing.png */,
-				357BBCB515A9BBF9004D84E5 /* whiskey.png */,
+				35A4CD0515B311C100EC76A5 /* gamemenu-hd.png */,
+				35A4CD0615B311C100EC76A5 /* gamemenu.png */,
+				35A4CD0115B3005B00EC76A5 /* pause.png */,
+				35A4CD0215B3005B00EC76A5 /* pause-hd.png */,
+				35A4CCFB15B2FF0A00EC76A5 /* BackgroundMusic.m4a */,
 				357BBCA915A9BBD0004D84E5 /* bear_sprite_default.plist */,
 				357BBCAA15A9BBD0004D84E5 /* bear_sprite_default.png */,
-				357BBCAC15A9BBD0004D84E5 /* player_sprite_default.plist */,
-				357BBCAD15A9BBD0004D84E5 /* player_sprite_default.png */,
-				35884677159F2FA7004B750D /* marker_cross.png */,
 				35436675159B6C1A004D5ED1 /* Default.png */,
-				35436677159B6C1A004D5ED1 /* fps_images.png */,
 				35436679159B6C1A004D5ED1 /* fps_images-hd.png */,
 				3543667B159B6C1A004D5ED1 /* fps_images-ipadhd.png */,
+				35436677159B6C1A004D5ED1 /* fps_images.png */,
 				3543667D159B6C1A004D5ED1 /* Icon-72.png */,
 				3543667F159B6C1B004D5ED1 /* Icon-Small-50.png */,
 				35436681159B6C1B004D5ED1 /* Icon-Small.png */,
@@ -592,6 +604,15 @@
 				35436687159B6C1B004D5ED1 /* Icon@2x.png */,
 				35436689159B6C1B004D5ED1 /* Info.plist */,
 				3543668A159B6C1B004D5ED1 /* iTunesArtwork */,
+				35884677159F2FA7004B750D /* marker_cross.png */,
+				351D3CF915A9DB3C006C0A82 /* meta_tiles.png */,
+				351D3CFC15A9EE24006C0A82 /* move.caf */,
+				357BBCAC15A9BBD0004D84E5 /* player_sprite_default.plist */,
+				357BBCAD15A9BBD0004D84E5 /* player_sprite_default.png */,
+				351D3CFD15A9EE24006C0A82 /* player_walk.caf */,
+				357BBCB715A9BCFB004D84E5 /* TileMap.tmx */,
+				357BBCB815A9BCFB004D84E5 /* tmw_desert_spacing.png */,
+				357BBCB515A9BBF9004D84E5 /* whiskey.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -944,10 +965,9 @@
 			children = (
 				354367EC159B6C1D004D5ED1 /* STLMainMenuLayer.h */,
 				354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */,
+				35A4CD0F15B32F3300EC76A5 /* HUD */,
 				35436852159B8B64004D5ED1 /* STLGameLayer.h */,
 				35436853159B8B64004D5ED1 /* STLGameLayer.m */,
-				359AAE6D15A35AAB00BBA976 /* STLHUDLayer.h */,
-				359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */,
 				357BBCBB15A9BF88004D84E5 /* STLWorldLayer.h */,
 				357BBCBC15A9BF88004D84E5 /* STLWorldLayer.m */,
 			);
@@ -966,6 +986,19 @@
 				3597E08215A5FC2D008275FB /* STLBear.m */,
 			);
 			name = Actors;
+			sourceTree = "<group>";
+		};
+		35A4CD0F15B32F3300EC76A5 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				359AAE6D15A35AAB00BBA976 /* STLHUDLayer.h */,
+				359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */,
+				35A4CD0C15B32D1900EC76A5 /* STLGameMenuLayer.h */,
+				35A4CD0D15B32D1900EC76A5 /* STLGameMenuLayer.m */,
+				3534861E15AE1C6C0037EA73 /* STLConversationLayer.h */,
+				3534861F15AE1C6C0037EA73 /* STLConversationLayer.m */,
+			);
+			name = HUD;
 			sourceTree = "<group>";
 		};
 		35C65449159F8D3A00F3DAB2 /* HelloStaticlineTests */ = {
@@ -1085,6 +1118,11 @@
 				351D3CFA15A9DB3C006C0A82 /* meta_tiles.png in Resources */,
 				351D3CFE15A9EE24006C0A82 /* move.caf in Resources */,
 				351D3CFF15A9EE24006C0A82 /* player_walk.caf in Resources */,
+				35A4CCFC15B2FF0A00EC76A5 /* BackgroundMusic.m4a in Resources */,
+				35A4CD0315B3005B00EC76A5 /* pause.png in Resources */,
+				35A4CD0415B3005B00EC76A5 /* pause-hd.png in Resources */,
+				35A4CD0715B311C100EC76A5 /* gamemenu-hd.png in Resources */,
+				35A4CD0815B311C100EC76A5 /* gamemenu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,6 +1267,8 @@
 				359AAE6F15A35AAB00BBA976 /* STLHUDLayer.m in Sources */,
 				3597E08315A5FC2D008275FB /* STLBear.m in Sources */,
 				357BBCBD15A9BF88004D84E5 /* STLWorldLayer.m in Sources */,
+				3534862015AE1C6C0037EA73 /* STLConversationLayer.m in Sources */,
+				35A4CD0E15B32D1900EC76A5 /* STLGameMenuLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

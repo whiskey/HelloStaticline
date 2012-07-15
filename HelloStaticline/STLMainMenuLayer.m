@@ -51,9 +51,7 @@
 		
 		// add the label as a child to this Layer
 		[self addChild: label];
-		
-		
-		
+				
 		//
 		// Leaderboards and Achievements
 		//
@@ -69,13 +67,11 @@
 			achivementViewController.achievementDelegate = self;
 			
 			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
 			[[app navController] presentModalViewController:achivementViewController animated:YES];
-			
 			[achivementViewController release];
 		}
 									   ];
-
+        
 		// Leaderboard Menu Item using blocks
 		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
 			
@@ -84,7 +80,6 @@
 			leaderboardViewController.leaderboardDelegate = self;
 			
 			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-			
 			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
 			[leaderboardViewController release];
 		}

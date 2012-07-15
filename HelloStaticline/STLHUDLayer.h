@@ -9,7 +9,22 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+/*
+ * HUD delegate
+ */
+@protocol STLGameHUDDelegate <NSObject>
+- (BOOL)toggleGamePause;
+- (BOOL)toogleBackgroundMusic;
+@end
+
+
+/*
+ * the main HUD
+ */
 @interface STLHUDLayer : CCLayer
+@property (nonatomic,retain) id<STLGameHUDDelegate> delegate;
 @property (nonatomic,retain) CCLabelAtlas *scoreLabel;
+
+- (void) showConversation:(NSInteger)cID;
 
 @end

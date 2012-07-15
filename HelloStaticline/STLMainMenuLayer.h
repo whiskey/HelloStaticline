@@ -14,10 +14,8 @@
 
 // HelloWorldLayer
 @interface STLMainMenuLayer : CCLayer<GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
-{
-}
 
-// returns a CCScene that contains the HelloWorldLayer as the only child
+// returns a CCScene that contains the STLMainMenuLayer as the only child
 +(CCScene *) scene;
 
 @end

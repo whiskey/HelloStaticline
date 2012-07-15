@@ -9,15 +9,19 @@
 #import "STLGameLayer.h"
 #import "CCTouchDispatcher.h"
 #import "STLMarker.h"
+#import "SimpleAudioEngine.h"
 
+#define BACKGROUND_MUSIC_FILE @"BackgroundMusic.m4a"
 
 @interface STLGameLayer() {
     dispatch_queue_t backgroundQueue;
+    BOOL isPaused;
 }
 @property (nonatomic,retain) CCTouchDispatcher *touchDispatcher;
 @property (nonatomic,retain) NSMutableArray *activeTargets;
 
 - (void)spawnActors;
+- (void)initAudio;
 - (void)nextFrame:(ccTime)dt;
 - (void)setViewpointCenter:(CGPoint) position;
 @end
@@ -47,10 +51,16 @@
     // set properties
     gameLayer.world = world;
     gameLayer.hud = hudLayer;
+    // set delegates
+    gameLayer.hud.delegate = gameLayer;
+    
     [scene addChild:gameLayer];
     
     // moved some stuff out of the gameLayer init into this function
     [gameLayer spawnActors];
+    
+    // init/prelaod audio and start background music
+    [gameLayer initAudio];
     
 	return scene;
 }
@@ -59,7 +69,9 @@
 {
     self = [super init];
     if (self) {
+        // gcd
         backgroundQueue = dispatch_queue_create("de.staticline.gamelayer.bgqueue", NULL);  
+        
         // settings
         self.isTouchEnabled = YES;
         self.activeTargets = [NSMutableArray arrayWithCapacity:1];
@@ -89,6 +101,16 @@
 
     // center on player
     [self setViewpointCenter:_player.node.position];
+}
+
+- (void)initAudio
+{
+    SimpleAudioEngine *engine = [SimpleAudioEngine sharedEngine];
+    [engine preloadBackgroundMusic:BACKGROUND_MUSIC_FILE];
+    if (engine.willPlayBackgroundMusic) {
+        engine.backgroundMusicVolume = 0.7;
+        [engine playBackgroundMusic:BACKGROUND_MUSIC_FILE];
+    }
 }
 
 - (STLPlayer *)player
@@ -219,9 +241,22 @@
     if (tileGid) {
         NSDictionary *properties = [_world.tileMap propertiesForGID:tileGid];
         if (properties) {
+            // collidable?
             NSString *collision = [properties valueForKey:@"collidable"];
             if (collision && [collision compare:@"True"] == NSOrderedSame) {
                 NSLog(@"no movement to this position");
+                return;
+            }
+            
+            // sign?
+            NSString *sign = [properties valueForKey:@"isSign"];
+            if (sign && [sign compare:@"True"] == NSOrderedSame) {
+                float dist = ccpDistance(_player.node.position, touchLocation);
+                if (dist <= 60) {
+                    // sign
+                    NSLog(@"sign");
+                    [_hud showConversation:-1];
+                }
                 return;
             }
         }
@@ -257,6 +292,39 @@
     [self addChild:marker.node];
     [self.activeTargets addObject:marker];
     [marker release];
+}
+
+# pragma mark - HUD delegate
+
+- (BOOL)toggleGamePause
+{
+    if (isPaused) {
+        isPaused = NO;
+        // reactivate touch
+        self.isTouchEnabled = YES;
+        // resume game
+        [[CCDirector sharedDirector] resume];
+    } else {
+        isPaused = YES;
+        // pause touch interaction on this layer
+        self.isTouchEnabled = NO;
+        // pause the game
+        [[CCDirector sharedDirector] pause];
+    }
+    return isPaused;
+}
+
+- (BOOL)toogleBackgroundMusic
+{
+    SimpleAudioEngine *engine = [SimpleAudioEngine sharedEngine];
+    if (engine.isBackgroundMusicPlaying) {
+        [engine stopBackgroundMusic];
+        NSLog(@"stop music");
+    } else {
+        [engine playBackgroundMusic:BACKGROUND_MUSIC_FILE];
+        NSLog(@"play music %d",engine.isBackgroundMusicPlaying);
+    }
+    return engine.isBackgroundMusicPlaying;
 }
 
 @end

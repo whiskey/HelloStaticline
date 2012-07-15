@@ -7,13 +7,19 @@
 //
 
 #import "STLHUDLayer.h"
+#import "STLGameMenuLayer.h"
+
 
 @interface STLHUDLayer()
-
+@property (nonatomic,retain) CCLayer *gameMenu;
+- (void)showGameMenu;
 @end
 
+
 @implementation STLHUDLayer
+@synthesize delegate;
 @synthesize scoreLabel = _scoreLabel;
+@synthesize gameMenu = _gameMenu;
 
 - (id)init
 {
@@ -21,9 +27,26 @@
     if (self) {
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         // create and place score label
-        [self.scoreLabel setPosition:ccp(winSize.width-50,winSize.height-60)];
+        [self.scoreLabel setPosition:ccp(winSize.width-60,winSize.height-55)];
         // TODO: label will clip if score > 4 digits
         [self addChild:_scoreLabel];
+        
+        // pause / game menu
+        CCMenuItemImage *pauseBtn = [CCMenuItemImage itemWithNormalImage:@"pause.png" 
+                                                           selectedImage:@"pause.png" 
+                                                                   block:^(id sender) 
+        {
+            BOOL isPaused = [delegate toggleGamePause];
+            if (isPaused) {
+                [self showGameMenu];
+            } else {
+                //
+            }
+        }];
+        
+        CCMenu *menu = [CCMenu menuWithItems:pauseBtn, nil];
+        [menu setPosition:ccp(20, winSize.height - 30)];
+        [self addChild:menu];
     }
     return self;
 }
@@ -53,5 +76,16 @@
     return _scoreLabel;
 }
 
+- (void)showGameMenu
+{
+    [[CCDirector sharedDirector] pushScene:[STLGameMenuLayer scene]];
+}
+
+- (void)showConversation:(NSInteger)cID
+{
+    // TODO
+//    STLConversationLayer *conv = [STLConversationLayer node];
+//    [self addChild:conv];
+}
 
 @end
