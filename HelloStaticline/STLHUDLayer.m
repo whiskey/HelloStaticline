@@ -27,8 +27,7 @@
     if (self) {
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         // create and place score label
-        [self.scoreLabel setPosition:ccp(winSize.width-60,winSize.height-55)];
-        // TODO: label will clip if score > 4 digits
+        [self.scoreLabel setPosition:ccp(winSize.width-10,winSize.height-55)];
         [self addChild:_scoreLabel];
         
         // pause / game menu
@@ -36,16 +35,13 @@
                                                            selectedImage:@"pause.png" 
                                                                    block:^(id sender) 
         {
-            BOOL isPaused = [delegate toggleGamePause];
-            if (isPaused) {
+            if ([delegate toggleGamePause]) {
                 [self showGameMenu];
-            } else {
-                //
             }
         }];
         
         CCMenu *menu = [CCMenu menuWithItems:pauseBtn, nil];
-        [menu setPosition:ccp(20, winSize.height - 30)];
+        [menu setPosition:ccp(20, winSize.height - 24)];
         [self addChild:menu];
     }
     return self;
@@ -73,12 +69,18 @@
                                                      itemHeight:56 
                                                    startCharMap:'.'] autorelease];
     }
+    _scoreLabel.anchorPoint = ccp(1,0);
     return _scoreLabel;
 }
 
 - (void)showGameMenu
 {
-    [[CCDirector sharedDirector] pushScene:[STLGameMenuLayer scene]];
+    CCScene *scene = [CCScene node];
+    STLGameMenuLayer *gml = [STLGameMenuLayer node];
+    // set the (same) delegate as this HUD
+    gml.delegate = delegate;
+    [scene addChild:gml];
+    [[CCDirector sharedDirector] pushScene:scene];
 }
 
 - (void)showConversation:(NSInteger)cID

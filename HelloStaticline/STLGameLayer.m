@@ -109,7 +109,7 @@
     [engine preloadBackgroundMusic:BACKGROUND_MUSIC_FILE];
     if (engine.willPlayBackgroundMusic) {
         engine.backgroundMusicVolume = 0.7;
-        [engine playBackgroundMusic:BACKGROUND_MUSIC_FILE];
+        //[engine playBackgroundMusic:BACKGROUND_MUSIC_FILE];
     }
 }
 
@@ -319,10 +319,8 @@
     SimpleAudioEngine *engine = [SimpleAudioEngine sharedEngine];
     if (engine.isBackgroundMusicPlaying) {
         [engine stopBackgroundMusic];
-        NSLog(@"stop music");
     } else {
         [engine playBackgroundMusic:BACKGROUND_MUSIC_FILE];
-        NSLog(@"play music %d",engine.isBackgroundMusicPlaying);
     }
     return engine.isBackgroundMusicPlaying;
 }

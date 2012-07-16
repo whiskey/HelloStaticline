@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "STLWorldLayer.h"
 #import "STLHUDLayer.h"
+
+#import "STLWorldLayer.h"
 #import "STLPlayer.h"
 #import "STLBear.h"
 

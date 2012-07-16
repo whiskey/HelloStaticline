@@ -61,8 +61,6 @@
 		
 		// Achievement Menu Item using blocks
 		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
-			
-			
 			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
 			achivementViewController.achievementDelegate = self;
 			
@@ -74,8 +72,6 @@
         
 		// Leaderboard Menu Item using blocks
 		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
-			
-			
 			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
 			leaderboardViewController.leaderboardDelegate = self;
 			

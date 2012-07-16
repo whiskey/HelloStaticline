@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "STLHUDLayer.h"
+
 
 @interface STLGameMenuLayer : CCLayer
-
-// returns a CCScene that contains the STLGameMenuLayer
-+(CCScene *) scene;
-
+@property (nonatomic,retain) id<STLGameHUDDelegate> delegate;
+//
 @end

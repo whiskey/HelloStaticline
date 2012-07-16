@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 
 /*
- * HUD delegate
+ HUD delegate
  */
 @protocol STLGameHUDDelegate <NSObject>
 - (BOOL)toggleGamePause;
@@ -19,7 +19,7 @@
 
 
 /*
- * the main HUD
+ The main HUD
  */
 @interface STLHUDLayer : CCLayer
 @property (nonatomic,retain) id<STLGameHUDDelegate> delegate;
