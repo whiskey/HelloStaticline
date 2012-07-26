@@ -252,9 +252,15 @@
             NSString *sign = [properties valueForKey:@"isSign"];
             if (sign && [sign compare:@"True"] == NSOrderedSame) {
                 float dist = ccpDistance(_player.node.position, touchLocation);
-                if (dist <= 60) {
+                if (dist <= 70) {
                     // sign
-                    NSLog(@"sign");
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"a sign" 
+                                                                    message:@"BEWARE OF THE SIGN!" 
+                                                                   delegate:nil 
+                                                          cancelButtonTitle:@"wtf?!?" 
+                                                          otherButtonTitles:nil];
+                    [alert show];
+                    [alert release];
                     [_hud showConversation:-1];
                 }
                 return;
