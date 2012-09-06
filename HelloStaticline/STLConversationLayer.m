@@ -12,7 +12,8 @@
 
 - (void)draw
 {
-    CGSize s = [[CCDirector sharedDirector] winSize];
+    // TODO: conversation
+//    CGSize s = [[CCDirector sharedDirector] winSize];
     
     // a test - works
 //    glLineWidth(5.0f);

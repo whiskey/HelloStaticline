@@ -149,7 +149,6 @@
 		35884678159F2FA7004B750D /* marker_cross.png in Resources */ = {isa = PBXBuildFile; fileRef = 35884677159F2FA7004B750D /* marker_cross.png */; };
 		3597E08315A5FC2D008275FB /* STLBear.m in Sources */ = {isa = PBXBuildFile; fileRef = 3597E08215A5FC2D008275FB /* STLBear.m */; };
 		359AAE6F15A35AAB00BBA976 /* STLHUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */; };
-		35A4CCFC15B2FF0A00EC76A5 /* BackgroundMusic.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CCFB15B2FF0A00EC76A5 /* BackgroundMusic.m4a */; };
 		35A4CD0315B3005B00EC76A5 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CD0115B3005B00EC76A5 /* pause.png */; };
 		35A4CD0415B3005B00EC76A5 /* pause-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CD0215B3005B00EC76A5 /* pause-hd.png */; };
 		35A4CD0715B311C100EC76A5 /* gamemenu-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 35A4CD0515B311C100EC76A5 /* gamemenu-hd.png */; };
@@ -468,7 +467,6 @@
 		3597E08215A5FC2D008275FB /* STLBear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLBear.m; sourceTree = "<group>"; };
 		359AAE6D15A35AAB00BBA976 /* STLHUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLHUDLayer.h; sourceTree = "<group>"; };
 		359AAE6E15A35AAB00BBA976 /* STLHUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLHUDLayer.m; sourceTree = "<group>"; };
-		35A4CCFB15B2FF0A00EC76A5 /* BackgroundMusic.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = BackgroundMusic.m4a; path = Resources/BackgroundMusic.m4a; sourceTree = "<group>"; };
 		35A4CD0115B3005B00EC76A5 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause.png; path = Resources/pause.png; sourceTree = "<group>"; };
 		35A4CD0215B3005B00EC76A5 /* pause-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause-hd.png"; path = "Resources/pause-hd.png"; sourceTree = "<group>"; };
 		35A4CD0515B311C100EC76A5 /* gamemenu-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gamemenu-hd.png"; path = "Resources/gamemenu-hd.png"; sourceTree = "<group>"; };
@@ -589,7 +587,6 @@
 				35A4CD0615B311C100EC76A5 /* gamemenu.png */,
 				35A4CD0115B3005B00EC76A5 /* pause.png */,
 				35A4CD0215B3005B00EC76A5 /* pause-hd.png */,
-				35A4CCFB15B2FF0A00EC76A5 /* BackgroundMusic.m4a */,
 				357BBCA915A9BBD0004D84E5 /* bear_sprite_default.plist */,
 				357BBCAA15A9BBD0004D84E5 /* bear_sprite_default.png */,
 				35436675159B6C1A004D5ED1 /* Default.png */,
@@ -1118,7 +1115,6 @@
 				351D3CFA15A9DB3C006C0A82 /* meta_tiles.png in Resources */,
 				351D3CFE15A9EE24006C0A82 /* move.caf in Resources */,
 				351D3CFF15A9EE24006C0A82 /* player_walk.caf in Resources */,
-				35A4CCFC15B2FF0A00EC76A5 /* BackgroundMusic.m4a in Resources */,
 				35A4CD0315B3005B00EC76A5 /* pause.png in Resources */,
 				35A4CD0415B3005B00EC76A5 /* pause-hd.png in Resources */,
 				35A4CD0715B311C100EC76A5 /* gamemenu-hd.png in Resources */,
@@ -1309,8 +1305,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1323,8 +1319,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = hellostaticline;
-				PROVISIONING_PROFILE = "BD9D52B7-66CA-4968-AC62-D07B6236744C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BD9D52B7-66CA-4968-AC62-D07B6236744C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
@@ -1338,8 +1332,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -1350,8 +1344,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = hellostaticline;
-				PROVISIONING_PROFILE = "BD9D52B7-66CA-4968-AC62-D07B6236744C";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BD9D52B7-66CA-4968-AC62-D07B6236744C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";

@@ -60,8 +60,9 @@ static STLGameCenterManager *sharedInstance;
 
 
 #pragma mark - game center
-/*
+/**
  Check whether or not the game center api is available
+ @returns YES if GKLocalPlayer class is available and current OS version is supported
  */
 - (BOOL) isGameCenterAPIAvailable
 {
