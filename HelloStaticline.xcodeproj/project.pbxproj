@@ -169,6 +169,7 @@
 		35C654E1159F9DB800F3DAB2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C654E0159F9DB800F3DAB2 /* libz.dylib */; };
 		35C654E4159F9EA400F3DAB2 /* STLGameLayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C654E3159F9EA400F3DAB2 /* STLGameLayerTests.m */; };
 		35C654E7159FA26000F3DAB2 /* STLGameObjectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C654E6159FA26000F3DAB2 /* STLGameObjectsTests.m */; };
+		CEECCB64160B52840059DB66 /* STLStoreKitManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEECCB63160B52840059DB66 /* STLStoreKitManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -486,6 +487,8 @@
 		35C654E3159F9EA400F3DAB2 /* STLGameLayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameLayerTests.m; sourceTree = "<group>"; };
 		35C654E5159FA26000F3DAB2 /* STLGameObjectsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameObjectsTests.h; sourceTree = "<group>"; };
 		35C654E6159FA26000F3DAB2 /* STLGameObjectsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameObjectsTests.m; sourceTree = "<group>"; };
+		CEECCB62160B52840059DB66 /* STLStoreKitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLStoreKitManager.h; sourceTree = "<group>"; };
+		CEECCB63160B52840059DB66 /* STLStoreKitManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLStoreKitManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -571,6 +574,8 @@
 				354555F715A8B18A00439E22 /* STLGameConfig.h */,
 				35625B3D15A08345008F3151 /* STLGameCenterManager.h */,
 				35625B3E15A08345008F3151 /* STLGameCenterManager.m */,
+				CEECCB62160B52840059DB66 /* STLStoreKitManager.h */,
+				CEECCB63160B52840059DB66 /* STLStoreKitManager.m */,
 				35884673159F1385004B750D /* Actors */,
 				35884672159F10FD004B750D /* Layers */,
 				35436674159B6C1A004D5ED1 /* Resources */,
@@ -1265,6 +1270,7 @@
 				357BBCBD15A9BF88004D84E5 /* STLWorldLayer.m in Sources */,
 				3534862015AE1C6C0037EA73 /* STLConversationLayer.m in Sources */,
 				35A4CD0E15B32D1900EC76A5 /* STLGameMenuLayer.m in Sources */,
+				CEECCB64160B52840059DB66 /* STLStoreKitManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
