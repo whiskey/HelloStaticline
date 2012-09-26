@@ -11,7 +11,7 @@
 #import "STLMarker.h"
 #import "SimpleAudioEngine.h"
 
-#define BACKGROUND_MUSIC_FILE @"BackgroundMusic.m4a"
+#define BACKGROUND_MUSIC_FILE @"BackgroundMusic.aifc"
 
 @interface STLGameLayer() {
     dispatch_queue_t backgroundQueue;

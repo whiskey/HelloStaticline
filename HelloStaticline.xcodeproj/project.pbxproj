@@ -137,6 +137,8 @@
 		354367EE159B6C1D004D5ED1 /* STLMainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */; };
 		35436854159B8B64004D5ED1 /* STLGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35436853159B8B64004D5ED1 /* STLGameLayer.m */; };
 		35625B3F15A08345008F3151 /* STLGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 35625B3E15A08345008F3151 /* STLGameCenterManager.m */; };
+		356D2848161379FA00AC281A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 356D2847161379FA00AC281A /* StoreKit.framework */; };
+		356D284A1613925700AC281A /* BackgroundMusic.aifc in Resources */ = {isa = PBXBuildFile; fileRef = 356D28491613925700AC281A /* BackgroundMusic.aifc */; };
 		357BBCAF15A9BBD0004D84E5 /* bear_sprite_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 357BBCA915A9BBD0004D84E5 /* bear_sprite_default.plist */; };
 		357BBCB015A9BBD0004D84E5 /* bear_sprite_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 357BBCAA15A9BBD0004D84E5 /* bear_sprite_default.png */; };
 		357BBCB215A9BBD0004D84E5 /* player_sprite_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 357BBCAC15A9BBD0004D84E5 /* player_sprite_default.plist */; };
@@ -452,6 +454,8 @@
 		354555F715A8B18A00439E22 /* STLGameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLGameConfig.h; sourceTree = "<group>"; };
 		35625B3D15A08345008F3151 /* STLGameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameCenterManager.h; sourceTree = "<group>"; };
 		35625B3E15A08345008F3151 /* STLGameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameCenterManager.m; sourceTree = "<group>"; };
+		356D2847161379FA00AC281A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		356D28491613925700AC281A /* BackgroundMusic.aifc */ = {isa = PBXFileReference; lastKnownFileType = file; name = BackgroundMusic.aifc; path = Resources/BackgroundMusic.aifc; sourceTree = "<group>"; };
 		357BBCA915A9BBD0004D84E5 /* bear_sprite_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = bear_sprite_default.plist; path = Resources/bear_sprite_default.plist; sourceTree = "<group>"; };
 		357BBCAA15A9BBD0004D84E5 /* bear_sprite_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bear_sprite_default.png; path = Resources/bear_sprite_default.png; sourceTree = "<group>"; };
 		357BBCAC15A9BBD0004D84E5 /* player_sprite_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = player_sprite_default.plist; path = Resources/player_sprite_default.plist; sourceTree = "<group>"; };
@@ -496,6 +500,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				356D2848161379FA00AC281A /* StoreKit.framework in Frameworks */,
 				35436662159B6C1A004D5ED1 /* QuartzCore.framework in Frameworks */,
 				35436664159B6C1A004D5ED1 /* OpenGLES.framework in Frameworks */,
 				35436666159B6C1A004D5ED1 /* OpenAL.framework in Frameworks */,
@@ -552,6 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				35C654E0159F9DB800F3DAB2 /* libz.dylib */,
+				356D2847161379FA00AC281A /* StoreKit.framework */,
 				35436661159B6C1A004D5ED1 /* QuartzCore.framework */,
 				35436663159B6C1A004D5ED1 /* OpenGLES.framework */,
 				35436665159B6C1A004D5ED1 /* OpenAL.framework */,
@@ -588,33 +594,34 @@
 		35436674159B6C1A004D5ED1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				35A4CD0515B311C100EC76A5 /* gamemenu-hd.png */,
-				35A4CD0615B311C100EC76A5 /* gamemenu.png */,
-				35A4CD0115B3005B00EC76A5 /* pause.png */,
-				35A4CD0215B3005B00EC76A5 /* pause-hd.png */,
+				356D28491613925700AC281A /* BackgroundMusic.aifc */,
+				3543668A159B6C1B004D5ED1 /* iTunesArtwork */,
+				351D3CFC15A9EE24006C0A82 /* move.caf */,
+				351D3CFD15A9EE24006C0A82 /* player_walk.caf */,
 				357BBCA915A9BBD0004D84E5 /* bear_sprite_default.plist */,
+				35436689159B6C1B004D5ED1 /* Info.plist */,
+				357BBCAC15A9BBD0004D84E5 /* player_sprite_default.plist */,
 				357BBCAA15A9BBD0004D84E5 /* bear_sprite_default.png */,
 				35436675159B6C1A004D5ED1 /* Default.png */,
 				35436679159B6C1A004D5ED1 /* fps_images-hd.png */,
 				3543667B159B6C1A004D5ED1 /* fps_images-ipadhd.png */,
 				35436677159B6C1A004D5ED1 /* fps_images.png */,
+				35A4CD0515B311C100EC76A5 /* gamemenu-hd.png */,
+				35A4CD0615B311C100EC76A5 /* gamemenu.png */,
 				3543667D159B6C1A004D5ED1 /* Icon-72.png */,
 				3543667F159B6C1B004D5ED1 /* Icon-Small-50.png */,
 				35436681159B6C1B004D5ED1 /* Icon-Small.png */,
 				35436683159B6C1B004D5ED1 /* Icon-Small@2x.png */,
 				35436685159B6C1B004D5ED1 /* Icon.png */,
 				35436687159B6C1B004D5ED1 /* Icon@2x.png */,
-				35436689159B6C1B004D5ED1 /* Info.plist */,
-				3543668A159B6C1B004D5ED1 /* iTunesArtwork */,
 				35884677159F2FA7004B750D /* marker_cross.png */,
 				351D3CF915A9DB3C006C0A82 /* meta_tiles.png */,
-				351D3CFC15A9EE24006C0A82 /* move.caf */,
-				357BBCAC15A9BBD0004D84E5 /* player_sprite_default.plist */,
+				35A4CD0215B3005B00EC76A5 /* pause-hd.png */,
+				35A4CD0115B3005B00EC76A5 /* pause.png */,
 				357BBCAD15A9BBD0004D84E5 /* player_sprite_default.png */,
-				351D3CFD15A9EE24006C0A82 /* player_walk.caf */,
-				357BBCB715A9BCFB004D84E5 /* TileMap.tmx */,
 				357BBCB815A9BCFB004D84E5 /* tmw_desert_spacing.png */,
 				357BBCB515A9BBF9004D84E5 /* whiskey.png */,
+				357BBCB715A9BCFB004D84E5 /* TileMap.tmx */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1124,6 +1131,7 @@
 				35A4CD0415B3005B00EC76A5 /* pause-hd.png in Resources */,
 				35A4CD0715B311C100EC76A5 /* gamemenu-hd.png in Resources */,
 				35A4CD0815B311C100EC76A5 /* gamemenu.png in Resources */,
+				356D284A1613925700AC281A /* BackgroundMusic.aifc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1311,8 +1319,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1325,6 +1333,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = hellostaticline;
+				PROVISIONING_PROFILE = "4C505FE1-CA8E-49CE-950E-CA01A0ED7DAF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4C505FE1-CA8E-49CE-950E-CA01A0ED7DAF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
@@ -1338,8 +1348,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -1350,6 +1360,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = hellostaticline;
+				PROVISIONING_PROFILE = "4C505FE1-CA8E-49CE-950E-CA01A0ED7DAF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4C505FE1-CA8E-49CE-950E-CA01A0ED7DAF";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
