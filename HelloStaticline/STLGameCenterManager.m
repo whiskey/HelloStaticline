@@ -10,6 +10,7 @@
 
 NSString *const kSTLAchievementKill1    = @"1_kill1";
 NSString *const kSTLAchievementKill20   = @"2_kill20";
+NSString *const kSTLAchievementFindBear = @"find_bear";
 
 static STLGameCenterManager *sharedInstance;
 
@@ -150,8 +151,10 @@ static STLGameCenterManager *sharedInstance;
  */
 - (void) reportAchievementIdentifier:(NSString*)identifier percentComplete:(float)percent
 {
+    // get achievement for current player account
     GKAchievement *achievement = [self getAchievementForIdentifier:identifier];
-    if (achievement)
+    // don't handle already finished achievements
+    if (achievement && !achievement.completed)
     {
         achievement.percentComplete = percent;
         // show notification
@@ -161,8 +164,7 @@ static STLGameCenterManager *sharedInstance;
         [achievement reportAchievementWithCompletionHandler:^(NSError *error)
          {
 #if DEBUG
-             if (error != nil)
-             {
+             if (error != nil) {
                  NSLog(@"%@",error);
                  // TODO: handle sync
              }

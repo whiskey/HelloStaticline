@@ -55,14 +55,17 @@
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
 	if( ! [director_ enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
+    
+    // add the scene to the stack. The director will run it when it automatically when the view is displayed.
+	[director_ pushScene: [STLMainMenuLayer scene]];
 
 	// Create a Navigation Controller with the Director
 	navController_ = [[UINavigationController alloc] initWithRootViewController:director_];
 	navController_.navigationBarHidden = YES;
 
 	// set the Navigation Controller as the root view controller
-//	[window_ setRootViewController:rootViewController_];
-	[window_ addSubview:navController_.view];
+	[window_ setRootViewController:navController_];
+//	[window_ addSubview:navController_.view];
 
 	// make main window visible
 	[window_ makeKeyAndVisible];
@@ -84,16 +87,15 @@
 
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
-
-	// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [STLMainMenuLayer scene]];
     
     // check game center availablility and launch
     STLGameCenterManager *gcm = [STLGameCenterManager sharedInstance];
     if ([gcm isGameCenterAPIAvailable]) {
         [gcm authenticateLocalPlayer];
     }
-
+    
+    [window_ makeKeyAndVisible];
+    
 	return YES;
 }
 

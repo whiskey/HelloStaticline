@@ -7,6 +7,7 @@
 //
 
 #import "STLBear.h"
+#import "STLGameCenterManager.h"
 
 @interface STLBear ()
 @property (nonatomic, retain) CCAction *walkAction;
@@ -61,6 +62,9 @@
         // hide from evil player
         [self stopWalkAnimation];
     }
+    // TODO: check if already reported
+    [[STLGameCenterManager sharedInstance] reportAchievementIdentifier:kSTLAchievementFindBear
+                                                       percentComplete:100.0f];
 }
 
 #pragma mark - ui actions

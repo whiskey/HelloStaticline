@@ -14,6 +14,7 @@
  */
 extern NSString * const kSTLAchievementKill1;
 extern NSString * const kSTLAchievementKill20;
+extern NSString * const kSTLAchievementFindBear;
 
 /*
  Mostly a 1:1 copy of Apple's example code

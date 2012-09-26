@@ -13,10 +13,10 @@
 /* GAME                                                                           */
 /**********************************************************************************/
 // Game Center on/off
-#define GC_ON 0
+#define GC_ON 1
 
 // reset achievements (in debug environment)?
-#define RESET_ACHIEVEMENTS 0
+#define RESET_ACHIEVEMENTS 1
 
 
 
