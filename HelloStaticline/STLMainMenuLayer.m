@@ -45,9 +45,14 @@
 
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
-	
+        
 		// position the label on the center of the screen
-		label.position =  ccp( size.width /2 , size.height/2 );
+//        int width=[[UIScreen mainScreen] bounds].size.width;
+//        int height=[[UIScreen mainScreen] bounds].size.height;
+//        CGPoint center=ccp(width/2,height/2);
+        label.position = ccp( size.width /2, size.height/2 );
+        
+        NSLog(@"label: %@",NSStringFromCGRect(label.boundingBox));
 		
 		// add the label as a child to this Layer
 		[self addChild: label];
@@ -56,8 +61,8 @@
 		// Leaderboards and Achievements
 		//
 		
-		// Default font size will be 28 points.
-		[CCMenuItemFont setFontSize:28];
+		// Default font size will be 28 points on retina displays.
+		[CCMenuItemFont setFontSize:22];
 		
 		// Achievement Menu Item using blocks
 		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
@@ -67,8 +72,7 @@
 			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 			[[app navController] presentModalViewController:achivementViewController animated:YES];
 			[achivementViewController release];
-		}
-									   ];
+		}];
         
 		// Leaderboard Menu Item using blocks
 		CCMenuItem *itemLeaderboard = [CCMenuItemFont itemWithString:@"Leaderboard" block:^(id sender) {
@@ -87,8 +91,8 @@
 		
 		CCMenu *menu = [CCMenu menuWithItems:gameStart, itemAchievement, itemLeaderboard, nil];
 		
-		[menu alignItemsHorizontallyWithPadding:20];
-		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];
+		[menu alignItemsHorizontallyWithPadding:20]; //[UIScreen mainScreen].scale
+		[menu setPosition:ccp( size.width/2, size.height/2 - 50)]; // * [UIScreen mainScreen].scale
 		
 		// Add the menu to the layer
 		[self addChild:menu];

@@ -26,7 +26,7 @@
 	// Create an CCGLView with a RGB565 color buffer, and a depth buffer of 0-bits
 	CCGLView *glView = [CCGLView viewWithFrame:[window_ bounds]
 								   pixelFormat:kEAGLColorFormatRGB565	//kEAGLColorFormatRGBA8
-								   depthFormat:0	//GL_DEPTH_COMPONENT24_OES
+								   depthFormat:0                        //GL_DEPTH_COMPONENT24_OES
 							preserveBackbuffer:NO
 									sharegroup:nil
 								 multiSampling:NO
@@ -63,9 +63,13 @@
 	navController_ = [[UINavigationController alloc] initWithRootViewController:director_];
 	navController_.navigationBarHidden = YES;
 
-	// set the Navigation Controller as the root view controller
-	[window_ setRootViewController:navController_];
-//	[window_ addSubview:navController_.view];
+//    if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0 && [window_ respondsToSelector:@selector(addSubview:)]) {
+//        [window_ addSubview:navController_.view];
+//    } else {
+//        // set the Navigation Controller as the root view controller
+//        [window_ setRootViewController:navController_];
+//    }
+    [window_ setRootViewController:navController_];
 
 	// make main window visible
 	[window_ makeKeyAndVisible];
@@ -103,6 +107,10 @@
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 
