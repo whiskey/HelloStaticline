@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
+#import "STLGameNavigationController.h"
 
-@interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate>
+@interface AppDelegate : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {
 	UIWindow *window_;
-	UINavigationController *navController_;
+	STLGameNavigationController *navController_;
 	CCDirectorIOS	*director_;							// weak ref
 }
 
 @property (nonatomic, retain) UIWindow *window;
-@property (readonly) UINavigationController *navController;
+@property (readonly) STLGameNavigationController *navController;
 @property (readonly) CCDirectorIOS *director;
 
 @end

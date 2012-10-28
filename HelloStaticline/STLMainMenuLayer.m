@@ -45,14 +45,15 @@
 
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
-        
-		// position the label on the center of the screen
+
+//		// position the label on the center of the screen
 //        int width=[[UIScreen mainScreen] bounds].size.width;
 //        int height=[[UIScreen mainScreen] bounds].size.height;
 //        CGPoint center=ccp(width/2,height/2);
-        label.position = ccp( size.width /2, size.height/2 );
+//        label.position = ccp( size.width /2, size.height/2 );
         
-        NSLog(@"label: %@",NSStringFromCGRect(label.boundingBox));
+        NSLog(@"director window size: %@ -- uiscreen %@",NSStringFromCGSize(size), NSStringFromCGRect([[UIScreen mainScreen] bounds]));
+        NSLog(@"label bbox: %@",NSStringFromCGRect(label.boundingBox));
 		
 		// add the label as a child to this Layer
 		[self addChild: label];
@@ -60,16 +61,14 @@
 		//
 		// Leaderboards and Achievements
 		//
-		
-		// Default font size will be 28 points on retina displays.
-		[CCMenuItemFont setFontSize:22];
+		[CCMenuItemFont setFontSize:20];
 		
 		// Achievement Menu Item using blocks
 		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
 			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
 			achivementViewController.achievementDelegate = self;
 			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+			AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
 			[[app navController] presentModalViewController:achivementViewController animated:YES];
 			[achivementViewController release];
 		}];
@@ -79,7 +78,7 @@
 			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
 			leaderboardViewController.leaderboardDelegate = self;
 			
-			AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+			AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
 			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
 			[leaderboardViewController release];
 		}
@@ -100,28 +99,17 @@
 	return self;
 }
 
-// on "dealloc" you need to release all your retained objects
-- (void) dealloc
-{
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
-	[super dealloc];
-}
-
 #pragma mark GameKit delegate
 
 -(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
 {
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+	AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 
 -(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
-	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+	AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
 	[[app navController] dismissModalViewControllerAnimated:YES];
 }
 @end

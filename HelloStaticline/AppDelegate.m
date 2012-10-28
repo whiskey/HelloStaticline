@@ -11,7 +11,7 @@
 #import "STLGameCenterManager.h"
 #import "STLMainMenuLayer.h"
 
-@implementation AppController
+@implementation AppDelegate
 
 @synthesize window = window_;
 @synthesize navController = navController_;
@@ -60,7 +60,7 @@
 	[director_ pushScene: [STLMainMenuLayer scene]];
 
 	// Create a Navigation Controller with the Director
-	navController_ = [[UINavigationController alloc] initWithRootViewController:director_];
+	navController_ = [[STLGameNavigationController alloc] initWithRootViewController:director_];
 	navController_.navigationBarHidden = YES;
 
 //    if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0 && [window_ respondsToSelector:@selector(addSubview:)]) {
@@ -91,7 +91,7 @@
 
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
-    
+
     // check game center availablility and launch
     STLGameCenterManager *gcm = [STLGameCenterManager sharedInstance];
     if ([gcm isGameCenterAPIAvailable]) {
@@ -103,11 +103,6 @@
 	return YES;
 }
 
-// Supported orientations: Landscape. Customize it for your own needs
-- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
-}
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
     return UIInterfaceOrientationMaskLandscape;

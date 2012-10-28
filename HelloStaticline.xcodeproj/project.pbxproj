@@ -70,6 +70,7 @@
 		35C654E1159F9DB800F3DAB2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C654E0159F9DB800F3DAB2 /* libz.dylib */; };
 		35C654E4159F9EA400F3DAB2 /* STLGameLayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C654E3159F9EA400F3DAB2 /* STLGameLayerTests.m */; };
 		35C654E7159FA26000F3DAB2 /* STLGameObjectsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 35C654E6159FA26000F3DAB2 /* STLGameObjectsTests.m */; };
+		35E211FC163D24D800FC7C1F /* STLGameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E211FB163D24D800FC7C1F /* STLGameNavigationController.m */; };
 		CED7B3E21628563D00897E73 /* CCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CED7B2E91628563D00897E73 /* CCAction.m */; };
 		CED7B3E31628563D00897E73 /* CCActionCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = CED7B2EB1628563D00897E73 /* CCActionCamera.m */; };
 		CED7B3E41628563D00897E73 /* CCActionCatmullRom.m in Sources */ = {isa = PBXBuildFile; fileRef = CED7B2ED1628563D00897E73 /* CCActionCatmullRom.m */; };
@@ -270,6 +271,8 @@
 		35C654E3159F9EA400F3DAB2 /* STLGameLayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameLayerTests.m; sourceTree = "<group>"; };
 		35C654E5159FA26000F3DAB2 /* STLGameObjectsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameObjectsTests.h; sourceTree = "<group>"; };
 		35C654E6159FA26000F3DAB2 /* STLGameObjectsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameObjectsTests.m; sourceTree = "<group>"; };
+		35E211FA163D24D800FC7C1F /* STLGameNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameNavigationController.h; sourceTree = "<group>"; };
+		35E211FB163D24D800FC7C1F /* STLGameNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameNavigationController.m; sourceTree = "<group>"; };
 		CED7B2E81628563D00897E73 /* CCAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAction.h; sourceTree = "<group>"; };
 		CED7B2E91628563D00897E73 /* CCAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAction.m; sourceTree = "<group>"; };
 		CED7B2EA1628563D00897E73 /* CCActionCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCActionCamera.h; sourceTree = "<group>"; };
@@ -599,6 +602,8 @@
 				354367E9159B6C1D004D5ED1 /* AppDelegate.h */,
 				354367EA159B6C1D004D5ED1 /* AppDelegate.m */,
 				354555F715A8B18A00439E22 /* STLGameConfig.h */,
+				35E211FA163D24D800FC7C1F /* STLGameNavigationController.h */,
+				35E211FB163D24D800FC7C1F /* STLGameNavigationController.m */,
 				35625B3D15A08345008F3151 /* STLGameCenterManager.h */,
 				35625B3E15A08345008F3151 /* STLGameCenterManager.m */,
 				CEECCB62160B52840059DB66 /* STLStoreKitManager.h */,
@@ -1110,7 +1115,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = STL;
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = staticline;
 			};
 			buildConfigurationList = 35436657159B6C1A004D5ED1 /* Build configuration list for PBXProject "HelloStaticline" */;
@@ -1321,6 +1326,7 @@
 				CED7B4481628563D00897E73 /* vec2.c in Sources */,
 				CED7B4491628563D00897E73 /* vec3.c in Sources */,
 				CED7B44A1628563D00897E73 /* vec4.c in Sources */,
+				35E211FC163D24D800FC7C1F /* STLGameNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
