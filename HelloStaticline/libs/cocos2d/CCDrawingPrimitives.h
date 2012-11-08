@@ -24,17 +24,6 @@
  */
 
 
-/*
- *
- * IMPORTANT       IMPORTANT        IMPORTANT        IMPORTANT 
- *
- *
- * LEGACY FUNCTIONS
- *
- * USE CCDrawNode instead
- *
- */
-
 #ifndef __CC_DRAWING_PRIMITIVES_H
 #define __CC_DRAWING_PRIMITIVES_H
 
@@ -58,23 +47,17 @@ extern "C" {
 /**
  @file
  Drawing OpenGL ES primitives.
-  - ccDrawPoint, ccDrawPoints
+  - ccDrawPoint
   - ccDrawLine
-  - ccDrawRect, ccDrawSolidRect
-  - ccDrawPoly, ccDrawSolidPoly
+  - ccDrawPoly
   - ccDrawCircle
   - ccDrawQuadBezier
   - ccDrawCubicBezier
-  - ccDrawCatmullRom
-  - ccDrawCardinalSpline
 
- You can change the color, point size, width by calling:
-  - ccDrawColor4B(), ccDrawColor4F()
-  - ccPointSize()
-  - glLineWidth()
+ You can change the color, width and other property by calling the
+   glColor4ub(), glLineWidth(), glPointSize().
 
- @warning These functions draws the Line, Point, Polygon, immediately. They aren't batched. If you are going to make a game that depends on these primitives, I suggest creating a batch. Instead you should use CCDrawNode
- 
+ @warning These functions draws the Line, Point, Polygon, immediately. They aren't batched. If you are going to make a game that depends on these primitives, I suggest creating a batch.
  */
 
 
@@ -97,12 +80,12 @@ void ccDrawRect( CGPoint origin, CGPoint destination );
  */
 void ccDrawSolidRect( CGPoint origin, CGPoint destination, ccColor4F color );
 
-/** draws a polygon given a pointer to CGPoint coordinates and the number of vertices measured in points.
+/** draws a poligon given a pointer to CGPoint coordiantes and the number of vertices measured in points.
  The polygon can be closed or open
  */
 void ccDrawPoly( const CGPoint *vertices, NSUInteger numOfVertices, BOOL closePolygon );
 
-/** draws a solid polygon given a pointer to CGPoint coordinates, the number of vertices measured in points, and a color.
+/** draws a solid polygon given a pointer to CGPoint coordiantes, the number of vertices measured in points, and a color.
  */
 void ccDrawSolidPoly( const CGPoint *poli, NSUInteger numberOfPoints, ccColor4F color );
     

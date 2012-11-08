@@ -62,33 +62,24 @@ enum  {
 
 typedef struct _listEntry
 {
-	// XXX do no change the order of these 3 fields. Needed for "subclassing"
 	struct	_listEntry	*prev, *next;
 	id					delegate;
-	// (end)
-
 	NSInteger			priority;
 	NSUInteger			flags;
 } tListEntry;
 
 typedef struct _listDeletedEntry
 {
-	// XXX do no change the order of these 3 fields. Needed for "subclassing"
 	struct	_listDeletedEntry	*prev, *next;
 	id							delegate;
-	// (end)
-	
 	struct	_listEntry			**listToBeDeleted;
 
 } tListDeletedEntry;
 
 typedef struct _listAddedEntry
 {
-	// XXX do no change the order of these 3 fields. Needed for "subclassing"
 	struct	_listAddedEntry *prev, *next;
 	id						delegate;
-	// (end)
-
 	NSInteger				priority;
 	NSUInteger				flags;
 	struct	_listEntry		**listToBeAdded;
@@ -102,10 +93,6 @@ typedef struct _listAddedEntry
 @end
 
 #pragma  mark - CCEventDispatcher
-
-@interface CCEventDispatcher()
--(BOOL) removeDelegate:(id)delegate fromList:(tListEntry**)list;
-@end
 
 @implementation CCEventDispatcher
 
@@ -126,7 +113,7 @@ typedef struct _listAddedEntry
 		delegatesToBeAdded_ = NULL;
 		delegatesToBeRemoved_ = NULL;
 		
-		locked_ = NO;
+		dispatchingInProgress_ = NO;
 	}
 
 	return self;
@@ -138,22 +125,17 @@ typedef struct _listAddedEntry
 }
 
 #pragma mark CCEventDispatcher - add / remove delegates
-
-
 -(void) addLaterDelegate:(id)delegate priority:(NSInteger)priority flags:(NSUInteger)flags list:(tListEntry**)list
 {
-	// Only add it if it was not already added for deletion
-	if( ! [self removeDelegate:delegate fromList:(tListEntry**)&delegatesToBeRemoved_] ) {
-		tListAddedEntry *listElement = malloc( sizeof(*listElement) );
-		
-		listElement->delegate = [delegate retain];
-		listElement->priority = priority;
-		listElement->flags = flags;
-		listElement->listToBeAdded = list;
-		listElement->next = listElement->prev = NULL;
-		
-		DL_APPEND( delegatesToBeAdded_, listElement );
-	}
+	tListAddedEntry *listElement = malloc( sizeof(*listElement) );
+	
+	listElement->delegate = [delegate retain];
+	listElement->priority = priority;
+	listElement->flags = flags;
+	listElement->listToBeAdded = list;
+	listElement->next = listElement->prev = NULL;
+	
+	DL_APPEND( delegatesToBeAdded_, listElement );
 }
 
 -(void) addDelegate:(id)delegate priority:(NSInteger)priority flags:(NSUInteger)flags list:(tListEntry**)list
@@ -198,38 +180,33 @@ typedef struct _listAddedEntry
 
 -(void) removeLaterDelegate:(id)delegate fromList:(tListEntry**)list
 {
-	// Only add it if it was not already added for deletion
-	if( ! [self removeDelegate:delegate fromList:(tListEntry**)&delegatesToBeAdded_] ) {
-
-		tListDeletedEntry *listElement = malloc( sizeof(*listElement) );
-		
-		listElement->delegate = [delegate retain];
-		listElement->listToBeDeleted = list;
-		listElement->next = listElement->prev = NULL;
-		
-		DL_APPEND( delegatesToBeRemoved_, listElement );
-	}
+	tListDeletedEntry *listElement = malloc( sizeof(*listElement) );
+	
+	listElement->delegate = [delegate retain];
+	listElement->listToBeDeleted = list;
+	listElement->next = listElement->prev = NULL;
+	
+	DL_APPEND( delegatesToBeRemoved_, listElement );
 }
 
--(BOOL) removeDelegate:(id)delegate fromList:(tListEntry**)list
+-(void) removeDelegate:(id)delegate fromList:(tListEntry**)list
 {
 	tListEntry *entry, *tmp;
 	
+	// updates with priority < 0
 	DL_FOREACH_SAFE( *list, entry, tmp ) {
 		if( entry->delegate == delegate ) {
 			DL_DELETE( *list, entry );
 			[delegate release];
 			free(entry);
-			return YES;
 			break;
 		}
 	}
-	return NO;
 }
 
 -(void) removeAllDelegatesFromList:(tListEntry**)list
 {
-	NSAssert( ! locked_, @"BUG. Open a ticket. Can't call this function when processing events.");
+	NSAssert( ! dispatchingInProgress_, @"BUG. Open a ticket. Can't call this function when processing events.");
 
 	@synchronized(self) {
 		tListEntry *entry, *tmp;
@@ -265,7 +242,7 @@ typedef struct _listAddedEntry
 
 	flags |= ( [delegate respondsToSelector:@selector(ccScrollWheel:)] ? kCCImplementsScrollWheel : 0 );
 
-	if( locked_ )
+	if( dispatchingInProgress_ )
 		[self addLaterDelegate:delegate priority:priority flags:flags list:&mouseDelegates_];
 	else
 		[self addDelegate:delegate priority:priority flags:flags list:&mouseDelegates_];
@@ -274,7 +251,7 @@ typedef struct _listAddedEntry
 
 -(void) removeMouseDelegate:(id) delegate
 {
-	if( locked_ )
+	if( dispatchingInProgress_ )
 		[self removeLaterDelegate:delegate fromList:&mouseDelegates_];
 	else
 		[self removeDelegate:delegate fromList:&mouseDelegates_];
@@ -293,7 +270,7 @@ typedef struct _listAddedEntry
 	flags |= ( [delegate respondsToSelector:@selector(ccKeyDown:)] ? kCCImplementsKeyDown : 0 );
 	flags |= ( [delegate respondsToSelector:@selector(ccFlagsChanged:)] ? kCCImplementsFlagsChanged : 0 );
 
-	if( locked_ )
+	if( dispatchingInProgress_ )
 		[self addLaterDelegate:delegate priority:priority flags:flags list:&keyboardDelegates_];
 	else
 		[self addDelegate:delegate priority:priority flags:flags list:&keyboardDelegates_];
@@ -301,7 +278,7 @@ typedef struct _listAddedEntry
 
 -(void) removeKeyboardDelegate:(id) delegate
 {
-	if( locked_ )
+	if( dispatchingInProgress_ )
 		[self removeLaterDelegate:delegate fromList:&keyboardDelegates_];
 	else
 		[self removeDelegate:delegate fromList:&keyboardDelegates_];
@@ -321,7 +298,7 @@ typedef struct _listAddedEntry
 	flags |= ( [delegate respondsToSelector:@selector(ccTouchesEndedWithEvent:)] ? kCCImplementsTouchesEnded : 0 );
 	flags |= ( [delegate respondsToSelector:@selector(ccTouchesCancelledWithEvent:)] ? kCCImplementsTouchesCancelled : 0 );
 
-	if( locked_ )
+	if( dispatchingInProgress_ )
 		[self addLaterDelegate:delegate priority:priority flags:flags list:&touchDelegates_];
 	else
 		[self addDelegate:delegate priority:priority flags:flags list:&touchDelegates_];
@@ -329,7 +306,7 @@ typedef struct _listAddedEntry
 
 -(void) removeTouchDelegate:(id) delegate
 {
-	if( locked_ )
+	if( dispatchingInProgress_ )
 		[self removeLaterDelegate:delegate fromList:&touchDelegates_];
 	else
 		[self removeDelegate:delegate fromList:&touchDelegates_];
@@ -678,9 +655,9 @@ typedef struct _listAddedEntry
 
 		// Dispatch events
 		if( dispatchEvents_ ) {
-			locked_ = YES;
+			dispatchingInProgress_ = YES;
 			[self performSelector:selector onThread:[[CCDirector sharedDirector] runningThread] withObject:event waitUntilDone:YES];
-			locked_ = NO;
+			dispatchingInProgress_ = NO;
 		}
 		
 		

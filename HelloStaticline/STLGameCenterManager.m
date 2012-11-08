@@ -91,7 +91,7 @@ static STLGameCenterManager *sharedInstance;
             NSLog(@"### RESET ACHIEVEMENTS ###");
             [GKAchievement resetAchievementsWithCompletionHandler:^(NSError *error) {
                 if (error) {
-                    NSLog(@"%@",error);
+                    NSLog(@"resetAchievementsWithCompletionHandler error: %@",error);
                 }
                 [self loadAchievements];
             }];
@@ -102,7 +102,7 @@ static STLGameCenterManager *sharedInstance;
 #if DEBUG
         // display errors, if present
         if (error) {
-            NSLog(@"%@",error);
+            NSLog(@"authenticateWithCompletionHandler error: %@",error);
         }
 #endif
     }];
@@ -118,7 +118,7 @@ static STLGameCenterManager *sharedInstance;
 #if DEBUG
             // display errors, if present
             if (error) {
-                NSLog(@"%@",error);
+                NSLog(@"loadAchievementsWithCompletionHandler error: %@",error);
             }
 #endif
         }
@@ -165,7 +165,7 @@ static STLGameCenterManager *sharedInstance;
          {
 #if DEBUG
              if (error != nil) {
-                 NSLog(@"%@",error);
+                 NSLog(@"reportAchievementWithCompletionHandler error: %@",error);
                  // TODO: handle sync
              }
 #endif

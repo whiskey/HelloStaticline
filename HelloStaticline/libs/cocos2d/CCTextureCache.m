@@ -147,9 +147,8 @@ static CCTextureCache *sharedTextureCache;
 	NSAssert(target != nil, @"TextureCache: target can't be nil");
 	NSAssert(selector != NULL, @"TextureCache: selector can't be NULL");
 
-	path = [path stringByStandardizingPath];
-
 	// optimization
+
 	__block CCTexture2D * tex;
 
 #ifdef __CC_PLATFORM_IOS
@@ -209,9 +208,8 @@ static CCTextureCache *sharedTextureCache;
 {
 	NSAssert(path != nil, @"TextureCache: fileimage MUST not be nil");
 
-	path = [path stringByStandardizingPath];
-
 	// optimization
+
 	__block CCTexture2D * tex;
 
 #ifdef __CC_PLATFORM_IOS
@@ -273,8 +271,6 @@ static CCTextureCache *sharedTextureCache;
 {
 	NSAssert(path != nil, @"TextureCache: fileimage MUST not be nill");
 
-	path = [path stringByStandardizingPath];
-	
 	__block CCTexture2D * tex = nil;
 
 	// remove possible -HD suffix to prevent caching the same image twice (issue #1040)
@@ -292,13 +288,13 @@ static CCTextureCache *sharedTextureCache;
 
 		// all images are handled by UIKit/AppKit except PVR extension that is handled by cocos2d's handler
 
-
 		if ( [lowerCase hasSuffix:@".pvr"] || [lowerCase hasSuffix:@".pvr.gz"] || [lowerCase hasSuffix:@".pvr.ccz"] )
 			tex = [self addPVRImage:path];
 
 #ifdef __CC_PLATFORM_IOS
 
 		else {
+
 			ccResolutionType resolution;
 			NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:path resolutionType:&resolution];
 
@@ -321,12 +317,11 @@ static CCTextureCache *sharedTextureCache;
 
 #elif defined(__CC_PLATFORM_MAC)
 		else {
-			ccResolutionType resolution;
-			NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath:path resolutionType:&resolution];
+			NSString *fullpath = [[CCFileUtils sharedFileUtils] fullPathFromRelativePath: path ];
 
 			NSData *data = [[NSData alloc] initWithContentsOfFile:fullpath];
 			NSBitmapImageRep *image = [[NSBitmapImageRep alloc] initWithData:data];
-			tex = [ [CCTexture2D alloc] initWithCGImage:[image CGImage] resolutionType:resolution];
+			tex = [ [CCTexture2D alloc] initWithCGImage:[image CGImage]];
 
 			[data release];
 			[image release];
@@ -365,7 +360,11 @@ static CCTextureCache *sharedTextureCache;
 			return tex;
 	}
 
+#ifdef __CC_PLATFORM_IOS
 	tex = [[CCTexture2D alloc] initWithCGImage:imageref resolutionType:kCCResolutionUnknown];
+#elif __CC_PLATFORM_MAC
+	tex = [[CCTexture2D alloc] initWithCGImage:imageref];
+#endif
 
 	if(tex && key){
 		dispatch_sync(_dictQueue, ^{

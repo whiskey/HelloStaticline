@@ -39,29 +39,27 @@
 	// always call "super" init
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
-		
+        
+        CGSize size = [[CCDirector sharedDirector] winSize];
 		// create and initialize a Label
-		CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello Staticline" fontName:@"Marker Felt" fontSize:60];
-
-		// ask director for the window size
-		CGSize size = [[CCDirector sharedDirector] winSize];
-
-//		// position the label on the center of the screen
-//        int width=[[UIScreen mainScreen] bounds].size.width;
-//        int height=[[UIScreen mainScreen] bounds].size.height;
-//        CGPoint center=ccp(width/2,height/2);
-//        label.position = ccp( size.width /2, size.height/2 );
+        CCLabelBMFont *label = [CCLabelBMFont labelWithString:@"Hello Staticline" fntFile:@"nanum_large.fnt"];
+        label.scale = [UIScreen mainScreen].scale/2;
+        
+		// position the label on the center of the screen
+#warning switched width and height because CCDirector is still in portrait mode
+        label.position = ccp(size.height/2,size.width/2 + label.boundingBox.size.height);
+        
+        // add the label as a child to this Layer
+		[self addChild: label];
         
         NSLog(@"director window size: %@ -- uiscreen %@",NSStringFromCGSize(size), NSStringFromCGRect([[UIScreen mainScreen] bounds]));
         NSLog(@"label bbox: %@",NSStringFromCGRect(label.boundingBox));
 		
-		// add the label as a child to this Layer
-		[self addChild: label];
-				
+        
 		//
 		// Leaderboards and Achievements
 		//
-		[CCMenuItemFont setFontSize:20];
+		[CCMenuItemFont setFontSize:30];
 		
 		// Achievement Menu Item using blocks
 		CCMenuItem *itemAchievement = [CCMenuItemFont itemWithString:@"Achievements" block:^(id sender) {
@@ -81,8 +79,7 @@
 			AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
 			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
 			[leaderboardViewController release];
-		}
-									   ];
+		}];
         CCMenuItem *gameStart = [CCMenuItemFont itemWithString:@"start game" block:^(id sender) {
             [[CCDirector sharedDirector] replaceScene:
                     [CCTransitionFlipAngular transitionWithDuration:0.8f scene:[STLGameLayer scene]]];
@@ -90,14 +87,16 @@
 		
 		CCMenu *menu = [CCMenu menuWithItems:gameStart, itemAchievement, itemLeaderboard, nil];
 		
-		[menu alignItemsHorizontallyWithPadding:20]; //[UIScreen mainScreen].scale
-		[menu setPosition:ccp( size.width/2, size.height/2 - 50)]; // * [UIScreen mainScreen].scale
+		[menu alignItemsHorizontallyWithPadding:20];
+#warning switched width and height because CCDirector is still in portrait mode
+		[menu setPosition:ccp( size.height/2, size.width/2)];
 		
 		// Add the menu to the layer
 		[self addChild:menu];
 	}
 	return self;
 }
+
 
 #pragma mark GameKit delegate
 

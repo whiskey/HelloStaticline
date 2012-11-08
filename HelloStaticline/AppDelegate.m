@@ -56,24 +56,6 @@
 	if( ! [director_ enableRetinaDisplay:YES] )
 		CCLOG(@"Retina Display Not supported");
     
-    // add the scene to the stack. The director will run it when it automatically when the view is displayed.
-	[director_ pushScene: [STLMainMenuLayer scene]];
-
-	// Create a Navigation Controller with the Director
-	navController_ = [[STLGameNavigationController alloc] initWithRootViewController:director_];
-	navController_.navigationBarHidden = YES;
-
-//    if ([[UIDevice currentDevice].systemVersion floatValue] < 6.0 && [window_ respondsToSelector:@selector(addSubview:)]) {
-//        [window_ addSubview:navController_.view];
-//    } else {
-//        // set the Navigation Controller as the root view controller
-//        [window_ setRootViewController:navController_];
-//    }
-    [window_ setRootViewController:navController_];
-
-	// make main window visible
-	[window_ makeKeyAndVisible];
-
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
 	// You can change anytime.
@@ -98,16 +80,26 @@
         [gcm authenticateLocalPlayer];
     }
     
-    [window_ makeKeyAndVisible];
+    // add the scene to the stack. The director will run it when it automatically when the view is displayed.
+	[director_ pushScene: [STLMainMenuLayer scene]];
+    
+	// Create a Navigation Controller with the Director
+	navController_ = [[STLGameNavigationController alloc] initWithRootViewController:director_];
+	navController_.navigationBarHidden = YES;
+    
+    [window_ setRootViewController:navController_];
+    
+	// make main window visible
+	[window_ makeKeyAndVisible];
     
 	return YES;
 }
 
-- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+// Supported orientations: Landscape. Customize it for your own needs
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return UIInterfaceOrientationMaskLandscape;
+	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
 }
-
 
 // getting a call, pause the game
 -(void) applicationWillResignActive:(UIApplication *)application

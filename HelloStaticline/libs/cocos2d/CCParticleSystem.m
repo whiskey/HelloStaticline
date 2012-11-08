@@ -88,11 +88,6 @@
 	return [[[self alloc] initWithFile:plistFile] autorelease];
 }
 
-+(id) particleWithTotalParticles:(NSUInteger) numberOfParticles
-{
-	return [[[self alloc] initWithTotalParticles:numberOfParticles] autorelease];
-}
-
 -(id) init {
 	return [self initWithTotalParticles:150];
 }
@@ -103,17 +98,10 @@
 	NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:path];
 
 	NSAssert( dict != nil, @"Particles: file not found");
-	
-	return [self initWithDictionary:dict path:[plistFile stringByDeletingLastPathComponent]];
+	return [self initWithDictionary:dict];
 }
-
 
 -(id) initWithDictionary:(NSDictionary *)dictionary
-{
-	return [self initWithDictionary:dictionary path:@""];
-}
-
--(id) initWithDictionary:(NSDictionary *)dictionary path:(NSString*)dirname
 {
 	NSUInteger maxParticles = [[dictionary valueForKey:@"maxParticles"] integerValue];
 	// self, not super
@@ -239,11 +227,6 @@
 			// Try to get the texture from the cache
 
 			NSString *textureName = [dictionary valueForKey:@"textureFileName"];
-			NSString *textureDir = [textureName stringByDeletingLastPathComponent];
-			
-			// For backward compatibility, only append the dirname if both dirnames are the same
-			if( ! [textureDir isEqualToString:dirname] )
-				textureName = [dirname stringByAppendingPathComponent:textureName];
 
 			CCTexture2D *tex = [[CCTextureCache sharedTextureCache] addImage:textureName];
 
@@ -323,14 +306,14 @@
 
 		autoRemoveOnFinish_ = NO;
 
-		// Optimization: compile updateParticle method
+		// Optimization: compile udpateParticle method
 		updateParticleSel = @selector(updateQuadWithParticle:newPosition:);
 		updateParticleImp = (CC_UPDATE_PARTICLE_IMP) [self methodForSelector:updateParticleSel];
 
 		//for batchNode
 		transformSystemDirty_ = NO;
 
-		// update after action in run!
+		// udpate after action in run!
 		[self scheduleUpdateWithPriority:1];
 	}
 	return self;
