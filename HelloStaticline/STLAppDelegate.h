@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "STLGameNavigationController.h"
 
-@interface AppDelegate : NSObject <UIApplicationDelegate, CCDirectorDelegate>
+@interface STLAppDelegate : NSObject <UIApplicationDelegate, CCDirectorDelegate>
 {
 	UIWindow *window_;
 	STLGameNavigationController *navController_;

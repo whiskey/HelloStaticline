@@ -7,7 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "AppDelegate.h"
+#import "STLAppDelegate.h"
 #import "STLGameLayer.h"
 
 

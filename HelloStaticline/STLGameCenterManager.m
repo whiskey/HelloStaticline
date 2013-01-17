@@ -84,7 +84,7 @@ static STLGameCenterManager *sharedInstance;
 -(void) authenticateLocalPlayer
 {
     GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+    [localPlayer setAuthenticateHandler:^(UIViewController *viewController, NSError *error) {
         if (localPlayer.isAuthenticated) {
 #if DEBUG && RESET_ACHIEVEMENTS
             // reset all achievements - DEBUG/DEVELOPMENT ONLY!

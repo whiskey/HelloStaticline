@@ -7,11 +7,11 @@
 //
 
 #import "cocos2d.h"
-#import "AppDelegate.h"
+#import "STLAppDelegate.h"
 #import "STLGameCenterManager.h"
 #import "STLMainMenuLayer.h"
 
-@implementation AppDelegate
+@implementation STLAppDelegate
 
 @synthesize window = window_;
 @synthesize navController = navController_;
@@ -95,10 +95,9 @@
 	return YES;
 }
 
-// Supported orientations: Landscape. Customize it for your own needs
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+- (NSUInteger)application:(UIApplication*)application supportedInterfaceOrientationsForWindow:(UIWindow*)window
 {
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 // getting a call, pause the game

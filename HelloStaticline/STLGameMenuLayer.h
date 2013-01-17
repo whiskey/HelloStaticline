@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GameKit/GameKit.h>
 #import "cocos2d.h"
 #import "STLHUDLayer.h"
 
 
-@interface STLGameMenuLayer : CCLayer
+@interface STLGameMenuLayer : CCLayer<GKAchievementViewControllerDelegate, GKLeaderboardViewControllerDelegate>
 @property (nonatomic,retain) id<STLGameHUDDelegate> delegate;
 //
 @end

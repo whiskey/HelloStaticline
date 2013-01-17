@@ -32,7 +32,7 @@
 		35436688159B6C1B004D5ED1 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35436687159B6C1B004D5ED1 /* Icon@2x.png */; };
 		3543668B159B6C1B004D5ED1 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 3543668A159B6C1B004D5ED1 /* iTunesArtwork */; };
 		354367E8159B6C1D004D5ED1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367E7159B6C1D004D5ED1 /* main.m */; };
-		354367EB159B6C1D004D5ED1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367EA159B6C1D004D5ED1 /* AppDelegate.m */; };
+		354367EB159B6C1D004D5ED1 /* STLAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367EA159B6C1D004D5ED1 /* STLAppDelegate.m */; };
 		354367EE159B6C1D004D5ED1 /* STLMainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */; };
 		35436854159B8B64004D5ED1 /* STLGameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 35436853159B8B64004D5ED1 /* STLGameLayer.m */; };
 		35625B3F15A08345008F3151 /* STLGameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 35625B3E15A08345008F3151 /* STLGameCenterManager.m */; };
@@ -221,8 +221,8 @@
 		3543668A159B6C1B004D5ED1 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
 		354367E6159B6C1D004D5ED1 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		354367E7159B6C1D004D5ED1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		354367E9159B6C1D004D5ED1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		354367EA159B6C1D004D5ED1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		354367E9159B6C1D004D5ED1 /* STLAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLAppDelegate.h; sourceTree = "<group>"; };
+		354367EA159B6C1D004D5ED1 /* STLAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLAppDelegate.m; sourceTree = "<group>"; };
 		354367EC159B6C1D004D5ED1 /* STLMainMenuLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLMainMenuLayer.h; sourceTree = "<group>"; };
 		354367ED159B6C1D004D5ED1 /* STLMainMenuLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLMainMenuLayer.m; sourceTree = "<group>"; };
 		35436852159B8B64004D5ED1 /* STLGameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameLayer.h; sourceTree = "<group>"; };
@@ -586,8 +586,8 @@
 		35436673159B6C1A004D5ED1 /* HelloStaticline */ = {
 			isa = PBXGroup;
 			children = (
-				354367E9159B6C1D004D5ED1 /* AppDelegate.h */,
-				354367EA159B6C1D004D5ED1 /* AppDelegate.m */,
+				354367E9159B6C1D004D5ED1 /* STLAppDelegate.h */,
+				354367EA159B6C1D004D5ED1 /* STLAppDelegate.m */,
 				354555F715A8B18A00439E22 /* STLGameConfig.h */,
 				35E211FA163D24D800FC7C1F /* STLGameNavigationController.h */,
 				35E211FB163D24D800FC7C1F /* STLGameNavigationController.m */,
@@ -1188,7 +1188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				354367E8159B6C1D004D5ED1 /* main.m in Sources */,
-				354367EB159B6C1D004D5ED1 /* AppDelegate.m in Sources */,
+				354367EB159B6C1D004D5ED1 /* STLAppDelegate.m in Sources */,
 				354367EE159B6C1D004D5ED1 /* STLMainMenuLayer.m in Sources */,
 				35436854159B8B64004D5ED1 /* STLGameLayer.m in Sources */,
 				35884676159F13D1004B750D /* STLPlayer.m in Sources */,
@@ -1341,8 +1341,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1355,8 +1355,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = hellostaticline;
-				PROVISIONING_PROFILE = "4C505FE1-CA8E-49CE-950E-CA01A0ED7DAF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4C505FE1-CA8E-49CE-950E-CA01A0ED7DAF";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
@@ -1371,8 +1371,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Carsten Witzke (B9UZNC9696)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					NDEBUG,
@@ -1383,8 +1383,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = hellostaticline;
-				PROVISIONING_PROFILE = "4C505FE1-CA8E-49CE-950E-CA01A0ED7DAF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4C505FE1-CA8E-49CE-950E-CA01A0ED7DAF";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "";
@@ -1403,7 +1403,7 @@
 				GCC_PREFIX_HEADER = HelloStaticline/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"HelloStaticline/libs/kazmath/include\"";
 				INFOPLIST_FILE = HelloStaticline/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -1423,7 +1423,7 @@
 				GCC_PREFIX_HEADER = HelloStaticline/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"HelloStaticline/libs/kazmath/include\"";
 				INFOPLIST_FILE = HelloStaticline/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-lz",

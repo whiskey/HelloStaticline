@@ -9,12 +9,10 @@
 
 // Import the interfaces
 #import "STLMainMenuLayer.h"
-#import "AppDelegate.h"
+#import "STLAppDelegate.h"
 #import "STLGameLayer.h"
 
-#pragma mark - HelloWorldLayer
 
-// HelloWorldLayer implementation
 @implementation STLMainMenuLayer
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -44,20 +42,14 @@
 		// create and initialize a Label
         CCLabelBMFont *label = [CCLabelBMFont labelWithString:@"Hello Staticline" fntFile:@"nanum_large.fnt"];
         label.scale = [UIScreen mainScreen].scale/2;
-        
 		// position the label on the center of the screen
 #warning switched width and height because CCDirector is still in portrait mode
         label.position = ccp(size.height/2,size.width/2 + label.boundingBox.size.height);
-        
         // add the label as a child to this Layer
 		[self addChild: label];
-        
-        NSLog(@"director window size: %@ -- uiscreen %@",NSStringFromCGSize(size), NSStringFromCGRect([[UIScreen mainScreen] bounds]));
-        NSLog(@"label bbox: %@",NSStringFromCGRect(label.boundingBox));
-		
-        
+
 		//
-		// Leaderboards and Achievements
+		// main menu items
 		//
 		[CCMenuItemFont setFontSize:30];
 		
@@ -66,8 +58,8 @@
 			GKAchievementViewController *achivementViewController = [[GKAchievementViewController alloc] init];
 			achivementViewController.achievementDelegate = self;
 			
-			AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-			[[app navController] presentModalViewController:achivementViewController animated:YES];
+			STLAppDelegate *app = (STLAppDelegate*) [[UIApplication sharedApplication] delegate];
+			[[app navController] presentViewController:achivementViewController animated:YES completion:nil];
 			[achivementViewController release];
 		}];
         
@@ -76,13 +68,15 @@
 			GKLeaderboardViewController *leaderboardViewController = [[GKLeaderboardViewController alloc] init];
 			leaderboardViewController.leaderboardDelegate = self;
 			
-			AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-			[[app navController] presentModalViewController:leaderboardViewController animated:YES];
+			STLAppDelegate *app = (STLAppDelegate*) [[UIApplication sharedApplication] delegate];
+			[[app navController] presentViewController:leaderboardViewController animated:YES completion:nil];
 			[leaderboardViewController release];
 		}];
+        
+        // most important: game start
         CCMenuItem *gameStart = [CCMenuItemFont itemWithString:@"start game" block:^(id sender) {
             [[CCDirector sharedDirector] replaceScene:
-                    [CCTransitionFlipAngular transitionWithDuration:0.8f scene:[STLGameLayer scene]]];
+                    [CCTransitionFade transitionWithDuration:0.8f scene:[STLGameLayer scene]]];
         }];
 		
 		CCMenu *menu = [CCMenu menuWithItems:gameStart, itemAchievement, itemLeaderboard, nil];
@@ -97,18 +91,17 @@
 	return self;
 }
 
-
 #pragma mark GameKit delegate
 
 -(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
 {
-	AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	STLAppDelegate *app = (STLAppDelegate*) [[UIApplication sharedApplication] delegate];
+	[[app navController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
-	AppDelegate *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	STLAppDelegate *app = (STLAppDelegate*) [[UIApplication sharedApplication] delegate];
+	[[app navController] dismissViewControllerAnimated:YES completion:nil];
 }
 @end
