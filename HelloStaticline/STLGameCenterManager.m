@@ -21,44 +21,15 @@ static STLGameCenterManager *sharedInstance;
 
 + (STLGameCenterManager *)sharedInstance
 {
-    if (sharedInstance == nil) {
-        sharedInstance = [[super allocWithZone:NULL] init];
-        sharedInstance.achievementsDictionary = [NSMutableDictionary dictionary];
-    }
-    return sharedInstance;
+    static dispatch_once_t pred = 0;
+    __strong static STLGameCenterManager *_sharedObject = nil;
+    
+    dispatch_once(&pred, ^{
+        _sharedObject = [[STLGameCenterManager alloc] init];
+        _sharedObject.achievementsDictionary = [NSMutableDictionary dictionary];
+    });
+    return _sharedObject;
 }
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-    return [[self sharedInstance] retain];
-}
-
-- (id)copy
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
-}
-
-- (NSUInteger)retainCount
-{
-    return NSUIntegerMax;
-}
-
-- (oneway void)release
-{
-    // no action
-    // oneway: http://stackoverflow.com/questions/7379470/singleton-release-method-produces-warning
-}
-
-- (id)autorelease
-{
-    return self;
-}
-
 
 #pragma mark - game center
 /**
@@ -140,10 +111,10 @@ static STLGameCenterManager *sharedInstance;
     GKAchievement *achievement = [_achievementsDictionary objectForKey:identifier];
     if (achievement == nil)
     {
-        achievement = [[[GKAchievement alloc] initWithIdentifier:identifier] autorelease];
+        achievement = [[GKAchievement alloc] initWithIdentifier:identifier];
         [_achievementsDictionary setObject:achievement forKey:achievement.identifier];
     }
-    return [[achievement retain] autorelease];
+    return achievement;
 }
 
 /*

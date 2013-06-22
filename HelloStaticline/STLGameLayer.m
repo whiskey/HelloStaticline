@@ -83,12 +83,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    dispatch_release(backgroundQueue);
-    [super dealloc];
-}
-
 - (void)spawnActors
 {
     // add player
@@ -119,7 +113,7 @@
         return _player;
     }
     // (re-)initialize player
-    self.player = [[[STLPlayer alloc] init] autorelease];
+    self.player = [[STLPlayer alloc] init];
     _player.node.zOrder = 5;
     return _player;
 }
@@ -129,7 +123,7 @@
     if (_bear) {
         return _bear;
     }
-    self.bear = [[[STLBear alloc] init] autorelease];
+    self.bear = [[STLBear alloc] init];
     CGSize size = [[CCDirector sharedDirector] winSize];
     // set him to the lower right corner
     _bear.node.position =  ccp( size.width * 0.7 , size.height * 0.3 );
@@ -191,7 +185,6 @@
     for (id<STLTargetProtocol> target in targetsToDelete) {
         [_activeTargets removeObject:target];
     }
-    [targetsToDelete release];
     
     // center view on player
     [self setViewpointCenter:_player.node.position];
@@ -260,7 +253,6 @@
                                                           cancelButtonTitle:@"wtf?!?" 
                                                           otherButtonTitles:nil];
                     [alert show];
-                    [alert release];
                     [_hud showConversation:-1];
                 }
                 return;
@@ -297,7 +289,6 @@
     marker.node.position = touchLocation;
     [self addChild:marker.node];
     [self.activeTargets addObject:marker];
-    [marker release];
 }
 
 # pragma mark - HUD delegate

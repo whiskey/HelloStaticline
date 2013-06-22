@@ -35,7 +35,7 @@ NSString *const kSTLPurchaseNRenewingHappy1h = @"de.staticline.hello.happiness_1
 
 - (void)requestProducts
 {
-    self.productRequest = [[[SKProductsRequest alloc] initWithProductIdentifiers:self.productIdentifiers] autorelease];
+    self.productRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:self.productIdentifiers];
     _productRequest.delegate = self;
     [_productRequest start];
 }

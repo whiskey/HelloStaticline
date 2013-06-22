@@ -49,7 +49,6 @@
 			achivementViewController.achievementDelegate = self;
 
 			[_navigationController presentViewController:achivementViewController animated:YES completion:nil];
-			[achivementViewController release];
         }];
         
         // Leaderboard
@@ -58,7 +57,6 @@
 			leaderboardViewController.leaderboardDelegate = self;
     
 			[_navigationController presentViewController:leaderboardViewController animated:YES completion:nil];
-			[leaderboardViewController release];
         }];
         
         // back to game

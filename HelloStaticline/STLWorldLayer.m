@@ -37,14 +37,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    self.tileMap = nil;
-    self.background = nil;
-    [super dealloc];
-}
-
-
 
 #pragma mark - world layer helpers
 

@@ -60,7 +60,6 @@
 			
 			STLAppDelegate *app = (STLAppDelegate*) [[UIApplication sharedApplication] delegate];
 			[[app navController] presentViewController:achivementViewController animated:YES completion:nil];
-			[achivementViewController release];
 		}];
         
 		// Leaderboard Menu Item using blocks
@@ -70,7 +69,6 @@
 			
 			STLAppDelegate *app = (STLAppDelegate*) [[UIApplication sharedApplication] delegate];
 			[[app navController] presentViewController:leaderboardViewController animated:YES completion:nil];
-			[leaderboardViewController release];
 		}];
         
         // most important: game start

@@ -27,7 +27,7 @@
     if (self) {
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         // create and place score label
-        [self.scoreLabel setPosition:ccp(winSize.width-10,winSize.height-55)];
+        [self.scoreLabel setPosition:ccp(winSize.width-10,winSize.height-90)];
         [self addChild:_scoreLabel];
         
         // pause / game menu
@@ -52,23 +52,8 @@
     if (_scoreLabel) {
         return _scoreLabel;
     }
-    // TODO: own font, ...
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
-        ([UIScreen mainScreen].scale == 2.0)) {
-        // Retina display
-        self.scoreLabel = [[[CCLabelAtlas alloc] initWithString:@"0" 
-                                                    charMapFile:@"fps_images-hd.png" 
-                                                      itemWidth:12
-                                                     itemHeight:56 
-                                                   startCharMap:'.'] autorelease];
-    } else {
-        // non-Retina display
-        self.scoreLabel = [[[CCLabelAtlas alloc] initWithString:@"0" 
-                                                    charMapFile:@"fps_images.png" 
-                                                      itemWidth:12
-                                                     itemHeight:56 
-                                                   startCharMap:'.'] autorelease];
-    }
+    self.scoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"blood_font_80.fnt"];
+    _scoreLabel.scale = CC_CONTENT_SCALE_FACTOR();
     _scoreLabel.anchorPoint = ccp(1,0);
     return _scoreLabel;
 }

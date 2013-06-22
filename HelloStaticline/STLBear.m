@@ -22,13 +22,6 @@
 @synthesize moveAction = _moveAction;
 @synthesize moving = _moving;
 
-- (void)dealloc
-{
-    self.sprite = nil;
-    self.walkAction = nil;
-    self.moveAction = nil;
-    [super dealloc];
-}
 
 - (CCNode *)node
 {
