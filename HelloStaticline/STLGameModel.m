@@ -30,13 +30,25 @@
     for (CCSprite *projectile in _projectiles) {
         for (STLEnemy *enemy in _enemies) {
 #warning this is broken...
-            CGPoint ball = [[CCDirector sharedDirector] convertToGL:projectile.position];
-            CGPoint target = [_player.sprite convertToNodeSpace:enemy.sprite.position];
+            // game_layer
+            //   |
+            //   |-> player
+            //   |      |
+            //   |      |-> batch_node
+            //   |              |
+            //   |              |-> projectile
+            //   |
+            //   |-> batch_node
+            //           |
+            //           |-> enemy
             
-            float distance = pow(ball.x - target.x, 2) + pow(ball.y - target.y, 2);
+            CGPoint shot = [projectile convertToWorldSpace:projectile.position];
+            CGPoint target = [enemy.sprite convertToWorldSpaceAR:enemy.sprite.position];
+            
+            float distance = pow(shot.x - target.x, 2) + pow(shot.y - target.y, 2);
             distance = sqrt(distance);
             
-            DLog(@"%@ %@ dist: %.4f",NSStringFromCGPoint(ball), NSStringFromCGPoint(target), distance);
+            DLog(@"%@ %@ dist: %.4f",NSStringFromCGPoint(shot), NSStringFromCGPoint(target), distance);
             
 //            STLMarker *marker = [[STLMarker alloc] init];
 //            marker.node.position = ball;
@@ -53,3 +65,4 @@
 }
 
 @end
+

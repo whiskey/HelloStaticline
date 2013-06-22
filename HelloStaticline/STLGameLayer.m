@@ -256,6 +256,15 @@
                 }
                 return;
             }
+            
+            // health
+            NSString *health = [properties valueForKey:@"health"];
+            if (health && [health compare:@"True"] == NSOrderedSame) {
+                float dist = ccpDistance(_gameModel.player.sprite.position, touchLocation);
+                if (dist <= 70) {
+                    // do stuff
+                }
+            }
         }
     }
     
@@ -280,7 +289,7 @@
         toCheck = ccpAdd(toCheck, movementVector);
     }
 
-    if (1) { // self.hud.inShootMode
+    if (self.hud.inShootMode) { // self.hud.inShootMode
         [_gameModel.player shootToDirection:movementVector];
     } else {
         // move player to touched location
