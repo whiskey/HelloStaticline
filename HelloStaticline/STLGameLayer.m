@@ -31,8 +31,6 @@
 @synthesize world = _world;
 @synthesize hud = _hud;
 @synthesize activeTargets = _activeTargets;
-@synthesize player = _player;
-@synthesize bear = _bear;
 @synthesize touchDispatcher = _touchDispatcher;
 
 +(CCScene *) scene
@@ -79,6 +77,11 @@
         // set scheduler
         [self schedule:@selector(nextFrame:)];
         
+        // currently not used
+        self.batchNode = [CCSpriteBatchNode batchNodeWithFile:@"atlas.pvr.ccz" capacity:4000];
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"atlas.plist"];
+        
+        self.gameModel = [STLGameModel sharedInstance];
     }
     return self;
 }
@@ -86,15 +89,33 @@
 - (void)spawnActors
 {
     // add player
-    self.player.node.position = [_world playerSpawnPoint];
-    [self addChild:_player.node];
+    _gameModel.player = [[STLPlayer alloc] init];
+    _gameModel.player.node.zOrder = 5;
+    _gameModel.player.node.position = [_world playerSpawnPoint];
+    [self addChild:_gameModel.player.node];
     
     // add bear - the other good guy in game
-    self.bear.node.position = [_world bearSpawnPoint];
-    [self addChild:_bear.node];
-
+    _gameModel.bear = [[STLBear alloc] init];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    // set him to the lower right corner
+    _gameModel.bear.node.position =  ccp( size.width * 0.7 , size.height * 0.3 );
+    _gameModel.bear.node.zOrder = 0;
+    // walking around (atm, just animation)
+    [_gameModel.bear startWalkAnimation];
+    _gameModel.bear.node.position = [_world bearSpawnPoint];
+    [self addChild:_gameModel.bear.node];
+    
+    // enemies
+    for (NSValue *value in [_world enemySpawnPoints]) {
+        STLEnemy *enemy = [[STLEnemy alloc] init];
+        enemy.node.position = value.CGPointValue;
+        enemy.node.zOrder = 1;
+        [_gameModel.enemies addObject:enemy];
+        [self addChild:enemy.node];
+    }
+    
     // center on player
-    [self setViewpointCenter:_player.node.position];
+    [self setViewpointCenter:_gameModel.player.node.position];
 }
 
 - (void)initAudio
@@ -105,32 +126,6 @@
         engine.backgroundMusicVolume = 0.7;
         //[engine playBackgroundMusic:BACKGROUND_MUSIC_FILE];
     }
-}
-
-- (STLPlayer *)player
-{
-    if (_player) {
-        return _player;
-    }
-    // (re-)initialize player
-    self.player = [[STLPlayer alloc] init];
-    _player.node.zOrder = 5;
-    return _player;
-}
-
-- (STLBear *)bear
-{
-    if (_bear) {
-        return _bear;
-    }
-    self.bear = [[STLBear alloc] init];
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    // set him to the lower right corner
-    _bear.node.position =  ccp( size.width * 0.7 , size.height * 0.3 );
-    _bear.node.zOrder = 0;
-    // walking around (atm, just animation)
-    [_bear startWalkAnimation];
-    return _bear;
 }
 
 - (CCTouchDispatcher *)touchDispatcher
@@ -158,7 +153,7 @@
     
     // hit test: player location vs. marker
     for (id<STLTargetProtocol> target in _activeTargets) {
-        if (CGRectIntersectsRect(target.node.boundingBox, _player.node.boundingBox)) {
+        if (CGRectIntersectsRect(target.node.boundingBox, _gameModel.player.node.boundingBox)) {
             // target destruction
             [target removeFromGamewithActionType:kSTLTargetExplode];
             // mark as "to delete"
@@ -166,19 +161,19 @@
             
             dispatch_sync(backgroundQueue, ^{
                 // player logic (score,achievements,...)
-                [_player killedTarget:target];
+                [_gameModel.player killedTarget:target];
                 // update hud
-                [_hud.scoreLabel setString:[NSString stringWithFormat:@"%d",_player.score]];
+                [_hud.scoreLabel setString:[NSString stringWithFormat:@"%d",_gameModel.player.score]];
             });
         }
     }
     
     // quick 'n dirty hit test with the bear
-    if (CGRectIntersectsRect(_bear.node.boundingBox, _player.node.boundingBox)) {
-        [_bear onPlayerCollision];
-    } else if (!_bear.isMoving) {
+    if (CGRectIntersectsRect(_gameModel.bear.node.boundingBox, _gameModel.player.node.boundingBox)) {
+        [_gameModel.bear onPlayerCollision];
+    } else if (!_gameModel.bear.isMoving) {
         // restart bear movement
-        [_bear startWalkAnimation];
+        [_gameModel.bear startWalkAnimation];
     }
 
     // remove objects
@@ -187,7 +182,7 @@
     }
     
     // center view on player
-    [self setViewpointCenter:_player.node.position];
+    [self setViewpointCenter:_gameModel.player.node.position];
 }
 
 /*
@@ -244,7 +239,7 @@
             // sign?
             NSString *sign = [properties valueForKey:@"isSign"];
             if (sign && [sign compare:@"True"] == NSOrderedSame) {
-                float dist = ccpDistance(_player.node.position, touchLocation);
+                float dist = ccpDistance(_gameModel.player.node.position, touchLocation);
                 if (dist <= 70) {
                     // sign
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"a sign" 
@@ -261,9 +256,9 @@
     }
     
     // check in between (naive solution)
-    CGPoint movementVector = ccpNormalize(ccpSub(touchLocation,_player.node.position));
-    int STEPS = (int)ccpDistance(touchLocation, _player.node.position);
-    CGPoint toCheck = ccpAdd(_player.node.position, movementVector);
+    CGPoint movementVector = ccpNormalize(ccpSub(touchLocation,_gameModel.player.node.position));
+    int STEPS = (int)ccpDistance(touchLocation, _gameModel.player.node.position);
+    CGPoint toCheck = ccpAdd(_gameModel.player.node.position, movementVector);
     for (int step=1; step<STEPS; step++) {
         tileCoord = [_world tileCoordForPosition:toCheck];
         tileGid = [_world.meta tileGIDAt:tileCoord];
@@ -281,8 +276,14 @@
         toCheck = ccpAdd(toCheck, movementVector);
     }
 
-    // move player to touched location
-    [_player movePlayerToDestination:touchLocation];
+#pragma message "move? shoot?"
+    BOOL move = NO;
+    if (move) {
+        // move player to touched location
+        [_gameModel.player movePlayerToDestination:touchLocation];
+    } else {
+        [_gameModel.player shootToDirection:movementVector];
+    }
     
     // set a marker
     STLMarker *marker = [[STLMarker alloc] init];

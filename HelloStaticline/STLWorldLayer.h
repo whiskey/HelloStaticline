@@ -18,8 +18,11 @@
 // using tile coordinates
 - (CGPoint)tileCoordForPosition:(CGPoint)position;
 
-// 2 helper and one general spawnpoint getter
+// 2 helpers and general spawnpoint getter
 - (CGPoint)playerSpawnPoint;
 - (CGPoint)bearSpawnPoint;
+- (NSArray *)enemySpawnPoints;
+
 - (CGPoint)spawnPointForObject:(NSString *)type;
+- (NSArray *)spawnPointForObjects:(NSString *)type;
 @end

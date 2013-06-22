@@ -18,6 +18,7 @@
 @interface STLPlayer() {
     ALuint movementSoundID;
 }
+@property (nonatomic, strong) CCSpriteBatchNode *playerBatchNode;
 @property (nonatomic,assign) NSUInteger score;
 @property (nonatomic,assign) NSUInteger level;
 @property (nonatomic,assign) NSUInteger lifetimeCatchedMarkers;
@@ -61,20 +62,12 @@
         return _node;
     }
     // init with spritesheet
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"player_sprite_default.plist"];
-    CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"player_sprite_default.png"];
+    self.playerBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"atlas.pvr.ccz" capacity:200];
     _node = [CCNode node];
-    [_node addChild:spriteSheet];
+    [_node addChild:_playerBatchNode];
     // standing still
     _sprite = [CCSprite spriteWithSpriteFrameName:@"player_d_1.png"];
-    // scaling - better: use hd sprites
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
-        ([UIScreen mainScreen].scale == 2.0)) {
-        [_sprite setScale:1.0f];
-    } else {
-        [_sprite setScale:0.5f];
-    }
-    [spriteSheet addChild:_sprite];
+    [_playerBatchNode addChild:_sprite];
     _node.contentSize = _sprite.contentSize;
     return _node;
 }
@@ -175,8 +168,7 @@
     NSMutableArray *walkAnimFrames = [NSMutableArray array];
     for(int frame=1; frame<=3; frame++) {
         NSString *frameSprite = [NSString stringWithFormat:@"player_%@_%d.png",movementDir,frame];
-        [walkAnimFrames addObject:
-         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: frameSprite]];
+        [walkAnimFrames addObject: [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: frameSprite]];
     }
     // animation
     CCAnimation *walkAnim = [CCAnimation animationWithSpriteFrames:walkAnimFrames delay:0.2f];    
@@ -201,6 +193,24 @@
     }];
     id sequence = [CCSequence actions:ease, stopAnimation, nil];
     [_node runAction:sequence];
+}
+
+- (void)shootToDirection:(CGPoint)direction
+{
+    CCSprite *projectile = [CCSprite spriteWithSpriteFrameName:@"small-ball.png"];
+    NSAssert(projectile, @"no sprite");
+    projectile.scale = 3;
+    [_playerBatchNode addChild:projectile];
+    
+    direction = ccpMult(direction, 1000.0);
+//    CCAction *loop = [CCRepeatForever actionWithAction:[CCMoveBy actionWithDuration:0.05 position:direction]];
+    
+    CCSequence *sequence = [CCSequence actions:
+                            [CCMoveTo actionWithDuration:1.5 position:direction],
+                            [CCCallBlock actionWithBlock:^{
+                                [projectile removeFromParentAndCleanup:YES];
+                            }], nil];
+    [projectile runAction:sequence];
 }
 
 #pragma mark - achievement handling

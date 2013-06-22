@@ -9,17 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "STLHUDLayer.h"
-
 #import "STLWorldLayer.h"
+#import "STLGameModel.h"
 #import "STLPlayer.h"
 #import "STLBear.h"
+#import "STLEnemy.h"
 
 @interface STLGameLayer : CCLayer<CCTargetedTouchDelegate,STLGameHUDDelegate>
-@property (nonatomic,retain) STLWorldLayer *world;
-@property (nonatomic,retain) STLHUDLayer *hud;
+@property (strong, nonatomic) STLGameModel *gameModel;
 
-@property (nonatomic,retain) STLPlayer *player;
-@property (nonatomic,retain) STLBear *bear;
+@property (strong, nonatomic) CCSpriteBatchNode *batchNode;
+@property (strong, nonatomic) STLWorldLayer *world;
+@property (strong, nonatomic) STLHUDLayer *hud;
+
+
 
 +(CCScene *) scene;
 

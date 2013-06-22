@@ -89,6 +89,12 @@
 	return self;
 }
 
+- (void)onEnter
+{
+    [[CCDirector sharedDirector] replaceScene:
+     [CCTransitionFade transitionWithDuration:0.8f scene:[STLGameLayer scene]]];
+}
+
 #pragma mark GameKit delegate
 
 -(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController

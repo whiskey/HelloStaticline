@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="street" tilewidth="64" tileheight="64">
+  <image source="street.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="257" name="street_meta" tilewidth="64" tileheight="64">
+  <image source="street_meta.png" width="128" height="128"/>
+ </tileset>
+ <layer name="background" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztl11OBCEQhEedC6h7AX9uoBdQ1wP4d/+ryMsmhEBTVd1MeODhywaGAaqL7h32bdv2QG4Td4n74Hl7nILJdVjjmD2gYyK0K3549zHCB8SPvfhFQMeimpX8aGnwxPwoX64S15mOch3Wk0g/GEo/mHh7zoOirTXWyg9kjtbaiC9oTNA49OrVqLxsaVXW79UrpkbV9mZ5EhGTfK7SD7ReefOVrQ3WmSp1KHXHWkPxQ60RVn7U9qPGH9kLEztLhzpfz3M2P5R6Ufv/iD4HyHuobsYP1gtrHeQMefRf+mr5gXrvyRc0Pmh/q+4iucKcB0Vf79zmz1rfV0ousvnJemK12fug4keET62YtXQgsY3aB1tLLJT7uSdu6ly1GOd9l3vUTUX/KC9YPxDU7ysmH2r792ivtZn7YJQXjB+9GCD5wcS8FWfEIzXX8mfW91W0B2p+1M5D+Yz1o+zrta1xqh/IuUJ99frxHMxD4jHxNGBui1cHL532kZwdfIrvvSXeEx+Ba/06+BPf+0p8J34OWGskio4ZWTrmYumYi6VjLpaOuVg65mLpmIulYy6Wjjb/g7aHTA==
+  </data>
+ </layer>
+ <objectgroup name="Objects" width="50" height="50">
+  <object name="spawnpoint_player" x="1228" y="242"/>
+  <object name="spawnpoint_enemy" x="1494" y="626"/>
+  <object name="spawnpoint_enemy" x="1542" y="609"/>
+ </objectgroup>
+ <layer name="Meta" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztz7EJACAAxEAF95/ZCWw1yB2kfn4MAAAAAACAv6x5v9f7fvhRzo9WfrTyo5Ufrfxo5UcrP85tkP4Qhw==
+  </data>
+ </layer>
+</map>

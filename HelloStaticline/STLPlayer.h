@@ -27,6 +27,8 @@ typedef enum {
 // player movement with direction in ... FINDOUT: radians/degrees
 - (void) movePlayerToDestination:(CGPoint)destination;
 
+- (void) shootToDirection:(CGPoint)direction;
+
 // hit, blased, whatever...
 - (void) killedTarget:(id<STLTargetProtocol>)target;
 
