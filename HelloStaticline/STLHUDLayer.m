@@ -9,7 +9,6 @@
 #import "STLHUDLayer.h"
 #import "STLGameMenuLayer.h"
 
-
 @interface STLHUDLayer()
 @property (nonatomic,retain) CCLayer *gameMenu;
 - (void)showGameMenu;
@@ -34,20 +33,28 @@
         CCMenuItemImage *pauseBtn = [CCMenuItemImage itemWithNormalImage:@"pause.png" 
                                                            selectedImage:@"pause.png" 
                                                                    block:^(id sender) 
-        {
-            if ([delegate toggleGamePause]) {
-                [self showGameMenu];
-            }
-        }];
+            {
+                if ([delegate toggleGamePause]) {
+                    [self showGameMenu];
+                }
+            }];
         
         CCMenu *menu = [CCMenu menuWithItems:pauseBtn, nil];
         [menu setPosition:ccp(20, winSize.height - 24)];
         [self addChild:menu];
+        
+        
+        // aiming / weapon control
+        STLAimMenuItem *aim = [[STLAimMenuItem alloc] init];
+        aim.delegate = self;
+        CCMenu *weaponMenu = [CCMenu menuWithItems:aim, nil];
+        [weaponMenu setPosition:ccp(60, 80)];
+        [self addChild:weaponMenu];
     }
     return self;
 }
 
-- (CCLabelAtlas *)scoreLabel
+- (CCLabelBMFont *)scoreLabel
 {
     if (_scoreLabel) {
         return _scoreLabel;
@@ -75,4 +82,8 @@
 //    [self addChild:conv];
 }
 
+- (void)aimStateUpdate:(BOOL)aimActive
+{
+    self.inShootMode = aimActive;
+}
 @end

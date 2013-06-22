@@ -185,6 +185,8 @@
 		CE9D7F081775E4F6003931E5 /* street.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CE9D7F051775E4F6003931E5 /* street.tmx */; };
 		CE9D7F0B1775E597003931E5 /* STLEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9D7F0A1775E597003931E5 /* STLEnemy.m */; };
 		CE9D7F0F17760655003931E5 /* STLGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9D7F0E17760655003931E5 /* STLGameModel.m */; };
+		CE9D7F1117761E01003931E5 /* aim.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9D7F1017761E01003931E5 /* aim.png */; };
+		CE9D7F141776204B003931E5 /* STLAimMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9D7F131776204B003931E5 /* STLAimMenuItem.m */; };
 		CED7B4521628569E00897E73 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7B44F1628569E00897E73 /* Default-568h@2x.png */; };
 		CED7B4531628569E00897E73 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7B4501628569E00897E73 /* Default-Landscape~ipad.png */; };
 		CED7B4541628569E00897E73 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7B4511628569E00897E73 /* Default@2x.png */; };
@@ -521,6 +523,9 @@
 		CE9D7F0A1775E597003931E5 /* STLEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLEnemy.m; sourceTree = "<group>"; };
 		CE9D7F0D17760655003931E5 /* STLGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameModel.h; sourceTree = "<group>"; };
 		CE9D7F0E17760655003931E5 /* STLGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameModel.m; sourceTree = "<group>"; };
+		CE9D7F1017761E01003931E5 /* aim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aim.png; path = Resources/aim.png; sourceTree = "<group>"; };
+		CE9D7F121776204B003931E5 /* STLAimMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLAimMenuItem.h; sourceTree = "<group>"; };
+		CE9D7F131776204B003931E5 /* STLAimMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLAimMenuItem.m; sourceTree = "<group>"; };
 		CED7B44F1628569E00897E73 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		CED7B4501628569E00897E73 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		CED7B4511628569E00897E73 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
@@ -630,6 +635,7 @@
 		35436674159B6C1A004D5ED1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE9D7F1017761E01003931E5 /* aim.png */,
 				CE9D7F031775E4F6003931E5 /* street_meta.png */,
 				CE9D7F041775E4F6003931E5 /* street.png */,
 				CE9D7F051775E4F6003931E5 /* street.tmx */,
@@ -723,6 +729,8 @@
 				35A4CD0D15B32D1900EC76A5 /* STLGameMenuLayer.m */,
 				3534861E15AE1C6C0037EA73 /* STLConversationLayer.h */,
 				3534861F15AE1C6C0037EA73 /* STLConversationLayer.m */,
+				CE9D7F121776204B003931E5 /* STLAimMenuItem.h */,
+				CE9D7F131776204B003931E5 /* STLAimMenuItem.m */,
 			);
 			name = HUD;
 			sourceTree = "<group>";
@@ -1203,6 +1211,7 @@
 				CE9D7F061775E4F6003931E5 /* street_meta.png in Resources */,
 				CE9D7F071775E4F6003931E5 /* street.png in Resources */,
 				CE9D7F081775E4F6003931E5 /* street.tmx in Resources */,
+				CE9D7F1117761E01003931E5 /* aim.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1353,6 +1362,7 @@
 				35DF8858164C5B650051C86F /* SimpleAudioEngine.m in Sources */,
 				CE9D7F0B1775E597003931E5 /* STLEnemy.m in Sources */,
 				CE9D7F0F17760655003931E5 /* STLGameModel.m in Sources */,
+				CE9D7F141776204B003931E5 /* STLAimMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

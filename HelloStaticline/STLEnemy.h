@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "STLActorProtocol.h"
 
-@interface STLEnemy : NSObject<STLActorProtocol>
+@interface STLEnemy : NSObject<STLTargetProtocol>
 
 - (void) onPlayerCollision;
 

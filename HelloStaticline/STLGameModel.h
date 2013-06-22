@@ -20,4 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *projectiles;
 
 + (STLGameModel *)sharedInstance;
+
+- (void)update:(ccTime)delta;
+
 @end

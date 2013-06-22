@@ -9,6 +9,7 @@
 #import "STLPlayer.h"
 #import "STLGameCenterManager.h"
 #import "SimpleAudioEngine.h"
+#import "STLGameModel.h"
 
 #define PLAYER_MOVEMENT_SOUND @"player_walk.caf"
 
@@ -18,6 +19,7 @@
 @interface STLPlayer() {
     ALuint movementSoundID;
 }
+@property (nonatomic, strong) STLGameModel *gameModel;
 @property (nonatomic, strong) CCSpriteBatchNode *playerBatchNode;
 @property (nonatomic,assign) NSUInteger score;
 @property (nonatomic,assign) NSUInteger level;
@@ -49,6 +51,7 @@
         
         // get the achievement manager
         _gcm = [STLGameCenterManager sharedInstance];
+        _gameModel = [STLGameModel sharedInstance];
         
         // preload sounds
         [[SimpleAudioEngine sharedEngine] preloadEffect:PLAYER_MOVEMENT_SOUND];
@@ -201,6 +204,7 @@
     NSAssert(projectile, @"no sprite");
     projectile.scale = 3;
     [_playerBatchNode addChild:projectile];
+    [_gameModel.projectiles addObject:projectile];
     
     direction = ccpMult(direction, 1000.0);
 //    CCAction *loop = [CCRepeatForever actionWithAction:[CCMoveBy actionWithDuration:0.05 position:direction]];
@@ -208,6 +212,10 @@
     CCSequence *sequence = [CCSequence actions:
                             [CCMoveTo actionWithDuration:1.5 position:direction],
                             [CCCallBlock actionWithBlock:^{
+//                                dispatch_sync(dispatch_get_main_queue(), ^{
+//                                    [_gameModel.projectiles removeObject:projectile];
+//                                });
+                                [_gameModel.projectiles removeObject:projectile];
                                 [projectile removeFromParentAndCleanup:YES];
                             }], nil];
     [projectile runAction:sequence];

@@ -148,6 +148,8 @@
  */
 - (void)nextFrame:(ccTime)dt
 {
+    [_gameModel update:dt];
+    
     // container for all objects to be removed
     NSMutableArray *targetsToDelete = [[NSMutableArray alloc] init];
     
@@ -277,19 +279,19 @@
     }
 
 #pragma message "move? shoot?"
-    BOOL move = NO;
-    if (move) {
+    DLog(@"shoot mode? %d", self.hud.inShootMode);
+    if (self.hud.inShootMode) {
+        [_gameModel.player shootToDirection:movementVector];
+    } else {
         // move player to touched location
         [_gameModel.player movePlayerToDestination:touchLocation];
-    } else {
-        [_gameModel.player shootToDirection:movementVector];
     }
     
     // set a marker
-    STLMarker *marker = [[STLMarker alloc] init];
-    marker.node.position = touchLocation;
-    [self addChild:marker.node];
-    [self.activeTargets addObject:marker];
+    //STLMarker *marker = [[STLMarker alloc] init];
+    //marker.node.position = touchLocation;
+    //[self addChild:marker.node];
+    //[self.activeTargets addObject:marker];
 }
 
 # pragma mark - HUD delegate
@@ -297,18 +299,17 @@
 - (BOOL)toggleGamePause
 {
     if (isPaused) {
-        isPaused = NO;
         // reactivate touch
         self.isTouchEnabled = YES;
         // resume game
         [[CCDirector sharedDirector] resume];
     } else {
-        isPaused = YES;
         // pause touch interaction on this layer
         self.isTouchEnabled = NO;
         // pause the game
         [[CCDirector sharedDirector] pause];
     }
+    isPaused = !isPaused;
     return isPaused;
 }
 

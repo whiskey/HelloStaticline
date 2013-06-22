@@ -23,4 +23,19 @@
     return _sharedObject;
 }
 
+- (void)update:(ccTime)delta
+{
+    //NSLog(@"projectiles %03d   enemies %03d", _projectiles.count, _enemies.count);
+    for (CCSprite *projectile in _projectiles) {
+        for (STLEnemy *enemy in _enemies) {
+            // FIXME: coordinates
+            if (CGRectIntersectsRect(projectile.boundingBox, enemy.node.boundingBox)) {
+                DLog(@"enemy hit!");
+                [projectile removeFromParentAndCleanup:YES];
+                [enemy removeFromGame];
+            }
+        }
+    }
+}
+
 @end

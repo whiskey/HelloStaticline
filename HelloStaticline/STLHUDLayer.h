@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "STLAimMenuItem.h"
 
 /*
  HUD delegate
@@ -21,9 +22,10 @@
 /*
  The main HUD
  */
-@interface STLHUDLayer : CCLayer
+@interface STLHUDLayer : CCLayer<STLAimMenuItem>
+@property (nonatomic,assign, getter = isInShootMode) BOOL inShootMode;
 @property (nonatomic,retain) id<STLGameHUDDelegate> delegate;
-@property (nonatomic,retain) CCLabelAtlas *scoreLabel;
+@property (nonatomic,retain) CCLabelBMFont *scoreLabel;
 
 - (void) showConversation:(NSInteger)cID;
 

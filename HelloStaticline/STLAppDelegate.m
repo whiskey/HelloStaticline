@@ -31,6 +31,7 @@
 									sharegroup:nil
 								 multiSampling:NO
 							   numberOfSamples:0];
+    glView.multipleTouchEnabled = YES;
     
 	director_ = (CCDirectorIOS*) [CCDirector sharedDirector];
 
