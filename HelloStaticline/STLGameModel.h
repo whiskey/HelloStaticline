@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 staticline. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "STLPlayer.h"
 #import "STLEnemy.h"
 #import "STLBear.h"

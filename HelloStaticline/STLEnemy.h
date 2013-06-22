@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STLActorProtocol.h"
+#import "STLBaseSprite.h"
 
-@interface STLEnemy : NSObject<STLTargetProtocol>
+@interface STLEnemy : STLBaseSprite
 
 - (void) onPlayerCollision;
 

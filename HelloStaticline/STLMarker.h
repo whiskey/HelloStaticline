@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "cocos2d.h"
-#import "STLActorProtocol.h"
+#import "STLBaseSprite.h"
 
-@interface STLMarker : NSObject<STLTargetProtocol>
+@interface STLMarker : STLBaseSprite
 
 @end

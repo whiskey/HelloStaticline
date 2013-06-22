@@ -90,32 +90,34 @@
 {
     // add player
     _gameModel.player = [[STLPlayer alloc] init];
-    _gameModel.player.node.zOrder = 5;
-    _gameModel.player.node.position = [_world playerSpawnPoint];
-    [self addChild:_gameModel.player.node];
+    _gameModel.player.sprite.zOrder = 5;
+    _gameModel.player.sprite.position = [_world playerSpawnPoint];
+    [self addChild:_gameModel.player.sprite];
     
     // add bear - the other good guy in game
     _gameModel.bear = [[STLBear alloc] init];
     CGSize size = [[CCDirector sharedDirector] winSize];
     // set him to the lower right corner
-    _gameModel.bear.node.position =  ccp( size.width * 0.7 , size.height * 0.3 );
-    _gameModel.bear.node.zOrder = 0;
+    _gameModel.bear.sprite.position =  ccp( size.width * 0.7 , size.height * 0.3 );
+    _gameModel.bear.sprite.zOrder = 0;
     // walking around (atm, just animation)
     [_gameModel.bear startWalkAnimation];
-    _gameModel.bear.node.position = [_world bearSpawnPoint];
-    [self addChild:_gameModel.bear.node];
+    _gameModel.bear.sprite.position = [_world bearSpawnPoint];
+    [self addChild:_gameModel.bear.sprite];
     
     // enemies
     for (NSValue *value in [_world enemySpawnPoints]) {
         STLEnemy *enemy = [[STLEnemy alloc] init];
-        enemy.node.position = value.CGPointValue;
-        enemy.node.zOrder = 1;
+        enemy.sprite.position = value.CGPointValue;
+        enemy.sprite.zOrder = 1;
         [_gameModel.enemies addObject:enemy];
-        [self addChild:enemy.node];
+        [self addChild:enemy.sprite];
+        break;
+#warning one enemy
     }
     
     // center on player
-    [self setViewpointCenter:_gameModel.player.node.position];
+    [self setViewpointCenter:_gameModel.player.sprite.position];
 }
 
 - (void)initAudio
@@ -153,25 +155,25 @@
     // container for all objects to be removed
     NSMutableArray *targetsToDelete = [[NSMutableArray alloc] init];
     
-    // hit test: player location vs. marker
-    for (id<STLTargetProtocol> target in _activeTargets) {
-        if (CGRectIntersectsRect(target.node.boundingBox, _gameModel.player.node.boundingBox)) {
-            // target destruction
-            [target removeFromGamewithActionType:kSTLTargetExplode];
-            // mark as "to delete"
-            [targetsToDelete addObject:target];
-            
-            dispatch_sync(backgroundQueue, ^{
-                // player logic (score,achievements,...)
-                [_gameModel.player killedTarget:target];
-                // update hud
-                [_hud.scoreLabel setString:[NSString stringWithFormat:@"%d",_gameModel.player.score]];
-            });
-        }
-    }
+//    // hit test: player location vs. marker
+//    for (id<STLTargetProtocol> target in _activeTargets) {
+//        if (CGRectIntersectsRect(target.boundingBox, _gameModel.player.boundingBox)) {
+//            // target destruction
+//            [target removeFromGamewithActionType:kSTLTargetExplode];
+//            // mark as "to delete"
+//            [targetsToDelete addObject:target];
+//            
+//            dispatch_sync(backgroundQueue, ^{
+//                // player logic (score,achievements,...)
+//                [_gameModel.player killedTarget:target];
+//                // update hud
+//                [_hud.scoreLabel setString:[NSString stringWithFormat:@"%d",_gameModel.player.score]];
+//            });
+//        }
+//    }
     
     // quick 'n dirty hit test with the bear
-    if (CGRectIntersectsRect(_gameModel.bear.node.boundingBox, _gameModel.player.node.boundingBox)) {
+    if (CGRectIntersectsRect(_gameModel.bear.sprite.boundingBox, _gameModel.player.sprite.boundingBox)) {
         [_gameModel.bear onPlayerCollision];
     } else if (!_gameModel.bear.isMoving) {
         // restart bear movement
@@ -184,7 +186,7 @@
     }
     
     // center view on player
-    [self setViewpointCenter:_gameModel.player.node.position];
+    [self setViewpointCenter:_gameModel.player.sprite.position];
 }
 
 /*
@@ -241,7 +243,7 @@
             // sign?
             NSString *sign = [properties valueForKey:@"isSign"];
             if (sign && [sign compare:@"True"] == NSOrderedSame) {
-                float dist = ccpDistance(_gameModel.player.node.position, touchLocation);
+                float dist = ccpDistance(_gameModel.player.sprite.position, touchLocation);
                 if (dist <= 70) {
                     // sign
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"a sign" 
@@ -258,9 +260,9 @@
     }
     
     // check in between (naive solution)
-    CGPoint movementVector = ccpNormalize(ccpSub(touchLocation,_gameModel.player.node.position));
-    int STEPS = (int)ccpDistance(touchLocation, _gameModel.player.node.position);
-    CGPoint toCheck = ccpAdd(_gameModel.player.node.position, movementVector);
+    CGPoint movementVector = ccpNormalize(ccpSub(touchLocation,_gameModel.player.sprite.position));
+    int STEPS = (int)ccpDistance(touchLocation, _gameModel.player.sprite.position);
+    CGPoint toCheck = ccpAdd(_gameModel.player.sprite.position, movementVector);
     for (int step=1; step<STEPS; step++) {
         tileCoord = [_world tileCoordForPosition:toCheck];
         tileGid = [_world.meta tileGIDAt:tileCoord];
@@ -278,9 +280,7 @@
         toCheck = ccpAdd(toCheck, movementVector);
     }
 
-#pragma message "move? shoot?"
-    DLog(@"shoot mode? %d", self.hud.inShootMode);
-    if (self.hud.inShootMode) {
+    if (1) { // self.hud.inShootMode
         [_gameModel.player shootToDirection:movementVector];
     } else {
         // move player to touched location

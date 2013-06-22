@@ -11,9 +11,7 @@
 //  Copyright 2012 staticline. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "cocos2d.h"
-#import "STLActorProtocol.h"
+#import "STLBaseSprite.h"
 
 /*
  Action types for the bear
@@ -24,7 +22,7 @@ typedef enum {
 } STLBearAction;
 
 
-@interface STLBear : NSObject<STLActorProtocol>
+@interface STLBear : STLBaseSprite
 
 @property (assign,getter = isMoving) BOOL moving;
 

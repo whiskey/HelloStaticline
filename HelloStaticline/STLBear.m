@@ -16,28 +16,17 @@
 @end
 
 @implementation STLBear
-@synthesize node = _node;
-@synthesize sprite = _sprite;
 @synthesize walkAction = _walkAction;
 @synthesize moveAction = _moveAction;
 @synthesize moving = _moving;
 
-
-- (CCNode *)node
+- (id)init
 {
-    if (_node) {
-        return _node;
+    self = [super init];
+    if (self) {
+        self.sprite = [CCSprite spriteWithSpriteFrameName:@"bear1.png"];
     }
-    // init with spritesheet
-    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"atlas.plist"];
-    CCSpriteBatchNode *spriteSheet = [CCSpriteBatchNode batchNodeWithFile:@"atlas.pvr.ccz"];
-    _node = [CCNode node];
-    [_node addChild:spriteSheet];
-    // standing still
-    _sprite = [CCSprite spriteWithSpriteFrameName:@"bear1.png"];
-    [spriteSheet addChild:_sprite];
-    _node.contentSize = _sprite.contentSize;
-    return _node;
+    return self;
 }
 
 #pragma mark - gameplay
@@ -58,13 +47,13 @@
 - (void)startWalkAnimation
 {
     self.walkAction.tag = kSTLBearActionMovement;
-    [_sprite runAction:_walkAction];
+    [self.sprite runAction:_walkAction];
     _moving = YES;
 }
 
 - (void)stopWalkAnimation
 {
-    [_sprite stopActionByTag:kSTLBearActionMovement];
+    [self.sprite stopActionByTag:kSTLBearActionMovement];
     _moving = NO;
 }
 

@@ -171,6 +171,7 @@
 		35DF8857164C5B650051C86F /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DF8852164C5B650051C86F /* CocosDenshion.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -Xanalyzer -analyzer-disable-checker -Wno-deprecated"; }; };
 		35DF8858164C5B650051C86F /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DF8854164C5B650051C86F /* SimpleAudioEngine.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -Xanalyzer -analyzer-disable-checker -Wno-deprecated"; }; };
 		35E211FC163D24D800FC7C1F /* STLGameNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35E211FB163D24D800FC7C1F /* STLGameNavigationController.m */; };
+		CE6CE99117763FF700189B92 /* STLGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE6CE99017763FF700189B92 /* STLGameModel.m */; };
 		CE9D7EF91775D65F003931E5 /* atlas-hd.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE9D7EF01775D65E003931E5 /* atlas-hd.plist */; };
 		CE9D7EFA1775D65F003931E5 /* atlas-hd.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = CE9D7EF11775D65E003931E5 /* atlas-hd.pvr.ccz */; };
 		CE9D7EFB1775D65F003931E5 /* atlas-ipadhd.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE9D7EF21775D65E003931E5 /* atlas-ipadhd.plist */; };
@@ -184,9 +185,9 @@
 		CE9D7F071775E4F6003931E5 /* street.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9D7F041775E4F6003931E5 /* street.png */; };
 		CE9D7F081775E4F6003931E5 /* street.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CE9D7F051775E4F6003931E5 /* street.tmx */; };
 		CE9D7F0B1775E597003931E5 /* STLEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9D7F0A1775E597003931E5 /* STLEnemy.m */; };
-		CE9D7F0F17760655003931E5 /* STLGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9D7F0E17760655003931E5 /* STLGameModel.m */; };
 		CE9D7F1117761E01003931E5 /* aim.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9D7F1017761E01003931E5 /* aim.png */; };
 		CE9D7F141776204B003931E5 /* STLAimMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9D7F131776204B003931E5 /* STLAimMenuItem.m */; };
+		CE9D7F1717763B5C003931E5 /* STLBaseSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9D7F1617763B5C003931E5 /* STLBaseSprite.m */; };
 		CED7B4521628569E00897E73 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7B44F1628569E00897E73 /* Default-568h@2x.png */; };
 		CED7B4531628569E00897E73 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7B4501628569E00897E73 /* Default-Landscape~ipad.png */; };
 		CED7B4541628569E00897E73 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CED7B4511628569E00897E73 /* Default@2x.png */; };
@@ -264,7 +265,6 @@
 		35A4CD0D15B32D1900EC76A5 /* STLGameMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameMenuLayer.m; sourceTree = "<group>"; };
 		35C65436159F505800F3DAB2 /* STLMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLMarker.h; sourceTree = "<group>"; };
 		35C65437159F505900F3DAB2 /* STLMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLMarker.m; sourceTree = "<group>"; };
-		35C6543E159F70A100F3DAB2 /* STLActorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLActorProtocol.h; sourceTree = "<group>"; };
 		35C65444159F8D3A00F3DAB2 /* HelloStaticlineTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HelloStaticlineTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C65445159F8D3A00F3DAB2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		35C6544B159F8D3A00F3DAB2 /* HelloStaticlineTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HelloStaticlineTests-Info.plist"; sourceTree = "<group>"; };
@@ -507,6 +507,8 @@
 		35DF8854164C5B650051C86F /* SimpleAudioEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAudioEngine.m; sourceTree = "<group>"; };
 		35E211FA163D24D800FC7C1F /* STLGameNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameNavigationController.h; sourceTree = "<group>"; };
 		35E211FB163D24D800FC7C1F /* STLGameNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameNavigationController.m; sourceTree = "<group>"; };
+		CE6CE98F17763FF700189B92 /* STLGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameModel.h; sourceTree = "<group>"; };
+		CE6CE99017763FF700189B92 /* STLGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameModel.m; sourceTree = "<group>"; };
 		CE9D7EF01775D65E003931E5 /* atlas-hd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "atlas-hd.plist"; path = "Resources/atlas-hd.plist"; sourceTree = "<group>"; };
 		CE9D7EF11775D65E003931E5 /* atlas-hd.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; name = "atlas-hd.pvr.ccz"; path = "Resources/atlas-hd.pvr.ccz"; sourceTree = "<group>"; };
 		CE9D7EF21775D65E003931E5 /* atlas-ipadhd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "atlas-ipadhd.plist"; path = "Resources/atlas-ipadhd.plist"; sourceTree = "<group>"; };
@@ -521,11 +523,11 @@
 		CE9D7F051775E4F6003931E5 /* street.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = street.tmx; path = Resources/street.tmx; sourceTree = "<group>"; };
 		CE9D7F091775E597003931E5 /* STLEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLEnemy.h; sourceTree = "<group>"; };
 		CE9D7F0A1775E597003931E5 /* STLEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLEnemy.m; sourceTree = "<group>"; };
-		CE9D7F0D17760655003931E5 /* STLGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLGameModel.h; sourceTree = "<group>"; };
-		CE9D7F0E17760655003931E5 /* STLGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLGameModel.m; sourceTree = "<group>"; };
 		CE9D7F1017761E01003931E5 /* aim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = aim.png; path = Resources/aim.png; sourceTree = "<group>"; };
 		CE9D7F121776204B003931E5 /* STLAimMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLAimMenuItem.h; sourceTree = "<group>"; };
 		CE9D7F131776204B003931E5 /* STLAimMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLAimMenuItem.m; sourceTree = "<group>"; };
+		CE9D7F1517763B5B003931E5 /* STLBaseSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLBaseSprite.h; sourceTree = "<group>"; };
+		CE9D7F1617763B5C003931E5 /* STLBaseSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLBaseSprite.m; sourceTree = "<group>"; };
 		CED7B44F1628569E00897E73 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = "<group>"; };
 		CED7B4501628569E00897E73 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Resources/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		CED7B4511628569E00897E73 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
@@ -707,7 +709,8 @@
 		35884673159F1385004B750D /* Actors */ = {
 			isa = PBXGroup;
 			children = (
-				35C6543E159F70A100F3DAB2 /* STLActorProtocol.h */,
+				CE9D7F1517763B5B003931E5 /* STLBaseSprite.h */,
+				CE9D7F1617763B5C003931E5 /* STLBaseSprite.m */,
 				35884674159F13D1004B750D /* STLPlayer.h */,
 				35884675159F13D1004B750D /* STLPlayer.m */,
 				35C65436159F505800F3DAB2 /* STLMarker.h */,
@@ -1091,8 +1094,8 @@
 		CE9D7F0C17760642003931E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE9D7F0D17760655003931E5 /* STLGameModel.h */,
-				CE9D7F0E17760655003931E5 /* STLGameModel.m */,
+				CE6CE98F17763FF700189B92 /* STLGameModel.h */,
+				CE6CE99017763FF700189B92 /* STLGameModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1361,8 +1364,9 @@
 				35DF8857164C5B650051C86F /* CocosDenshion.m in Sources */,
 				35DF8858164C5B650051C86F /* SimpleAudioEngine.m in Sources */,
 				CE9D7F0B1775E597003931E5 /* STLEnemy.m in Sources */,
-				CE9D7F0F17760655003931E5 /* STLGameModel.m in Sources */,
 				CE9D7F141776204B003931E5 /* STLAimMenuItem.m in Sources */,
+				CE9D7F1717763B5C003931E5 /* STLBaseSprite.m in Sources */,
+				CE6CE99117763FF700189B92 /* STLGameModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

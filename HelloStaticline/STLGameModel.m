@@ -7,6 +7,7 @@
 //
 
 #import "STLGameModel.h"
+#import "STLMarker.h"
 
 @implementation STLGameModel
 
@@ -28,12 +29,25 @@
     //NSLog(@"projectiles %03d   enemies %03d", _projectiles.count, _enemies.count);
     for (CCSprite *projectile in _projectiles) {
         for (STLEnemy *enemy in _enemies) {
-            // FIXME: coordinates
-            if (CGRectIntersectsRect(projectile.boundingBox, enemy.node.boundingBox)) {
-                DLog(@"enemy hit!");
-                [projectile removeFromParentAndCleanup:YES];
-                [enemy removeFromGame];
-            }
+#warning this is broken...
+            CGPoint ball = [[CCDirector sharedDirector] convertToGL:projectile.position];
+            CGPoint target = [_player.sprite convertToNodeSpace:enemy.sprite.position];
+            
+            float distance = pow(ball.x - target.x, 2) + pow(ball.y - target.y, 2);
+            distance = sqrt(distance);
+            
+            DLog(@"%@ %@ dist: %.4f",NSStringFromCGPoint(ball), NSStringFromCGPoint(target), distance);
+            
+//            STLMarker *marker = [[STLMarker alloc] init];
+//            marker.node.position = ball;
+//            [projectile addChild:marker.node];
+            
+            
+//            if (CGRectContainsPoint(enemy.node.boundingBox, ball)) { //CGRectIntersectsRect(projectile.boundingBox, enemy.node.boundingBox)
+//                DLog(@"enemy hit!");
+//                [projectile removeFromParentAndCleanup:YES];
+//                [enemy removeFromGame];
+//            }
         }
     }
 }

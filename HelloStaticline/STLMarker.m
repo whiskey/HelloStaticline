@@ -13,38 +13,17 @@
 @end
 
 @implementation STLMarker
-@synthesize node = _node;
-@synthesize sprite = _sprite;
-@synthesize pointValue = _pointValue;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        self.sprite = [CCSprite spriteWithSpriteFrameName:@"marker.png"];
+        
         // marker has point values between 5 and 50 in steps of 5
-        _pointValue = (arc4random() % 10 + 1) * 5;
+        self.pointValue = (arc4random() % 10 + 1) * 5;
     }
     return self;
-}
-
-- (CCNode *)node
-{
-    if (_node) {
-        return _node;
-    }
-    // init with simple sprite
-    _node = [CCNode node];
-    _sprite = [CCSprite spriteWithFile:@"marker_cross.png"];
-    // scaling - better: use hd sprites
-    if ([[UIScreen mainScreen] respondsToSelector:@selector(displayLinkWithTarget:selector:)] &&
-        ([UIScreen mainScreen].scale == 2.0)) {
-        [_sprite setScale:1.0f];
-    } else {
-        [_sprite setScale:0.5f];
-    }
-    [_node addChild:_sprite];
-    _node.contentSize = _sprite.contentSize;
-    return _node;
 }
 
 #pragma mark - ui actions
@@ -59,7 +38,7 @@
         case kSTLTargetDisappearWithNoAction:
         {
             // simply remove
-            [_node removeFromParentAndCleanup:YES];
+            [self.sprite removeFromParentAndCleanup:YES];
             break;
         }
         case kSTLTargetExplode:
@@ -72,13 +51,13 @@
             id fadeOut = [CCEaseOut actionWithAction:action2];
             
             id remove = [CCCallBlock actionWithBlock:^{
-                [_node removeFromParentAndCleanup:YES];
+                [self.sprite removeFromParentAndCleanup:YES];
             }];
             
             id spawn = [CCSpawn actions:scale,fadeOut, nil];
             id sequence = [CCSequence actions:spawn, remove, nil];
             
-            [_sprite runAction:sequence];
+            [self.sprite runAction:sequence];
             break;
         }
         default:

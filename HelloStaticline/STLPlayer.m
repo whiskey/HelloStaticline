@@ -19,19 +19,18 @@
 @interface STLPlayer() {
     ALuint movementSoundID;
 }
-@property (nonatomic, strong) STLGameModel *gameModel;
-@property (nonatomic, strong) CCSpriteBatchNode *playerBatchNode;
-@property (nonatomic,assign) NSUInteger score;
-@property (nonatomic,assign) NSUInteger level;
-@property (nonatomic,assign) NSUInteger lifetimeCatchedMarkers;
-@property (nonatomic,assign) STLGameCenterManager *gcm;
+
+@property (assign, nonatomic) NSUInteger score;
+@property (assign, nonatomic) NSUInteger level;
+@property (assign, nonatomic) NSUInteger lifetimeCatchedMarkers;
+@property (strong, nonatomic) CCSpriteBatchNode *playerBatchNode;
+@property (strong, nonatomic) STLGameCenterManager *gcm;
+
 - (void)checkAchievementProgress;
 @end
 
 
 @implementation STLPlayer
-@synthesize node = _node;
-@synthesize sprite = _sprite;
 @synthesize score = _score;
 @synthesize level = _level;
 @synthesize lifetimeCatchedMarkers = _lifetimeCatchedMarkers;
@@ -41,17 +40,9 @@
 {
     self = [super init];
     if (self) {
-        // init score
-        self.score = 0;
-        
-        // the next two values will be stored and read persistantly,
-        // currently just using dummy values
-        self.level = 0;
-        self.lifetimeCatchedMarkers = 0;
-        
-        // get the achievement manager
-        _gcm = [STLGameCenterManager sharedInstance];
-        _gameModel = [STLGameModel sharedInstance];
+        self.sprite = [CCSprite spriteWithSpriteFrameName:@"player_d_1.png"];
+        self.playerBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"atlas.pvr.ccz"];
+        [self.sprite addChild:_playerBatchNode];
         
         // preload sounds
         [[SimpleAudioEngine sharedEngine] preloadEffect:PLAYER_MOVEMENT_SOUND];
@@ -59,25 +50,23 @@
     return self;
 }
 
-- (CCNode *)node
+- (void)onEnter
 {
-    if (_node) {
-        return _node;
-    }
-    // init with spritesheet
-    self.playerBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"atlas.pvr.ccz" capacity:200];
-    _node = [CCNode node];
-    [_node addChild:_playerBatchNode];
-    // standing still
-    _sprite = [CCSprite spriteWithSpriteFrameName:@"player_d_1.png"];
-    [_playerBatchNode addChild:_sprite];
-    _node.contentSize = _sprite.contentSize;
-    return _node;
+    // init score
+    self.score = 0;
+    
+    // the next two values will be stored and read persistantly,
+    // currently just using dummy values
+    self.level = 0;
+    self.lifetimeCatchedMarkers = 0;
+    
+    // get the achievement manager
+    self.gcm = [STLGameCenterManager sharedInstance];
 }
 
 #pragma mark - gameplay
 
-- (void) killedTarget:(id<STLTargetProtocol>) target
+- (void) killedTarget:(STLBaseSprite *) target
 {
     // very simple stats-update
     self.score += target.pointValue;
@@ -91,8 +80,8 @@
 - (void)movePlayerToDestination:(CGPoint)destination
 {
     // existing movement action running? stop.
-    [_node stopAllActions];
-    [_sprite stopAllActions];
+    [self.sprite stopAllActions];
+    [self.sprite stopAllActions];
     
     // some static values
     // 8 movement directions, 2 arcs left and right of each
@@ -114,7 +103,7 @@
     
     // current movement direction
     CGPoint destWorld = [[CCDirector sharedDirector] convertToGL:destination];
-    CGPoint nodeWorld = [[CCDirector sharedDirector] convertToGL:_node.position];
+    CGPoint nodeWorld = [[CCDirector sharedDirector] convertToGL:self.sprite.position];
     float moveAngle = ccpToAngle(ccpSub(destWorld,nodeWorld));
     if (moveAngle < 0) {
         moveAngle = M_PI*2 + moveAngle;
@@ -177,7 +166,7 @@
     CCAnimation *walkAnim = [CCAnimation animationWithSpriteFrames:walkAnimFrames delay:0.2f];    
     CCAction *walkAction = [CCRepeatForever actionWithAction:[CCAnimate actionWithAnimation:walkAnim]];
     walkAction.tag = kSTLPlayerWalkAction;
-    [_sprite runAction:walkAction];
+    [self.sprite runAction:walkAction];
     // sound
     movementSoundID = [[SimpleAudioEngine sharedEngine] playEffect:PLAYER_MOVEMENT_SOUND];
     
@@ -186,8 +175,8 @@
     [movement setTag:kSTLPlayerMovement];
     id ease = [CCEaseInOut actionWithAction:movement rate:2.0f];
     id stopAnimation = [CCCallBlock actionWithBlock:^{
-        [_sprite stopAllActions];
-        [_sprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: @"player_d_1.png"]];
+        [self.sprite stopAllActions];
+        [self.sprite setDisplayFrame:[[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName: @"player_d_1.png"]];
         // stop sound
         // currently not needed, but might become relevant with a sound-loop for each step
 //        [[SimpleAudioEngine sharedEngine] stopEffect:movementSound];
@@ -195,7 +184,7 @@
         // do some waiting animation...
     }];
     id sequence = [CCSequence actions:ease, stopAnimation, nil];
-    [_node runAction:sequence];
+    [self.sprite runAction:sequence];
 }
 
 - (void)shootToDirection:(CGPoint)direction
@@ -204,18 +193,15 @@
     NSAssert(projectile, @"no sprite");
     projectile.scale = 3;
     [_playerBatchNode addChild:projectile];
-    [_gameModel.projectiles addObject:projectile];
+    [[STLGameModel sharedInstance].projectiles addObject:projectile];
     
     direction = ccpMult(direction, 1000.0);
 //    CCAction *loop = [CCRepeatForever actionWithAction:[CCMoveBy actionWithDuration:0.05 position:direction]];
     
     CCSequence *sequence = [CCSequence actions:
-                            [CCMoveTo actionWithDuration:1.5 position:direction],
+                            [CCMoveTo actionWithDuration:1.0 position:direction],
                             [CCCallBlock actionWithBlock:^{
-//                                dispatch_sync(dispatch_get_main_queue(), ^{
-//                                    [_gameModel.projectiles removeObject:projectile];
-//                                });
-                                [_gameModel.projectiles removeObject:projectile];
+                                [[STLGameModel sharedInstance].projectiles removeObject:projectile];
                                 [projectile removeFromParentAndCleanup:YES];
                             }], nil];
     [projectile runAction:sequence];
